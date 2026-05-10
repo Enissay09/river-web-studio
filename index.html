@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>River Web Studio — Le site à ton courant et qui flow à tout moment</title>
+  
+  <!-- GOOGLE ADSENSE -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4369385140642438" crossorigin="anonymous"></script>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -47,174 +51,104 @@
     }
     .pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
 
-    .card-hover {
-      transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
-    }
-    .card-hover:hover {
-      transform: translateY(-8px);
-      border-color: rgba(59,130,246,0.3);
-      box-shadow: 0 20px 60px -15px rgba(59,130,246,0.15);
-    }
+    .card-hover { transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1); }
+    .card-hover:hover { transform: translateY(-8px); border-color: rgba(59,130,246,0.3); box-shadow: 0 20px 60px -15px rgba(59,130,246,0.15); }
 
-    .nav-link {
-      position: relative;
-      transition: color 0.3s;
-    }
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 1px;
-      background: #3b82f6;
-      transition: width 0.3s;
-    }
+    .nav-link { position: relative; transition: color 0.3s; }
+    .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: #3b82f6; transition: width 0.3s; }
     .nav-link:hover::after { width: 100%; }
     .nav-link:hover { color: #3b82f6; }
 
-    .btn-river {
-      background: linear-gradient(135deg, #1d4ed8, #3b82f6);
-      transition: all 0.3s;
-      position: relative;
-      overflow: hidden;
-    }
-    .btn-river::before {
-      content: '';
-      position: absolute;
-      top: 0; left: -100%; width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-      transition: left 0.5s;
-    }
+    .btn-river { background: linear-gradient(135deg, #1d4ed8, #3b82f6); transition: all 0.3s; position: relative; overflow: hidden; }
+    .btn-river::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent); transition: left 0.5s; }
     .btn-river:hover::before { left: 100%; }
-    .btn-river:hover {
-      box-shadow: 0 10px 40px -10px rgba(59,130,246,0.5);
-      transform: translateY(-2px);
-    }
+    .btn-river:hover { box-shadow: 0 10px 40px -10px rgba(59,130,246,0.5); transform: translateY(-2px); }
 
-    .pack-card {
-      position: relative;
-      overflow: hidden;
-    }
-    .pack-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, #3b82f6, transparent);
-      opacity: 0;
-      transition: opacity 0.5s;
-    }
+    .pack-card { position: relative; overflow: hidden; }
+    .pack-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, #3b82f6, transparent); opacity: 0; transition: opacity 0.5s; }
     .pack-card:hover::before { opacity: 1; }
 
-    input:focus, textarea:focus, select:focus {
-      outline: none;
-      border-color: rgba(59,130,246,0.5) !important;
-      box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
-    }
+    input:focus, textarea:focus, select:focus { outline: none; border-color: rgba(59,130,246,0.5) !important; box-shadow: 0 0 0 3px rgba(59,130,246,0.1); }
 
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: #050505; }
     ::-webkit-scrollbar-thumb { background: #262626; border-radius: 3px; }
     ::-webkit-scrollbar-thumb:hover { background: #404040; }
 
-    .toast {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      padding: 1rem 1.5rem;
-      border-radius: 12px;
-      background: rgba(59,130,246,0.15);
-      border: 1px solid rgba(59,130,246,0.3);
-      backdrop-filter: blur(20px);
-      color: #93c5fd;
-      font-size: 0.875rem;
-      transform: translateY(100px);
-      opacity: 0;
-      transition: all 0.4s ease;
-      z-index: 100;
-    }
+    .toast { position: fixed; bottom: 2rem; right: 2rem; padding: 1rem 1.5rem; border-radius: 12px; background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.3); backdrop-filter: blur(20px); color: #93c5fd; font-size: 0.875rem; transform: translateY(100px); opacity: 0; transition: all 0.4s ease; z-index: 100; }
     .toast.show { transform: translateY(0); opacity: 1; }
 
-    .mobile-menu {
-      transform: translateX(100%);
-      transition: transform 0.3s ease;
-    }
+    .mobile-menu { transform: translateX(100%); transition: transform 0.3s ease; }
     .mobile-menu.open { transform: translateX(0); }
 
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease, padding 0.4s ease;
-    }
-    .faq-item.open .faq-answer {
-      max-height: 200px;
-      padding-top: 12px;
-    }
-    .faq-item.open .faq-chevron {
-      transform: rotate(180deg);
-    }
-    .faq-chevron {
-      transition: transform 0.3s ease;
-    }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; }
+    .faq-item.open .faq-answer { max-height: 200px; padding-top: 12px; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-chevron { transition: transform 0.3s ease; }
 
-    .checkout-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      padding: 0.75rem 0;
-      border-radius: 9999px;
-      font-size: 0.875rem;
-      font-weight: 500;
-      transition: all 0.3s;
-      text-decoration: none;
-      cursor: pointer;
-    }
-    .checkout-btn-primary {
-      background: linear-gradient(135deg, #1d4ed8, #3b82f6);
-      color: white;
-      position: relative;
-      overflow: hidden;
-    }
-    .checkout-btn-primary::before {
-      content: '';
-      position: absolute;
-      top: 0; left: -100%; width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-      transition: left 0.5s;
-    }
+    .checkout-btn { display: flex; align-items: center; justify-content: center; width: 100%; padding: 0.75rem 0; border-radius: 9999px; font-size: 0.875rem; font-weight: 500; transition: all 0.3s; text-decoration: none; cursor: pointer; }
+    .checkout-btn-primary { background: linear-gradient(135deg, #1d4ed8, #3b82f6); color: white; position: relative; overflow: hidden; }
+    .checkout-btn-primary::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent); transition: left 0.5s; }
     .checkout-btn-primary:hover::before { left: 100%; }
-    .checkout-btn-primary:hover {
-      box-shadow: 0 10px 40px -10px rgba(59,130,246,0.5);
-      transform: translateY(-2px);
+    .checkout-btn-primary:hover { box-shadow: 0 10px 40px -10px rgba(59,130,246,0.5); transform: translateY(-2px); }
+    .checkout-btn-outline { border: 1px solid rgba(255,255,255,0.1); color: #d4d4d4; }
+    .checkout-btn-outline:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.2); }
+    .checkout-btn-elite { border: 1px solid rgba(59,130,246,0.3); color: #60a5fa; }
+    .checkout-btn-elite:hover { background: rgba(59,130,246,0.1); }
+    .checkout-btn-maint { border: 1px solid rgba(255,255,255,0.1); color: #d4d4d4; }
+    .checkout-btn-maint:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.2); }
+
+    .ad-container { max-width: 728px; margin: 0 auto; padding: 2rem 1rem; min-height: 90px; display: flex; align-items: center; justify-content: center; }
+
+    /* POPUP ADSENSE STYLES */
+    .ad-popup-overlay {
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; visibility: hidden; transition: all 0.4s ease;
     }
-    .checkout-btn-outline {
-      border: 1px solid rgba(255,255,255,0.1);
-      color: #d4d4d4;
+    .ad-popup-overlay.active { opacity: 1; visibility: visible; }
+    .ad-popup-container {
+      position: relative; background: #0a0a0a; border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px; width: 90vw; max-width: 800px; height: 70vh;
+      display: flex; flex-direction: column; overflow: hidden;
+      transform: scale(0.9) translateY(20px); transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
-    .checkout-btn-outline:hover {
-      background: rgba(255,255,255,0.05);
-      border-color: rgba(255,255,255,0.2);
+    .ad-popup-overlay.active .ad-popup-container { transform: scale(1) translateY(0); }
+    .ad-popup-close {
+      position: absolute; top: 12px; right: 12px; z-index: 10;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1);
+      color: white; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all 0.3s;
     }
-    .checkout-btn-elite {
-      border: 1px solid rgba(59,130,246,0.3);
-      color: #60a5fa;
-    }
-    .checkout-btn-elite:hover {
-      background: rgba(59,130,246,0.1);
-    }
-    .checkout-btn-maint {
-      border: 1px solid rgba(255,255,255,0.1);
-      color: #d4d4d4;
-    }
-    .checkout-btn-maint:hover {
-      background: rgba(255,255,255,0.05);
-      border-color: rgba(255,255,255,0.2);
+    .ad-popup-close:hover { background: rgba(255,255,255,0.2); transform: rotate(90deg); }
+    .ad-popup-label {
+      position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
+      font-size: 10px; color: #525252; letter-spacing: 0.1em; text-transform: uppercase;
     }
   </style>
 </head>
 <body class="text-white font-inter antialiased">
+
+  <!-- POPUP ADSENSE -->
+  <div id="adPopup" class="ad-popup-overlay">
+    <div class="ad-popup-container">
+      <button class="ad-popup-close" onclick="closeAdPopup()" title="Fermer la publicité">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <div class="flex-1 flex items-center justify-center p-8">
+        <ins class="adsbygoogle"
+             style="display:block; width:100%; height:100%;"
+             data-ad-client="ca-pub-4369385140642438"
+             data-ad-slot="XXXXXXXXXX"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+      <span class="ad-popup-label">Publicité</span>
+    </div>
+  </div>
 
   <!-- Toast -->
   <div id="toast" class="toast"></div>
@@ -222,9 +156,7 @@
   <!-- Mobile overlay -->
   <div id="mobileOverlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 hidden" onclick="closeMobileMenu()"></div>
   <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 bottom-0 w-72 bg-[#0a0a0a] border-l border-white/5 z-50 p-8 flex flex-col">
-    <button onclick="closeMobileMenu()" class="self-end mb-8 text-neutral-400 hover:text-white transition-colors">
-      <i data-lucide="x" class="w-6 h-6"></i>
-    </button>
+    <button onclick="closeMobileMenu()" class="self-end mb-8 text-neutral-400 hover:text-white transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
     <nav class="flex flex-col gap-6">
       <a href="#packs" onclick="closeMobileMenu()" class="text-lg font-medium text-neutral-300 hover:text-blue-400 transition-colors">Packs</a>
       <a href="#process" onclick="closeMobileMenu()" class="text-lg font-medium text-neutral-300 hover:text-blue-400 transition-colors">Process</a>
@@ -232,9 +164,7 @@
       <a href="#contact" onclick="closeMobileMenu()" class="text-lg font-medium text-neutral-300 hover:text-blue-400 transition-colors">Contact</a>
     </nav>
     <div class="mt-auto space-y-3">
-      <a href="https://book.stripe.com/fZu14m4bIfxSe6r3qI6Zy01" target="_blank" class="btn-river w-full py-3 rounded-full text-sm font-medium text-white flex items-center justify-center gap-2">
-        Choisir mon pack
-      </a>
+      <a href="https://book.stripe.com/fZu14m4bIfxSe6r3qI6Zy01" target="_blank" class="btn-river w-full py-3 rounded-full text-sm font-medium text-white flex items-center justify-center gap-2">Choisir mon pack</a>
     </div>
   </div>
 
@@ -250,19 +180,10 @@
                       M8 20C11 26 14 14 17 20C20 26 23 14 26 20C29 26 32 14 35 20;
                       M8 20C11 14 14 26 17 20C20 14 23 26 26 20C29 14 32 26 35 20"/>
           </path>
-          <defs>
-            <linearGradient id="logo-grad" x1="0" y1="0" x2="40" y2="40">
-              <stop offset="0%" stop-color="#1d4ed8"/>
-              <stop offset="100%" stop-color="#3b82f6"/>
-            </linearGradient>
-          </defs>
+          <defs><linearGradient id="logo-grad" x1="0" y1="0" x2="40" y2="40"><stop offset="0%" stop-color="#1d4ed8"/><stop offset="100%" stop-color="#3b82f6"/></linearGradient></defs>
         </svg>
-        <div class="flex flex-col leading-none">
-          <span class="text-sm font-semibold tracking-tight text-white">RIVER</span>
-          <span class="text-[9px] font-medium tracking-[0.2em] text-neutral-500 uppercase">Web Studio</span>
-        </div>
+        <div class="flex flex-col leading-none"><span class="text-sm font-semibold tracking-tight text-white">RIVER</span><span class="text-[9px] font-medium tracking-[0.2em] text-neutral-500 uppercase">Web Studio</span></div>
       </a>
-
       <div class="hidden md:flex items-center gap-8">
         <a href="#packs" class="nav-link text-xs font-medium text-neutral-400 uppercase tracking-widest">Packs</a>
         <a href="#process" class="nav-link text-xs font-medium text-neutral-400 uppercase tracking-widest">Process</a>
@@ -271,9 +192,7 @@
       </div>
       <div class="flex items-center gap-4">
         <a href="https://book.stripe.com/fZu14m4bIfxSe6r3qI6Zy01" target="_blank" class="hidden md:inline-flex btn-river text-xs font-medium px-5 py-2 rounded-full text-white">Choisir mon pack</a>
-        <button onclick="openMobileMenu()" class="md:hidden text-neutral-400 hover:text-white transition-colors">
-          <i data-lucide="menu" class="w-6 h-6"></i>
-        </button>
+        <button onclick="openMobileMenu()" class="md:hidden text-neutral-400 hover:text-white transition-colors"><i data-lucide="menu" class="w-6 h-6"></i></button>
       </div>
     </div>
   </nav>
@@ -285,300 +204,77 @@
       <div class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-blue-400/5 rounded-full blur-[100px]"></div>
     </div>
     <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 60px 60px;"></div>
-
     <div class="max-w-7xl mx-auto px-6 w-full relative z-10">
       <div class="grid md:grid-cols-2 gap-12 items-center">
         <div>
-          <div class="fade-up fade-up-d1 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-500/20 bg-blue-500/5 mb-8">
-            <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
-            <span class="text-[10px] font-medium uppercase tracking-widest text-blue-400">Automatisation IA</span>
-          </div>
-
-          <h1 class="fade-up fade-up-d2 text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight leading-[0.9] mb-6">
-            Le site à ton courant<br>
-            <span class="text-blue-400">et qui flow à tout moment.</span>
-          </h1>
-
-          <p class="fade-up fade-up-d3 text-neutral-400 text-sm md:text-base font-light leading-relaxed max-w-lg mb-10">
-            Positionnement clair, offres irrésistibles, checkout instantané, onboarding automatique, et livraison client uniquement par email.
-          </p>
-
+          <div class="fade-up fade-up-d1 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-500/20 bg-blue-500/5 mb-8"><span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span><span class="text-[10px] font-medium uppercase tracking-widest text-blue-400">Automatisation IA</span></div>
+          <h1 class="fade-up fade-up-d2 text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight leading-[0.9] mb-6">Le site à ton courant<br><span class="text-blue-400">et qui flow à tout moment.</span></h1>
+          <p class="fade-up fade-up-d3 text-neutral-400 text-sm md:text-base font-light leading-relaxed max-w-lg mb-10">Positionnement clair, offres irrésistibles, checkout instantané, onboarding automatique, et livraison client uniquement par email.</p>
           <div class="fade-up fade-up-d4 flex flex-wrap gap-4">
-            <a href="#packs" class="btn-river px-8 py-3 rounded-full text-sm font-medium text-white inline-flex items-center gap-2">
-              Voir les packs <i data-lucide="arrow-right" class="w-4 h-4"></i>
-            </a>
-            <a href="#process" class="px-8 py-3 rounded-full text-sm font-medium text-neutral-300 border border-white/10 hover:border-white/20 hover:bg-white/5 transition-all inline-flex items-center gap-2">
-              <i data-lucide="play-circle" class="w-4 h-4"></i> Le process
-            </a>
+            <a href="#packs" class="btn-river px-8 py-3 rounded-full text-sm font-medium text-white inline-flex items-center gap-2">Voir les packs <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+            <a href="#process" class="px-8 py-3 rounded-full text-sm font-medium text-neutral-300 border border-white/10 hover:border-white/20 hover:bg-white/5 transition-all inline-flex items-center gap-2"><i data-lucide="play-circle" class="w-4 h-4"></i> Le process</a>
           </div>
         </div>
-
         <div class="relative">
-          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-            <div class="w-64 h-64 rounded-full border border-blue-500/10 ripple-ring"></div>
-            <div class="absolute inset-0 w-64 h-64 rounded-full border border-blue-500/10 ripple-ring ripple-ring-d1"></div>
-            <div class="absolute inset-0 w-64 h-64 rounded-full border border-blue-500/10 ripple-ring ripple-ring-d2"></div>
-          </div>
-
-          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.04] pointer-events-none">
-            <svg viewBox="0 0 200 60" class="w-[350px]" fill="none">
-              <path d="M10 30C25 10 40 50 55 30C70 10 85 50 100 30C115 10 130 50 145 30C160 10 175 50 190 30" stroke="white" stroke-width="4" stroke-linecap="round"/>
-            </svg>
-          </div>
-
+          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"><div class="w-64 h-64 rounded-full border border-blue-500/10 ripple-ring"></div><div class="absolute inset-0 w-64 h-64 rounded-full border border-blue-500/10 ripple-ring ripple-ring-d1"></div><div class="absolute inset-0 w-64 h-64 rounded-full border border-blue-500/10 ripple-ring ripple-ring-d2"></div></div>
+          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.04] pointer-events-none"><svg viewBox="0 0 200 60" class="w-[350px]" fill="none"><path d="M10 30C25 10 40 50 55 30C70 10 85 50 100 30C115 10 130 50 145 30C160 10 175 50 190 30" stroke="white" stroke-width="4" stroke-linecap="round"/></svg></div>
           <div class="grid grid-cols-2 gap-4 relative z-10">
-            <div class="fade-up fade-up-d3 card-hover bg-neutral-900/50 border border-white/5 rounded-2xl p-6 backdrop-blur-sm">
-              <div class="text-blue-400 text-4xl md:text-5xl font-semibold mb-2">+48%</div>
-              <div class="text-neutral-500 text-xs font-medium uppercase tracking-wider">Taux de réponse client moyen</div>
-            </div>
-            <div class="fade-up fade-up-d4 card-hover bg-neutral-900/50 border border-white/5 rounded-2xl p-6 backdrop-blur-sm mt-8">
-              <div class="text-blue-400 text-4xl md:text-5xl font-semibold mb-2">7H<span class="text-lg text-neutral-500">/sem</span></div>
-              <div class="text-neutral-500 text-xs font-medium uppercase tracking-wider">Temps économisé via automatisation</div>
-            </div>
-            <div class="fade-up fade-up-d5 card-hover bg-neutral-900/50 border border-white/5 rounded-2xl p-6 backdrop-blur-sm">
-              <div class="text-blue-400 text-4xl md:text-5xl font-semibold mb-2">3</div>
-              <div class="text-neutral-500 text-xs font-medium uppercase tracking-wider">Offres prêtes à monétiser</div>
-            </div>
-            <div class="fade-up fade-up-d6 card-hover bg-neutral-900/50 border border-white/5 rounded-2xl p-6 backdrop-blur-sm mt-8">
-              <div class="text-blue-400 text-4xl md:text-5xl font-semibold mb-2">1</div>
-              <div class="text-neutral-500 text-xs font-medium uppercase tracking-wider">Tunnel du clic à la livraison</div>
-            </div>
+            <div class="fade-up fade-up-d3 card-hover bg-neutral-900/50 border border-white/5 rounded-2xl p-6 backdrop-blur-sm"><div class="text-blue-400 text-4xl md:text-5xl font-semibold mb-2">+48%</div><div class="text-neutral-500 text-xs font-medium uppercase tracking-wider">Taux de réponse client moyen</div></div>
+            <div class="fade-up fade-up-d4 card-hover bg-neutral-900/50 border border-white/5 rounded-2xl p-6 backdrop-blur-sm mt-8"><div class="text-blue-400 text-4xl md:text-5xl font-semibold mb-2">7H<span class="text-lg text-neutral-500">/sem</span></div><div class="text-neutral-500 text-xs font-medium uppercase tracking-wider">Temps économisé via automatisation</div></div>
+            <div class="fade-up fade-up-d5 card-hover bg-neutral-900/50 border border-white/5 rounded-2xl p-6 backdrop-blur-sm"><div class="text-blue-400 text-4xl md:text-5xl font-semibold mb-2">3</div><div class="text-neutral-500 text-xs font-medium uppercase tracking-wider">Offres prêtes à monétiser</div></div>
+            <div class="fade-up fade-up-d6 card-hover bg-neutral-900/50 border border-white/5 rounded-2xl p-6 backdrop-blur-sm mt-8"><div class="text-blue-400 text-4xl md:text-5xl font-semibold mb-2">1</div><div class="text-neutral-500 text-xs font-medium uppercase tracking-wider">Tunnel du clic à la livraison</div></div>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- AD BANNER -->
+  <div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4369385140642438" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
 
   <!-- CE QUE TU OBTIENS -->
   <section class="py-32 relative">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-20">
-        <span class="text-[10px] font-medium uppercase tracking-widest text-blue-400 mb-4 block">Ce que tu obtiens</span>
-        <h2 class="text-3xl md:text-4xl font-medium tracking-tight mb-4">Tout ce qu'il faut pour<br><span class="text-blue-400">vendre sans effort</span></h2>
-        <p class="text-neutral-500 text-sm max-w-md mx-auto">Un système complet, de la page de vente à la livraison automatique.</p>
-      </div>
-
+      <div class="text-center mb-20"><span class="text-[10px] font-medium uppercase tracking-widest text-blue-400 mb-4 block">Ce que tu obtiens</span><h2 class="text-3xl md:text-4xl font-medium tracking-tight mb-4">Tout ce qu'il faut pour<br><span class="text-blue-400">vendre sans effort</span></h2><p class="text-neutral-500 text-sm max-w-md mx-auto">Un système complet, de la page de vente à la livraison automatique.</p></div>
       <div class="grid md:grid-cols-3 gap-6">
-        <div class="card-hover bg-neutral-900/30 border border-white/5 rounded-2xl p-8 group">
-          <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-colors">
-            <i data-lucide="shopping-bag" class="w-5 h-5 text-blue-400"></i>
-          </div>
-          <h3 class="text-lg font-medium mb-3">Page de vente optimisée conversion</h3>
-          <p class="text-neutral-500 text-sm font-light leading-relaxed">Conçue pour convertir : structure persuasive, CTA stratégiques, preuve sociale intégrée.</p>
-        </div>
-        <div class="card-hover bg-neutral-900/30 border border-white/5 rounded-2xl p-8 group">
-          <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-colors">
-            <i data-lucide="store" class="w-5 h-5 text-blue-400"></i>
-          </div>
-          <h3 class="text-lg font-medium mb-3">Boutique d'offres premium</h3>
-          <p class="text-neutral-500 text-sm font-light leading-relaxed">Présentation claire de tes packs, pricing professionnel, expérience d'achat fluide.</p>
-        </div>
-        <div class="card-hover bg-neutral-900/30 border border-white/5 rounded-2xl p-8 group">
-          <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-colors">
-            <i data-lucide="credit-card" class="w-5 h-5 text-blue-400"></i>
-          </div>
-          <h3 class="text-lg font-medium mb-3">Checkout complet + pages succès/annulation</h3>
-          <p class="text-neutral-500 text-sm font-light leading-relaxed">Stripe checkout sécurisé + pages de succès et d'annulation personnalisées.</p>
-        </div>
-        <div class="card-hover bg-neutral-900/30 border border-white/5 rounded-2xl p-8 group">
-          <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-colors">
-            <i data-lucide="clipboard-list" class="w-5 h-5 text-blue-400"></i>
-          </div>
-          <h3 class="text-lg font-medium mb-3">Formulaires de capture et onboarding</h3>
-          <p class="text-neutral-500 text-sm font-light leading-relaxed">Formulaires intelligents pour qualifier tes clients et automatiser l'onboarding.</p>
-        </div>
-        <div class="card-hover bg-neutral-900/30 border border-white/5 rounded-2xl p-8 group">
-          <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-colors">
-            <i data-lucide="trending-up" class="w-5 h-5 text-blue-400"></i>
-          </div>
-          <h3 class="text-lg font-medium mb-3">Structure scalable pour monter en gamme</h3>
-          <p class="text-neutral-500 text-sm font-light leading-relaxed">Architecture pensée pour monter en gamme et ajouter de nouvelles offres facilement.</p>
-        </div>
-        <div class="card-hover bg-neutral-900/30 border border-white/5 rounded-2xl p-8 group">
-          <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-colors">
-            <i data-lucide="mail-check" class="w-5 h-5 text-blue-400"></i>
-          </div>
-          <h3 class="text-lg font-medium mb-3">Livraison client uniquement par email</h3>
-          <p class="text-neutral-500 text-sm font-light leading-relaxed">Livraison des livrables et suivi client uniquement par email — zéro complication.</p>
-        </div>
+        <div class="card-hover bg-neutral-900/30 border border-white/5 rounded-2xl p-8 group"><div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-colors"><i data-lucide="shopping-bag" class="w-5 h-5 text-blue-400"></i></div><h3 class="text-lg font-medium mb-3">Page de vente optimisée conversion</h3><p class="text-neutral-500 text-sm font-light leading-relaxed">Conçue pour convertir : structure persuasive, CTA stratégiques, preuve sociale intégrée.</p></div>
+        <div class="card-hover bg-neutral-900/30 border border-white/5 rounded-2xl p-8 group"><div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-colors"><i data-lucide="store" class="w-5 h-5 text-blue-400"></i></div><h3 class="text-lg font-medium mb-3">Boutique d'offres premium</h3><p class="text-neutral-500 text-sm font-light leading-relaxed">Présentation claire de tes packs, pricing professionnel, expérience d'achat fluide.</p></div>
+        <div class="card-hover bg-neutral-900/30 border border-white/5 rounded-2xl p-8 group"><div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-colors"><i data-lucide="credit-card" class="w-5 h-5 text-blue-400"></i></div><h3 class="text-lg font-medium mb-3">Checkout complet + pages succès/annulation</h3><p class="text-neutral-500 text-sm font-light leading-relaxed">Stripe checkout sécurisé + pages de succès et d'annulation personnalisées.</p></div>
+        <div class="card-hover bg-neutral-900/30 border border-white/5 rounded-2xl p-8 group"><div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-colors"><i data-lucide="clipboard-list" class="w-5 h-5 text-blue-400"></i></div><h3 class="text-lg font-medium mb-3">Formulaires de capture et onboarding</h3><p class="text-neutral-500 text-sm font-light leading-relaxed">Formulaires intelligents pour qualifier tes clients et automatiser l'onboarding.</p></div>
+        <div class="card-hover bg-neutral-900/30 border border-white/5 rounded-2xl p-8 group"><div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-colors"><i data-lucide="trending-up" class="w-5 h-5 text-blue-400"></i></div><h3 class="text-lg font-medium mb-3">Structure scalable pour monter en gamme</h3><p class="text-neutral-500 text-sm font-light leading-relaxed">Architecture pensée pour monter en gamme et ajouter de nouvelles offres facilement.</p></div>
+        <div class="card-hover bg-neutral-900/30 border border-white/5 rounded-2xl p-8 group"><div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-colors"><i data-lucide="mail-check" class="w-5 h-5 text-blue-400"></i></div><h3 class="text-lg font-medium mb-3">Livraison client uniquement par email</h3><p class="text-neutral-500 text-sm font-light leading-relaxed">Livraison des livrables et suivi client uniquement par email — zéro complication.</p></div>
       </div>
     </div>
   </section>
+
+  <!-- AD BANNER -->
+  <div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4369385140642438" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
 
   <!-- PACKS -->
   <section id="packs" class="py-32 relative">
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-blue-600/5 rounded-full blur-[150px]"></div>
     <div class="max-w-7xl mx-auto px-6 relative z-10">
-      <div class="text-center mb-20">
-        <span class="text-[10px] font-medium uppercase tracking-widest text-blue-400 mb-4 block">Choisis ton pack</span>
-        <h2 class="text-3xl md:text-4xl font-medium tracking-tight mb-4">Des offres pensées pour<br><span class="text-blue-400">chaque étape</span></h2>
-        <p class="text-neutral-500 text-sm max-w-md mx-auto">Paiement unique. Checkout Stripe sécurisé. Livraison rapide.</p>
-      </div>
-
+      <div class="text-center mb-20"><span class="text-[10px] font-medium uppercase tracking-widest text-blue-400 mb-4 block">Choisis ton pack</span><h2 class="text-3xl md:text-4xl font-medium tracking-tight mb-4">Des offres pensées pour<br><span class="text-blue-400">chaque étape</span></h2><p class="text-neutral-500 text-sm max-w-md mx-auto">Paiement unique. Checkout Stripe sécurisé. Livraison rapide.</p></div>
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-
-        <!-- STARTER -->
-        <div class="pack-card card-hover bg-neutral-900/50 border border-white/5 rounded-2xl p-8 flex flex-col">
-          <div class="mb-6">
-            <span class="text-[10px] font-medium uppercase tracking-widest text-neutral-500">Starter</span>
-            <div class="mt-3 flex items-baseline gap-1">
-              <span class="text-4xl font-semibold text-white">149€</span>
-              <span class="text-xs text-neutral-500">paiement unique</span>
-            </div>
-          </div>
-          <p class="text-neutral-500 text-xs font-light leading-relaxed mb-6">Pack d'entrée pour automatiser rapidement une étape clé.</p>
-          <ul class="space-y-3 mb-8 flex-1">
-            <li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-blue-400 mt-0.5 shrink-0"></i>1 automatisation prioritaire</li>
-            <li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-blue-400 mt-0.5 shrink-0"></i>1 template de relance</li>
-            <li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-blue-400 mt-0.5 shrink-0"></i>Mini guide d'utilisation</li>
-            <li class="flex items-start gap-3 text-sm text-neutral-500"><i data-lucide="clock" class="w-4 h-4 mt-0.5 shrink-0"></i>Livraison : 72H</li>
-          </ul>
-          <a href="https://book.stripe.com/14A3cueQm85qaUf9P66Zy00" target="_blank" rel="noopener" class="checkout-btn checkout-btn-outline">
-            <span class="flex items-center gap-2"><i data-lucide="lock" class="w-3.5 h-3.5"></i> Choisir Starter</span>
-          </a>
-        </div>
-
-        <!-- PRO -->
-        <div class="pack-card card-hover bg-neutral-900/50 border border-blue-500/20 rounded-2xl p-8 flex flex-col relative">
-          <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20">
-            <span class="text-[10px] font-medium uppercase tracking-widest text-blue-400">Populaire</span>
-          </div>
-          <div class="mb-6">
-            <span class="text-[10px] font-medium uppercase tracking-widest text-blue-400">Pro</span>
-            <div class="mt-3 flex items-baseline gap-1">
-              <span class="text-4xl font-semibold text-white">349€</span>
-              <span class="text-xs text-neutral-500">paiement unique</span>
-            </div>
-          </div>
-          <p class="text-neutral-500 text-xs font-light leading-relaxed mb-6">Pack principal pour structurer ton acquisition et suivi client.</p>
-          <ul class="space-y-3 mb-8 flex-1">
-            <li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-blue-400 mt-0.5 shrink-0"></i>3 automatisations clés</li>
-            <li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-blue-400 mt-0.5 shrink-0"></i>Pack prompts premium</li>
-            <li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-blue-400 mt-0.5 shrink-0"></i>Support email 7 jours</li>
-            <li class="flex items-start gap-3 text-sm text-neutral-500"><i data-lucide="clock" class="w-4 h-4 mt-0.5 shrink-0"></i>Livraison : 48H</li>
-          </ul>
-          <a href="https://book.stripe.com/fZu14m4bIfxSe6r3qI6Zy01" target="_blank" rel="noopener" class="checkout-btn checkout-btn-primary">
-            <span class="flex items-center gap-2"><i data-lucide="lock" class="w-3.5 h-3.5"></i> Choisir Pro</span>
-          </a>
-        </div>
-
-        <!-- ELITE -->
-        <div class="pack-card card-hover bg-neutral-900/50 border border-white/5 rounded-2xl p-8 flex flex-col relative overflow-hidden">
-          <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/50 to-transparent"></div>
-          <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-[60px]"></div>
-          <div class="mb-6 relative z-10">
-            <span class="text-[10px] font-medium uppercase tracking-widest text-neutral-500">Elite</span>
-            <div class="mt-3 flex items-baseline gap-1">
-              <span class="text-4xl font-semibold text-white">699€</span>
-              <span class="text-xs text-neutral-500">paiement unique</span>
-            </div>
-          </div>
-          <p class="text-neutral-500 text-xs font-light leading-relaxed mb-6 relative z-10">Système complet prêt à scaler avec documentation personnalisée.</p>
-          <ul class="space-y-3 mb-8 flex-1 relative z-10">
-            <li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-blue-400 mt-0.5 shrink-0"></i>Système acquisition + nurturing</li>
-            <li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-blue-400 mt-0.5 shrink-0"></i>Documentation custom</li>
-            <li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-blue-400 mt-0.5 shrink-0"></i>Support email 30 jours</li>
-            <li class="flex items-start gap-3 text-sm text-neutral-500"><i data-lucide="clock" class="w-4 h-4 mt-0.5 shrink-0"></i>Livraison : 24-48H</li>
-          </ul>
-          <a href="https://book.stripe.com/5kQ00i5fMbhCd2n9P66Zy02" target="_blank" rel="noopener" class="checkout-btn checkout-btn-elite relative z-10">
-            <span class="flex items-center gap-2"><i data-lucide="lock" class="w-3.5 h-3.5"></i> Passer Elite</span>
-          </a>
-        </div>
-
-        <!-- MAINTENANCE -->
-        <div class="pack-card card-hover bg-neutral-900/50 border border-white/5 rounded-2xl p-8 flex flex-col">
-          <div class="mb-6">
-            <span class="text-[10px] font-medium uppercase tracking-widest text-neutral-500">Maintenance</span>
-            <div class="mt-3 flex items-baseline gap-1">
-              <span class="text-4xl font-semibold text-white">79€</span>
-              <span class="text-xs text-neutral-500">/ mois</span>
-            </div>
-            <div class="mt-2 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-green-500/10 border border-green-500/20">
-              <span class="text-[10px] font-medium text-green-400">1er mois offert · 3 mois min</span>
-            </div>
-          </div>
-          <p class="text-neutral-500 text-xs font-light leading-relaxed mb-6">Suivi mensuel, ajustements et optimisations continues.</p>
-          <ul class="space-y-3 mb-8 flex-1">
-            <li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-green-400 mt-0.5 shrink-0"></i>Optimisations mensuelles</li>
-            <li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-green-400 mt-0.5 shrink-0"></i>Corrections prioritaires</li>
-            <li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-green-400 mt-0.5 shrink-0"></i>Support continu</li>
-            <li class="flex items-start gap-3 text-sm text-neutral-500"><i data-lucide="repeat" class="w-4 h-4 mt-0.5 shrink-0"></i>Abonnement mensuel</li>
-          </ul>
-          <a href="https://buy.stripe.com/00w5kC37EfxS3rN8L26Zy03" target="_blank" rel="noopener" class="checkout-btn checkout-btn-maint">
-            <span class="flex items-center gap-2"><i data-lucide="lock" class="w-3.5 h-3.5"></i> Activer maintenance</span>
-          </a>
-        </div>
+        <div class="pack-card card-hover bg-neutral-900/50 border border-white/5 rounded-2xl p-8 flex flex-col"><div class="mb-6"><span class="text-[10px] font-medium uppercase tracking-widest text-neutral-500">Starter</span><div class="mt-3 flex items-baseline gap-1"><span class="text-4xl font-semibold text-white">149€</span><span class="text-xs text-neutral-500">paiement unique</span></div></div><p class="text-neutral-500 text-xs font-light leading-relaxed mb-6">Pack d'entrée pour automatiser rapidement une étape clé.</p><ul class="space-y-3 mb-8 flex-1"><li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-blue-400 mt-0.5 shrink-0"></i>1 automatisation prioritaire</li><li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-blue-400 mt-0.5 shrink-0"></i>1 template de relance</li><li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-blue-400 mt-0.5 shrink-0"></i>Mini guide d'utilisation</li><li class="flex items-start gap-3 text-sm text-neutral-500"><i data-lucide="clock" class="w-4 h-4 mt-0.5 shrink-0"></i>Livraison : 72H</li></ul><a href="https://book.stripe.com/14A3cueQm85qaUf9P66Zy00" target="_blank" rel="noopener" class="checkout-btn checkout-btn-outline"><span class="flex items-center gap-2"><i data-lucide="lock" class="w-3.5 h-3.5"></i> Choisir Starter</span></a></div>
+        <div class="pack-card card-hover bg-neutral-900/50 border border-blue-500/20 rounded-2xl p-8 flex flex-col relative"><div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20"><span class="text-[10px] font-medium uppercase tracking-widest text-blue-400">Populaire</span></div><div class="mb-6"><span class="text-[10px] font-medium uppercase tracking-widest text-blue-400">Pro</span><div class="mt-3 flex items-baseline gap-1"><span class="text-4xl font-semibold text-white">349€</span><span class="text-xs text-neutral-500">paiement unique</span></div></div><p class="text-neutral-500 text-xs font-light leading-relaxed mb-6">Pack principal pour structurer ton acquisition et suivi client.</p><ul class="space-y-3 mb-8 flex-1"><li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-blue-400 mt-0.5 shrink-0"></i>3 automatisations clés</li><li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-blue-400 mt-0.5 shrink-0"></i>Pack prompts premium</li><li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-blue-400 mt-0.5 shrink-0"></i>Support email 7 jours</li><li class="flex items-start gap-3 text-sm text-neutral-500"><i data-lucide="clock" class="w-4 h-4 mt-0.5 shrink-0"></i>Livraison : 48H</li></ul><a href="https://book.stripe.com/fZu14m4bIfxSe6r3qI6Zy01" target="_blank" rel="noopener" class="checkout-btn checkout-btn-primary"><span class="flex items-center gap-2"><i data-lucide="lock" class="w-3.5 h-3.5"></i> Choisir Pro</span></a></div>
+        <div class="pack-card card-hover bg-neutral-900/50 border border-white/5 rounded-2xl p-8 flex flex-col relative overflow-hidden"><div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/50 to-transparent"></div><div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-[60px]"></div><div class="mb-6 relative z-10"><span class="text-[10px] font-medium uppercase tracking-widest text-neutral-500">Elite</span><div class="mt-3 flex items-baseline gap-1"><span class="text-4xl font-semibold text-white">699€</span><span class="text-xs text-neutral-500">paiement unique</span></div></div><p class="text-neutral-500 text-xs font-light leading-relaxed mb-6 relative z-10">Système complet prêt à scaler avec documentation personnalisée.</p><ul class="space-y-3 mb-8 flex-1 relative z-10"><li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-blue-400 mt-0.5 shrink-0"></i>Système acquisition + nurturing</li><li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-blue-400 mt-0.5 shrink-0"></i>Documentation custom</li><li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-blue-400 mt-0.5 shrink-0"></i>Support email 30 jours</li><li class="flex items-start gap-3 text-sm text-neutral-500"><i data-lucide="clock" class="w-4 h-4 mt-0.5 shrink-0"></i>Livraison : 24-48H</li></ul><a href="https://book.stripe.com/5kQ00i5fMbhCd2n9P66Zy02" target="_blank" rel="noopener" class="checkout-btn checkout-btn-elite relative z-10"><span class="flex items-center gap-2"><i data-lucide="lock" class="w-3.5 h-3.5"></i> Passer Elite</span></a></div>
+        <div class="pack-card card-hover bg-neutral-900/50 border border-white/5 rounded-2xl p-8 flex flex-col"><div class="mb-6"><span class="text-[10px] font-medium uppercase tracking-widest text-neutral-500">Maintenance</span><div class="mt-3 flex items-baseline gap-1"><span class="text-4xl font-semibold text-white">79€</span><span class="text-xs text-neutral-500">/ mois</span></div><div class="mt-2 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-green-500/10 border border-green-500/20"><span class="text-[10px] font-medium text-green-400">1er mois offert · 3 mois min</span></div></div><p class="text-neutral-500 text-xs font-light leading-relaxed mb-6">Suivi mensuel, ajustements et optimisations continues.</p><ul class="space-y-3 mb-8 flex-1"><li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-green-400 mt-0.5 shrink-0"></i>Optimisations mensuelles</li><li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-green-400 mt-0.5 shrink-0"></i>Corrections prioritaires</li><li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-green-400 mt-0.5 shrink-0"></i>Support continu</li><li class="flex items-start gap-3 text-sm text-neutral-500"><i data-lucide="repeat" class="w-4 h-4 mt-0.5 shrink-0"></i>Abonnement mensuel</li></ul><a href="https://buy.stripe.com/00w5kC37EfxS3rN8L26Zy03" target="_blank" rel="noopener" class="checkout-btn checkout-btn-maint"><span class="flex items-center gap-2"><i data-lucide="lock" class="w-3.5 h-3.5"></i> Activer maintenance</span></a></div>
       </div>
-
-      <!-- Trust badge -->
-      <div class="mt-10 flex items-center justify-center gap-6 text-neutral-600">
-        <div class="flex items-center gap-2">
-          <i data-lucide="shield-check" class="w-4 h-4"></i>
-          <span class="text-xs">Paiement sécurisé Stripe</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <i data-lucide="lock" class="w-4 h-4"></i>
-          <span class="text-xs">Données chiffrées</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <i data-lucide="credit-card" class="w-4 h-4"></i>
-          <span class="text-xs">CB / Apple Pay / Google Pay</span>
-        </div>
-      </div>
+      <div class="mt-10 flex items-center justify-center gap-6 text-neutral-600"><div class="flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4"></i><span class="text-xs">Paiement sécurisé Stripe</span></div><div class="flex items-center gap-2"><i data-lucide="lock" class="w-4 h-4"></i><span class="text-xs">Données chiffrées</span></div><div class="flex items-center gap-2"><i data-lucide="credit-card" class="w-4 h-4"></i><span class="text-xs">CB / Apple Pay / Google Pay</span></div></div>
     </div>
   </section>
 
   <!-- PROCESS -->
   <section id="process" class="py-32 relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-20">
-        <span class="text-[10px] font-medium uppercase tracking-widest text-blue-400 mb-4 block">Le process</span>
-        <h2 class="text-3xl md:text-4xl font-medium tracking-tight mb-4">Un process simple<br><span class="text-blue-400">et scalable</span></h2>
-        <p class="text-neutral-500 text-sm max-w-md mx-auto">Du clic à la livraison, tout est automatisé. Tu te concentres sur la production.</p>
-      </div>
-
+      <div class="text-center mb-20"><span class="text-[10px] font-medium uppercase tracking-widest text-blue-400 mb-4 block">Le process</span><h2 class="text-3xl md:text-4xl font-medium tracking-tight mb-4">Un process simple<br><span class="text-blue-400">et scalable</span></h2></div>
       <div class="max-w-3xl mx-auto relative">
         <div class="absolute left-6 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-blue-500/50 via-blue-500/20 to-transparent"></div>
-
-        <div class="relative flex gap-6 md:gap-8 mb-16 group">
-          <div class="shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center z-10 group-hover:bg-blue-500/20 transition-colors pulse-glow">
-            <span class="text-blue-400 font-semibold text-lg">01</span>
-          </div>
-          <div class="pt-2 md:pt-4">
-            <h3 class="text-xl font-medium mb-2">Commande en ligne</h3>
-            <p class="text-neutral-500 text-sm font-light leading-relaxed">Le client choisit son pack et paie via Stripe checkout en toute sécurité.</p>
-          </div>
-        </div>
-
-        <div class="relative flex gap-6 md:gap-8 mb-16 group">
-          <div class="shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center z-10 group-hover:bg-blue-500/20 transition-colors">
-            <span class="text-blue-400 font-semibold text-lg">02</span>
-          </div>
-          <div class="pt-2 md:pt-4">
-            <h3 class="text-xl font-medium mb-2">Onboarding auto</h3>
-            <p class="text-neutral-500 text-sm font-light leading-relaxed">Il remplit son brief directement sur le site. Tu reçois tout par email, trié et prêt.</p>
-          </div>
-        </div>
-
-        <div class="relative flex gap-6 md:gap-8 mb-16 group">
-          <div class="shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center z-10 group-hover:bg-blue-500/20 transition-colors">
-            <span class="text-blue-400 font-semibold text-lg">03</span>
-          </div>
-          <div class="pt-2 md:pt-4">
-            <h3 class="text-xl font-medium mb-2">Production digitale</h3>
-            <p class="text-neutral-500 text-sm font-light leading-relaxed">Tu réalises le setup IA et les templates personnalisés. Zéro réunion inutile.</p>
-          </div>
-        </div>
-
-        <div class="relative flex gap-6 md:gap-8 group">
-          <div class="shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center z-10 group-hover:bg-blue-500/20 transition-colors">
-            <span class="text-blue-400 font-semibold text-lg">04</span>
-          </div>
-          <div class="pt-2 md:pt-4">
-            <h3 class="text-xl font-medium mb-2">Livraison & Support</h3>
-            <p class="text-neutral-500 text-sm font-light leading-relaxed">Tu envoies les livrables et le suivi uniquement par email. Simple, efficace, scalable.</p>
-          </div>
-        </div>
+        <div class="relative flex gap-6 md:gap-8 mb-16 group"><div class="shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center z-10 group-hover:bg-blue-500/20 transition-colors pulse-glow"><span class="text-blue-400 font-semibold text-lg">01</span></div><div class="pt-2 md:pt-4"><h3 class="text-xl font-medium mb-2">Commande en ligne</h3><p class="text-neutral-500 text-sm font-light leading-relaxed">Le client choisit son pack et paie via Stripe checkout en toute sécurité.</p></div></div>
+        <div class="relative flex gap-6 md:gap-8 mb-16 group"><div class="shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center z-10 group-hover:bg-blue-500/20 transition-colors"><span class="text-blue-400 font-semibold text-lg">02</span></div><div class="pt-2 md:pt-4"><h3 class="text-xl font-medium mb-2">Onboarding auto</h3><p class="text-neutral-500 text-sm font-light leading-relaxed">Il remplit son brief directement sur le site. Tu reçois tout par email, trié et prêt.</p></div></div>
+        <div class="relative flex gap-6 md:gap-8 mb-16 group"><div class="shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center z-10 group-hover:bg-blue-500/20 transition-colors"><span class="text-blue-400 font-semibold text-lg">03</span></div><div class="pt-2 md:pt-4"><h3 class="text-xl font-medium mb-2">Production digitale</h3><p class="text-neutral-500 text-sm font-light leading-relaxed">Tu réalises le setup IA et les templates personnalisés. Zéro réunion inutile.</p></div></div>
+        <div class="relative flex gap-6 md:gap-8 group"><div class="shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center z-10 group-hover:bg-blue-500/20 transition-colors"><span class="text-blue-400 font-semibold text-lg">04</span></div><div class="pt-2 md:pt-4"><h3 class="text-xl font-medium mb-2">Livraison & Support</h3><p class="text-neutral-500 text-sm font-light leading-relaxed">Tu envoies les livrables et le suivi uniquement par email. Simple, efficace, scalable.</p></div></div>
       </div>
     </div>
   </section>
@@ -586,64 +282,19 @@
   <!-- FAQ -->
   <section id="faq" class="py-32 relative">
     <div class="max-w-3xl mx-auto px-6">
-      <div class="text-center mb-16">
-        <span class="text-[10px] font-medium uppercase tracking-widest text-blue-400 mb-4 block">FAQ</span>
-        <h2 class="text-3xl md:text-4xl font-medium tracking-tight mb-4">Questions <span class="text-blue-400">fréquentes</span></h2>
-      </div>
-
+      <div class="text-center mb-16"><span class="text-[10px] font-medium uppercase tracking-widest text-blue-400 mb-4 block">FAQ</span><h2 class="text-3xl md:text-4xl font-medium tracking-tight mb-4">Questions <span class="text-blue-400">fréquentes</span></h2></div>
       <div class="space-y-3">
-        <div class="faq-item bg-neutral-900/30 border border-white/5 rounded-xl cursor-pointer" onclick="toggleFaq(this)">
-          <div class="flex items-center justify-between p-5">
-            <span class="text-sm font-medium text-white">Comment se passe la livraison ?</span>
-            <i data-lucide="chevron-down" class="w-4 h-4 text-neutral-500 faq-chevron shrink-0"></i>
-          </div>
-          <div class="faq-answer px-5 pb-5">
-            <p class="text-sm text-neutral-400 font-light leading-relaxed">Tout est livré par email. Tu reçois tes livrables, tes accès et ta documentation directement dans ta boîte mail. Zéro appel, zéro réunion — tout est pensé pour être autonome.</p>
-          </div>
-        </div>
-
-        <div class="faq-item bg-neutral-900/30 border border-white/5 rounded-xl cursor-pointer" onclick="toggleFaq(this)">
-          <div class="flex items-center justify-between p-5">
-            <span class="text-sm font-medium text-white">Quel pack choisir si je démarre ?</span>
-            <i data-lucide="chevron-down" class="w-4 h-4 text-neutral-500 faq-chevron shrink-0"></i>
-          </div>
-          <div class="faq-answer px-5 pb-5">
-            <p class="text-sm text-neutral-400 font-light leading-relaxed">Le pack Starter est parfait pour automatiser une première étape rapidement. Si tu veux structurer ton acquisition entière, le pack Pro est le plus demandé. L'Elite est pour ceux qui veulent un système complet clé en main.</p>
-          </div>
-        </div>
-
-        <div class="faq-item bg-neutral-900/30 border border-white/5 rounded-xl cursor-pointer" onclick="toggleFaq(this)">
-          <div class="flex items-center justify-between p-5">
-            <span class="text-sm font-medium text-white">Comment fonctionne le paiement ?</span>
-            <i data-lucide="chevron-down" class="w-4 h-4 text-neutral-500 faq-chevron shrink-0"></i>
-          </div>
-          <div class="faq-answer px-5 pb-5">
-            <p class="text-sm text-neutral-400 font-light leading-relaxed">Le paiement est sécurisé via Stripe. Tu peux payer par carte bancaire, Apple Pay ou Google Pay. Les packs Starter, Pro et Elite sont en paiement unique. La Maintenance est un abonnement mensuel.</p>
-          </div>
-        </div>
-
-        <div class="faq-item bg-neutral-900/30 border border-white/5 rounded-xl cursor-pointer" onclick="toggleFaq(this)">
-          <div class="flex items-center justify-between p-5">
-            <span class="text-sm font-medium text-white">Combien de temps prend la mise en place ?</span>
-            <i data-lucide="chevron-down" class="w-4 h-4 text-neutral-500 faq-chevron shrink-0"></i>
-          </div>
-          <div class="faq-answer px-5 pb-5">
-            <p class="text-sm text-neutral-400 font-light leading-relaxed">Starter : 72H. Pro : 48H. Elite : 24-48H. Chaque pack inclut la configuration complète, les tests et la livraison documentée par email.</p>
-          </div>
-        </div>
-
-        <div class="faq-item bg-neutral-900/30 border border-white/5 rounded-xl cursor-pointer" onclick="toggleFaq(this)">
-          <div class="flex items-center justify-between p-5">
-            <span class="text-sm font-medium text-white">La maintenance est-elle obligatoire ?</span>
-            <i data-lucide="chevron-down" class="w-4 h-4 text-neutral-500 faq-chevron shrink-0"></i>
-          </div>
-          <div class="faq-answer px-5 pb-5">
-            <p class="text-sm text-neutral-400 font-light leading-relaxed">Non, elle est optionnelle. Mais elle te permet de garder ton site optimisé, de corriger rapidement tout problème et de bénéficier d'un support continu. Le 1er mois est offert pour tester.</p>
-          </div>
-        </div>
+        <div class="faq-item bg-neutral-900/30 border border-white/5 rounded-xl cursor-pointer" onclick="toggleFaq(this)"><div class="flex items-center justify-between p-5"><span class="text-sm font-medium text-white">Comment se passe la livraison ?</span><i data-lucide="chevron-down" class="w-4 h-4 text-neutral-500 faq-chevron shrink-0"></i></div><div class="faq-answer px-5 pb-5"><p class="text-sm text-neutral-400 font-light leading-relaxed">Tout est livré par email. Tu reçois tes livrables, tes accès et ta documentation directement dans ta boîte mail.</p></div></div>
+        <div class="faq-item bg-neutral-900/30 border border-white/5 rounded-xl cursor-pointer" onclick="toggleFaq(this)"><div class="flex items-center justify-between p-5"><span class="text-sm font-medium text-white">Quel pack choisir si je démarre ?</span><i data-lucide="chevron-down" class="w-4 h-4 text-neutral-500 faq-chevron shrink-0"></i></div><div class="faq-answer px-5 pb-5"><p class="text-sm text-neutral-400 font-light leading-relaxed">Le pack Starter est parfait pour automatiser une première étape. Le Pro est le plus demandé. L'Elite est pour un système complet clé en main.</p></div></div>
+        <div class="faq-item bg-neutral-900/30 border border-white/5 rounded-xl cursor-pointer" onclick="toggleFaq(this)"><div class="flex items-center justify-between p-5"><span class="text-sm font-medium text-white">Comment fonctionne le paiement ?</span><i data-lucide="chevron-down" class="w-4 h-4 text-neutral-500 faq-chevron shrink-0"></i></div><div class="faq-answer px-5 pb-5"><p class="text-sm text-neutral-400 font-light leading-relaxed">Paiement sécurisé via Stripe par carte bancaire, Apple Pay ou Google Pay.</p></div></div>
+        <div class="faq-item bg-neutral-900/30 border border-white/5 rounded-xl cursor-pointer" onclick="toggleFaq(this)"><div class="flex items-center justify-between p-5"><span class="text-sm font-medium text-white">Combien de temps prend la mise en place ?</span><i data-lucide="chevron-down" class="w-4 h-4 text-neutral-500 faq-chevron shrink-0"></i></div><div class="faq-answer px-5 pb-5"><p class="text-sm text-neutral-400 font-light leading-relaxed">Starter : 72H. Pro : 48H. Elite : 24-48H.</p></div></div>
+        <div class="faq-item bg-neutral-900/30 border border-white/5 rounded-xl cursor-pointer" onclick="toggleFaq(this)"><div class="flex items-center justify-between p-5"><span class="text-sm font-medium text-white">La maintenance est-elle obligatoire ?</span><i data-lucide="chevron-down" class="w-4 h-4 text-neutral-500 faq-chevron shrink-0"></i></div><div class="faq-answer px-5 pb-5"><p class="text-sm text-neutral-400 font-light leading-relaxed">Non, elle est optionnelle. 1er mois offert pour tester.</p></div></div>
       </div>
     </div>
   </section>
+
+  <!-- AD BANNER -->
+  <div class="ad-container"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4369385140642438" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
 
   <!-- CONTACT -->
   <section id="contact" class="py-32 relative">
@@ -654,84 +305,20 @@
           <span class="text-[10px] font-medium uppercase tracking-widest text-blue-400 mb-4 block">Contact</span>
           <h2 class="text-3xl md:text-4xl font-medium tracking-tight mb-4">Demande express<br><span class="text-blue-400">par email</span></h2>
           <p class="text-neutral-500 text-sm font-light leading-relaxed mb-10">Tu veux une offre personnalisée ? Remplis le brief ci-dessous. Réponse sous 24h ouvrées.</p>
-
           <div class="space-y-6">
-            <div class="flex items-center gap-4">
-              <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center shrink-0">
-                <i data-lucide="mail" class="w-5 h-5 text-blue-400"></i>
-              </div>
-              <div>
-                <div class="text-xs text-neutral-500 mb-1">Email direct</div>
-                <a href="mailto:webstudioriver@gmail.com" class="text-sm text-white hover:text-blue-400 transition-colors">webstudioriver@gmail.com</a>
-              </div>
-            </div>
-            <div class="flex items-center gap-4">
-              <div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center shrink-0">
-                <i data-lucide="message-circle" class="w-5 h-5 text-green-400"></i>
-              </div>
-              <div>
-                <div class="text-xs text-neutral-500 mb-1">WhatsApp</div>
-                <a href="https://wa.me/33602546266" target="_blank" class="text-sm text-white hover:text-green-400 transition-colors">+33 6 02 54 62 66</a>
-              </div>
-            </div>
-            <div class="flex items-center gap-4">
-              <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center shrink-0">
-                <i data-lucide="clock" class="w-5 h-5 text-blue-400"></i>
-              </div>
-              <div>
-                <div class="text-xs text-neutral-500 mb-1">Réponse garantie</div>
-                <span class="text-sm text-white">Sous 24h ouvrées</span>
-              </div>
-            </div>
-            <div class="flex items-center gap-4">
-              <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center shrink-0">
-                <i data-lucide="shield-check" class="w-5 h-5 text-blue-400"></i>
-              </div>
-              <div>
-                <div class="text-xs text-neutral-500 mb-1">Paiement sécurisé</div>
-                <span class="text-sm text-white">Stripe Checkout</span>
-              </div>
-            </div>
+            <div class="flex items-center gap-4"><div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center shrink-0"><i data-lucide="mail" class="w-5 h-5 text-blue-400"></i></div><div><div class="text-xs text-neutral-500 mb-1">Email direct</div><a href="mailto:webstudioriver@gmail.com" class="text-sm text-white hover:text-blue-400 transition-colors">webstudioriver@gmail.com</a></div></div>
+            <div class="flex items-center gap-4"><div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center shrink-0"><i data-lucide="message-circle" class="w-5 h-5 text-green-400"></i></div><div><div class="text-xs text-neutral-500 mb-1">WhatsApp</div><a href="https://wa.me/33602546266" target="_blank" class="text-sm text-white hover:text-green-400 transition-colors">+33 6 02 54 62 66</a></div></div>
+            <div class="flex items-center gap-4"><div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center shrink-0"><i data-lucide="clock" class="w-5 h-5 text-blue-400"></i></div><div><div class="text-xs text-neutral-500 mb-1">Réponse garantie</div><span class="text-sm text-white">Sous 24h ouvrées</span></div></div>
           </div>
         </div>
-
         <div class="bg-neutral-900/50 border border-white/5 rounded-2xl p-8 backdrop-blur-sm">
           <form id="contactForm" class="space-y-5" onsubmit="handleSubmit(event)">
-            <div>
-              <label class="text-xs text-neutral-500 mb-2 block">Nom</label>
-              <input type="text" name="name" required placeholder="Ton nom ou celui de ta structure"
-                class="w-full bg-neutral-800/50 border border-white/5 rounded-xl px-4 py-3 text-sm text-white placeholder:text-neutral-600 transition-all">
-            </div>
-            <div>
-              <label class="text-xs text-neutral-500 mb-2 block">Email</label>
-              <input type="email" name="email" required placeholder="ton@email.com"
-                class="w-full bg-neutral-800/50 border border-white/5 rounded-xl px-4 py-3 text-sm text-white placeholder:text-neutral-600 transition-all">
-            </div>
-            <div>
-              <label class="text-xs text-neutral-500 mb-2 block">Offre d'intérêt</label>
-              <select name="pack" id="packSelect"
-                class="w-full bg-neutral-800/50 border border-white/5 rounded-xl px-4 py-3 text-sm text-white transition-all appearance-none cursor-pointer">
-                <option value="" class="bg-neutral-900">Sélectionne un pack</option>
-                <option value="STARTER - 149€" class="bg-neutral-900">Starter — 149€</option>
-                <option value="PRO - 349€" class="bg-neutral-900">Pro — 349€</option>
-                <option value="ELITE - 699€" class="bg-neutral-900">Elite — 699€</option>
-                <option value="MAINTENANCE - 79€/mois" class="bg-neutral-900">Maintenance — 79€/mois</option>
-              </select>
-            </div>
-            <div>
-              <label class="text-xs text-neutral-500 mb-2 block">Objectif business</label>
-              <input type="text" name="objectif" placeholder="Ex: Automatiser mon acquisition client"
-                class="w-full bg-neutral-800/50 border border-white/5 rounded-xl px-4 py-3 text-sm text-white placeholder:text-neutral-600 transition-all">
-            </div>
-            <div>
-              <label class="text-xs text-neutral-500 mb-2 block">Message</label>
-              <textarea name="message" rows="4" placeholder="Décris ton projet ou pose ta question..."
-                class="w-full bg-neutral-800/50 border border-white/5 rounded-xl px-4 py-3 text-sm text-white placeholder:text-neutral-600 transition-all resize-none"></textarea>
-            </div>
-            <button type="submit" class="btn-river w-full py-3.5 rounded-full text-sm font-medium text-white inline-flex items-center justify-center gap-2">
-              <i data-lucide="send" class="w-4 h-4"></i>
-              Envoyer
-            </button>
+            <div><label class="text-xs text-neutral-500 mb-2 block">Nom</label><input type="text" name="name" required placeholder="Ton nom ou celui de ta structure" class="w-full bg-neutral-800/50 border border-white/5 rounded-xl px-4 py-3 text-sm text-white placeholder:text-neutral-600 transition-all"></div>
+            <div><label class="text-xs text-neutral-500 mb-2 block">Email</label><input type="email" name="email" required placeholder="ton@email.com" class="w-full bg-neutral-800/50 border border-white/5 rounded-xl px-4 py-3 text-sm text-white placeholder:text-neutral-600 transition-all"></div>
+            <div><label class="text-xs text-neutral-500 mb-2 block">Offre d'intérêt</label><select name="pack" id="packSelect" class="w-full bg-neutral-800/50 border border-white/5 rounded-xl px-4 py-3 text-sm text-white transition-all appearance-none cursor-pointer"><option value="" class="bg-neutral-900">Sélectionne un pack</option><option value="STARTER - 149€" class="bg-neutral-900">Starter — 149€</option><option value="PRO - 349€" class="bg-neutral-900">Pro — 349€</option><option value="ELITE - 699€" class="bg-neutral-900">Elite — 699€</option><option value="MAINTENANCE - 79€/mois" class="bg-neutral-900">Maintenance — 79€/mois</option></select></div>
+            <div><label class="text-xs text-neutral-500 mb-2 block">Objectif business</label><input type="text" name="objectif" placeholder="Ex: Automatiser mon acquisition client" class="w-full bg-neutral-800/50 border border-white/5 rounded-xl px-4 py-3 text-sm text-white placeholder:text-neutral-600 transition-all"></div>
+            <div><label class="text-xs text-neutral-500 mb-2 block">Message</label><textarea name="message" rows="4" placeholder="Décris ton projet ou pose ta question..." class="w-full bg-neutral-800/50 border border-white/5 rounded-xl px-4 py-3 text-sm text-white placeholder:text-neutral-600 transition-all resize-none"></textarea></div>
+            <button type="submit" class="btn-river w-full py-3.5 rounded-full text-sm font-medium text-white inline-flex items-center justify-center gap-2"><i data-lucide="send" class="w-4 h-4"></i> Envoyer</button>
             <p class="text-[10px] text-neutral-600 text-center">Tes données restent confidentielles. Ne renseigne jamais de mots de passe.</p>
           </form>
         </div>
@@ -743,123 +330,70 @@
   <footer class="py-12 border-t border-white/5">
     <div class="max-w-7xl mx-auto px-6">
       <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-        <a href="#" class="flex items-center gap-2.5">
-          <svg viewBox="0 0 40 40" class="w-7 h-7 shrink-0" fill="none">
-            <rect width="40" height="40" rx="8" fill="url(#logo-grad-f)"/>
-            <path d="M8 20C11 14 14 26 17 20C20 14 23 26 26 20C29 14 32 26 35 20" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-            <defs>
-              <linearGradient id="logo-grad-f" x1="0" y1="0" x2="40" y2="40">
-                <stop offset="0%" stop-color="#1d4ed8"/>
-                <stop offset="100%" stop-color="#3b82f6"/>
-              </linearGradient>
-            </defs>
-          </svg>
-          <div class="flex flex-col leading-none">
-            <span class="text-xs font-semibold tracking-tight text-white">RIVER</span>
-            <span class="text-[8px] font-medium tracking-[0.2em] text-neutral-500 uppercase">Web Studio</span>
-          </div>
-        </a>
-        <div class="flex flex-wrap items-center justify-center gap-6">
-          <a href="#packs" class="text-xs text-neutral-500 hover:text-white transition-colors">Packs</a>
-          <a href="#process" class="text-xs text-neutral-500 hover:text-white transition-colors">Process</a>
-          <a href="#faq" class="text-xs text-neutral-500 hover:text-white transition-colors">FAQ</a>
-          <a href="#contact" class="text-xs text-neutral-500 hover:text-white transition-colors">Contact</a>
-          <a href="https://wa.me/33602546266" target="_blank" class="text-xs text-neutral-500 hover:text-green-400 transition-colors">WhatsApp</a>
-        </div>
-        <div class="flex items-center gap-2 text-neutral-600">
-          <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
-          <span class="text-xs">© 2026 River Web Studio · Paiements Stripe</span>
-        </div>
+        <a href="#" class="flex items-center gap-2.5"><svg viewBox="0 0 40 40" class="w-7 h-7 shrink-0" fill="none"><rect width="40" height="40" rx="8" fill="url(#logo-grad-f)"/><path d="M8 20C11 14 14 26 17 20C20 14 23 26 26 20C29 14 32 26 35 20" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none"/><defs><linearGradient id="logo-grad-f" x1="0" y1="0" x2="40" y2="40"><stop offset="0%" stop-color="#1d4ed8"/><stop offset="100%" stop-color="#3b82f6"/></linearGradient></defs></svg><div class="flex flex-col leading-none"><span class="text-xs font-semibold tracking-tight text-white">RIVER</span><span class="text-[8px] font-medium tracking-[0.2em] text-neutral-500 uppercase">Web Studio</span></div></a>
+        <div class="flex flex-wrap items-center justify-center gap-6"><a href="#packs" class="text-xs text-neutral-500 hover:text-white transition-colors">Packs</a><a href="#process" class="text-xs text-neutral-500 hover:text-white transition-colors">Process</a><a href="#faq" class="text-xs text-neutral-500 hover:text-white transition-colors">FAQ</a><a href="#contact" class="text-xs text-neutral-500 hover:text-white transition-colors">Contact</a><a href="https://wa.me/33602546266" target="_blank" class="text-xs text-neutral-500 hover:text-green-400 transition-colors">WhatsApp</a></div>
+        <div class="flex items-center gap-2 text-neutral-600"><i data-lucide="shield-check" class="w-3.5 h-3.5"></i><span class="text-xs">© 2026 River Web Studio</span></div>
       </div>
     </div>
   </footer>
 
-  <!-- WhatsApp floating button -->
-  <a href="https://wa.me/33602546266" target="_blank"
-    class="fixed bottom-6 left-6 z-50 w-14 h-14 bg-green-500 hover:bg-green-400 rounded-full flex items-center justify-center shadow-lg shadow-green-500/25 transition-all hover:scale-110"
-    title="Nous contacter sur WhatsApp">
-    <i data-lucide="message-circle" class="w-6 h-6 text-white"></i>
-  </a>
+  <!-- WhatsApp floating -->
+  <a href="https://wa.me/33602546266" target="_blank" class="fixed bottom-6 left-6 z-50 w-14 h-14 bg-green-500 hover:bg-green-400 rounded-full flex items-center justify-center shadow-lg shadow-green-500/25 transition-all hover:scale-110" title="WhatsApp"><i data-lucide="message-circle" class="w-6 h-6 text-white"></i></a>
 
   <script>
     lucide.createIcons();
 
+    // --- AD POPUP LOGIC ---
+    function showAdPopup() {
+      // Don't show if already closed in this session
+      if (sessionStorage.getItem('adPopupClosed')) return;
+      const popup = document.getElementById('adPopup');
+      popup.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeAdPopup() {
+      const popup = document.getElementById('adPopup');
+      popup.classList.remove('active');
+      document.body.style.overflow = '';
+      sessionStorage.setItem('adPopupClosed', 'true');
+    }
+
+    // Show popup after 3 seconds
+    setTimeout(showAdPopup, 3000);
+
+    // --- TOAST ---
     function showToast(message, type = 'info') {
-      const toast = document.getElementById('toast');
-      toast.textContent = message;
-      toast.className = 'toast show';
-      if (type === 'success') {
-        toast.style.background = 'rgba(34,197,94,0.15)';
-        toast.style.borderColor = 'rgba(34,197,94,0.3)';
-        toast.style.color = '#86efac';
-      } else {
-        toast.style.background = 'rgba(59,130,246,0.15)';
-        toast.style.borderColor = 'rgba(59,130,246,0.3)';
-        toast.style.color = '#93c5fd';
-      }
+      const toast = document.getElementById('toast'); toast.textContent = message; toast.className = 'toast show';
+      if (type === 'success') { toast.style.background = 'rgba(34,197,94,0.15)'; toast.style.borderColor = 'rgba(34,197,94,0.3)'; toast.style.color = '#86efac'; }
+      else { toast.style.background = 'rgba(59,130,246,0.15)'; toast.style.borderColor = 'rgba(59,130,246,0.3)'; toast.style.color = '#93c5fd'; }
       setTimeout(() => { toast.classList.remove('show'); }, 4000);
     }
 
-    function openMobileMenu() {
-      document.getElementById('mobileMenu').classList.add('open');
-      document.getElementById('mobileOverlay').classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeMobileMenu() {
-      document.getElementById('mobileMenu').classList.remove('open');
-      document.getElementById('mobileOverlay').classList.add('hidden');
-      document.body.style.overflow = '';
-    }
+    // --- MOBILE MENU ---
+    function openMobileMenu() { document.getElementById('mobileMenu').classList.add('open'); document.getElementById('mobileOverlay').classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
+    function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); document.getElementById('mobileOverlay').classList.add('hidden'); document.body.style.overflow = ''; }
 
+    // --- FORM ---
     function handleSubmit(e) {
-      e.preventDefault();
-      const form = e.target;
-      const name = form.name.value;
-      const email = form.email.value;
-      const pack = form.pack.value;
-      const objectif = form.objectif.value;
-      const message = form.message.value;
+      e.preventDefault(); const form = e.target;
+      const name = form.name.value, email = form.email.value, pack = form.pack.value, objectif = form.objectif.value, message = form.message.value;
       const subject = encodeURIComponent(`Demande ${pack || 'personnalisée'} — ${name}`);
       const body = encodeURIComponent(`Nom: ${name}\nEmail: ${email}\nPack: ${pack || 'Non défini'}\nObjectif: ${objectif}\nMessage: ${message}`);
       window.open(`mailto:webstudioriver@gmail.com?subject=${subject}&body=${body}`, '_self');
       showToast('Demande envoyée ! Vérifie ta boîte mail.', 'success');
     }
 
-    function toggleFaq(el) {
-      const wasOpen = el.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('open'));
-      if (!wasOpen) el.classList.add('open');
-    }
+    // --- FAQ ---
+    function toggleFaq(el) { const wasOpen = el.classList.contains('open'); document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('open')); if (!wasOpen) el.classList.add('open'); }
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.animationPlayState = 'running';
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-up').forEach(el => {
-      el.style.animationPlayState = 'paused';
-      observer.observe(el);
-    });
+    // --- SCROLL ANIMATIONS ---
+    const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.animationPlayState = 'running'; observer.unobserve(entry.target); } }); }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => { el.style.animationPlayState = 'paused'; observer.observe(el); });
 
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(section => {
-        if (scrollY >= section.offsetTop - 200) current = section.getAttribute('id');
-      });
-      navLinks.forEach(link => {
-        link.classList.remove('text-blue-400');
-        link.classList.add('text-neutral-400');
-        if (link.getAttribute('href') === `#${current}`) {
-          link.classList.add('text-blue-400');
-          link.classList.remove('text-neutral-400');
-        }
-      });
-    });
+    // --- ACTIVE NAV ---
+    const sections = document.querySelectorAll('section[id]'); const navLinks = document.querySelectorAll('.nav-link');
+    window.addEventListener('scroll', () => { let current = ''; sections.forEach(section => { if (scrollY >= section.offsetTop - 200) current = section.getAttribute('id'); }); navLinks.forEach(link => { link.classList.remove('text-blue-400'); link.classList.add('text-neutral-400'); if (link.getAttribute('href') === `#${current}`) { link.classList.add('text-blue-400'); link.classList.remove('text-neutral-400'); } }); });
   </script>
 </body>
 </html>
