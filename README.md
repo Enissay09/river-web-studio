@@ -12,14 +12,23 @@ Site vitrine one-page moderne pour agence de création de sites web. Design somb
 ✨ Fonctionnalités
 
 🎨 Design Premium — Interface sombre avec effets glassmorphism et gradient
+
 📱 100% Responsive — Adapté mobile, tablette et desktop
+
 💳 Stripe Checkout — Paiement sécurisé intégré pour chaque pack
+
 ✉️ Formulaire de contact — Envoi direct par email (mailto)
+
 💬 WhatsApp — Bouton flottant et lien de contact
+
 🎭 Animations — Fade-up au scroll, ripple effect, hover cards
+
 📋 FAQ Accordion — Questions fréquentes interactives
+
 🍔 Menu mobile — Slide-in responsive avec overlay
+
 🔒 Aucune dépendance serveur — 100% statique (HTML/CSS/JS)
+
 🚀 Installation rapide
 
 📄 Licence
