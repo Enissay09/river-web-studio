@@ -1,4 +1,4 @@
-River Web Studio
+Rendr Studio
 
 https://riverwebstudio.vercel.app/
 
@@ -28,4 +28,4 @@ Ce projet est la propriété de River Web Studio.
 Utilisation personnelle et éducative autorisée.
 Revente ou redistribution interdite sans autorisation.
 
-Fait avec 💙 par River Web Studio
+Fait avec 💙 par Rendr Studio
