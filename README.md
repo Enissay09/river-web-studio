@@ -24,7 +24,7 @@ Site vitrine one-page moderne pour agence de création de sites web. Design somb
 
 📄 Licence
 
-Ce projet est la propriété de River Web Studio.
+Ce projet est la propriété de Rendr Studio.
 Utilisation personnelle et éducative autorisée.
 Revente ou redistribution interdite sans autorisation.
 
