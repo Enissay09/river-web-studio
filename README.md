@@ -8,6 +8,7 @@ Site vitrine one-page moderne pour agence de création de sites web. Design somb
 
 
 ✨ Fonctionnalités
+
 🎨 Design Premium — Interface sombre avec effets glassmorphism et gradient
 📱 100% Responsive — Adapté mobile, tablette et desktop
 💳 Stripe Checkout — Paiement sécurisé intégré pour chaque pack
@@ -20,6 +21,7 @@ Site vitrine one-page moderne pour agence de création de sites web. Design somb
 🚀 Installation rapide
 
 📄 Licence
+
 Ce projet est la propriété de River Web Studio.
 Utilisation personnelle et éducative autorisée.
 Revente ou redistribution interdite sans autorisation.
