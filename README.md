@@ -1,6 +1,6 @@
 Rendr Studio
 
-https://riverwebstudio.vercel.app/
+https://rendr-webstudio.vercel.app/
 
 Site vitrine one-page moderne pour agence de création de sites web. Design sombre premium, animations fluides, checkout Stripe intégré et formulaire de contact.
 <img width="78" height="20" alt="image" src="https://github.com/user-attachments/assets/42a2be1c-458d-418b-8de6-00d33550cf5d" />
