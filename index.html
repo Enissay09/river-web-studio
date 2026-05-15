@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rendr Studio — Création de sites web qui vendent pour toi</title>
 
+  <!-- ADSENSE -->
+  <meta name="google-adsense-account" content="ca-pub-3275155805994434">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3275155805994434" crossorigin="anonymous"></script>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -80,6 +84,8 @@
     .checkout-btn-elite:hover { background: rgba(59,130,246,0.1); }
     .checkout-btn-maint { border: 1px solid rgba(255,255,255,0.1); color: #d4d4d4; }
     .checkout-btn-maint:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.2); }
+
+    .ad-slot { max-width: 728px; margin: 0 auto; padding: 1.5rem 1rem; min-height: 90px; display: flex; align-items: center; justify-content: center; }
   </style>
 </head>
 <body class="text-white font-inter antialiased">
@@ -152,6 +158,17 @@
     </div>
   </section>
 
+  <!-- AD DISPLAY #1 -->
+  <div class="ad-slot">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-3275155805994434"
+         data-ad-slot="AD_SLOT_1"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
   <!-- CE QUE TU OBTIENS -->
   <section class="py-32 relative">
     <div class="max-w-7xl mx-auto px-6">
@@ -167,6 +184,17 @@
     </div>
   </section>
 
+  <!-- AD DISPLAY #2 -->
+  <div class="ad-slot">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-3275155805994434"
+         data-ad-slot="AD_SLOT_2"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
   <!-- PACKS -->
   <section id="packs" class="py-32 relative">
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-blue-600/5 rounded-full blur-[150px]"></div>
@@ -174,7 +202,7 @@
       <div class="text-center mb-20"><span class="text-[10px] font-medium uppercase tracking-widest text-blue-400 mb-4 block">Choisis ton pack</span><h2 class="text-3xl md:text-4xl font-medium tracking-tight mb-4">Un site pour<br><span class="text-blue-400">chaque besoin</span></h2><p class="text-neutral-500 text-sm max-w-md mx-auto">Paiement unique. Checkout Stripe sécurisé. Livraison rapide.</p></div>
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-        <!-- STARTER — 49.99€ -->
+        <!-- STARTER -->
         <div class="pack-card card-hover bg-neutral-900/50 border border-white/5 rounded-2xl p-8 flex flex-col">
           <div class="mb-6"><span class="text-[10px] font-medium uppercase tracking-widest text-neutral-500">Starter</span><div class="mt-3 flex items-baseline gap-1"><span class="text-4xl font-semibold text-white">49.99€</span><span class="text-xs text-neutral-500">paiement unique</span></div></div>
           <p class="text-neutral-500 text-xs font-light leading-relaxed mb-6">Landing page ou site one-page pour lancer ton activité rapidement.</p>
@@ -187,7 +215,7 @@
           <a href="https://buy.stripe.com/14AeVc37E85q6DZ2mE6Zy04" target="_blank" rel="noopener" class="checkout-btn checkout-btn-outline"><span class="flex items-center gap-2"><i data-lucide="lock" class="w-3.5 h-3.5"></i> Choisir Starter</span></a>
         </div>
 
-        <!-- PRO — 99.99€ -->
+        <!-- PRO -->
         <div class="pack-card card-hover bg-neutral-900/50 border border-blue-500/20 rounded-2xl p-8 flex flex-col relative">
           <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20"><span class="text-[10px] font-medium uppercase tracking-widest text-blue-400">Populaire</span></div>
           <div class="mb-6"><span class="text-[10px] font-medium uppercase tracking-widest text-blue-400">Pro</span><div class="mt-3 flex items-baseline gap-1"><span class="text-4xl font-semibold text-white">99.99€</span><span class="text-xs text-neutral-500">paiement unique</span></div></div>
@@ -202,7 +230,7 @@
           <a href="https://buy.stripe.com/7sYcN4cIe71me6rf9q6Zy06" target="_blank" rel="noopener" class="checkout-btn checkout-btn-primary"><span class="flex items-center gap-2"><i data-lucide="lock" class="w-3.5 h-3.5"></i> Choisir Pro</span></a>
         </div>
 
-        <!-- ELITE — 149.99€ -->
+        <!-- ELITE -->
         <div class="pack-card card-hover bg-neutral-900/50 border border-white/5 rounded-2xl p-8 flex flex-col relative overflow-hidden">
           <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/50 to-transparent"></div><div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-[60px]"></div>
           <div class="mb-6 relative z-10"><span class="text-[10px] font-medium uppercase tracking-widest text-neutral-500">Elite</span><div class="mt-3 flex items-baseline gap-1"><span class="text-4xl font-semibold text-white">149.99€</span><span class="text-xs text-neutral-500">paiement unique</span></div></div>
@@ -218,7 +246,7 @@
           <a href="https://buy.stripe.com/8x2cN4aA6clG8M70ew6Zy07" target="_blank" rel="noopener" class="checkout-btn checkout-btn-elite relative z-10"><span class="flex items-center gap-2"><i data-lucide="lock" class="w-3.5 h-3.5"></i> Passer Elite</span></a>
         </div>
 
-        <!-- MAINTENANCE — 11.99€/mois -->
+        <!-- MAINTENANCE -->
         <div class="pack-card card-hover bg-neutral-900/50 border border-white/5 rounded-2xl p-8 flex flex-col">
           <div class="mb-6"><span class="text-[10px] font-medium uppercase tracking-widest text-neutral-500">Maintenance</span><div class="mt-3 flex items-baseline gap-1"><span class="text-4xl font-semibold text-white">11.99€</span><span class="text-xs text-neutral-500">/ mois</span></div><div class="mt-2 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-green-500/10 border border-green-500/20"><span class="text-[10px] font-medium text-green-400">15 jours gratuit</span></div></div>
           <p class="text-neutral-500 text-xs font-light leading-relaxed mb-6">Garde ton site à jour, sécurisé et optimisé en permanence.</p>
@@ -264,6 +292,17 @@
       </div>
     </div>
   </section>
+
+  <!-- AD DISPLAY #3 -->
+  <div class="ad-slot">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-3275155805994434"
+         data-ad-slot="AD_SLOT_3"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
 
   <!-- CONTACT -->
   <section id="contact" class="py-32 relative">
