@@ -1,362 +1,607 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rendr Studio — Création de sites web qui vendent pour toi</title>
-
-  <!-- ADSENSE -->
-  <meta name="google-adsense-account" content="ca-pub-3275155805994434">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3275155805994434" crossorigin="anonymous"></script>
-
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>RENDR WEB STUDIO — Création de sites web qui vendent pour toi</title>
+  <meta name="description" content="Site vitrine, landing page ou boutique — on te le crée clé en main. Tu commandes, on livre. Aucune compétence technique requise."/>
+  <meta name="author" content="RENDR WEB STUDIO"/>
+  <meta name="keywords" content="RENDR WEB STUDIO,création site web,site vitrine,landing page,web design,site pro"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet"/>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
-      theme: { extend: { fontFamily: { inter: ['Inter', 'sans-serif'] } } }
+      theme: {
+        extend: {
+          fontFamily: { inter: ['Inter', 'sans-serif'] },
+        }
+      }
     }
   </script>
   <style>
-    * { font-family: 'Inter', sans-serif; }
-    html { scroll-behavior: smooth; }
-    body { background: #050505; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body { font-family: 'Inter', sans-serif; background: #f0ede8; color: #000; overflow-x: hidden; }
+    ::selection { background: rgba(0,0,0,0.10); }
 
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-    .fade-up { opacity: 0; animation: fadeUp 0.8s ease-out forwards; }
-    .fade-up-d1 { animation-delay: 0.1s; }
-    .fade-up-d2 { animation-delay: 0.2s; }
-    .fade-up-d3 { animation-delay: 0.3s; }
-    .fade-up-d4 { animation-delay: 0.4s; }
-    .fade-up-d5 { animation-delay: 0.5s; }
-    .fade-up-d6 { animation-delay: 0.6s; }
+    /* ── Logo — GROS dans le header ── */
+    .logo-img {
+      height: 40px;
+      width: auto;
+      max-width: 42vw;
+      object-fit: contain;
+      object-position: left center;
+      display: block;
+      -webkit-user-drag: none;
+      user-select: none;
+    }
+    @media (min-width: 768px) {
+      .logo-img {
+        height: 56px;
+        max-width: none;
+      }
+    }
 
-    @keyframes ripple { 0% { transform: scale(0.8); opacity: 0.5; } 100% { transform: scale(2); opacity: 0; } }
-    .ripple-ring { animation: ripple 3s cubic-bezier(0, 0.2, 0.8, 1) infinite; }
-    .ripple-ring-d1 { animation-delay: 1s; }
-    .ripple-ring-d2 { animation-delay: 2s; }
+    .logo-img-footer {
+      height: 30px;
+      width: auto;
+      object-fit: contain;
+      object-position: left center;
+      display: block;
+      -webkit-user-drag: none;
+      user-select: none;
+    }
+    @media (min-width: 768px) {
+      .logo-img-footer {
+        height: 36px;
+      }
+    }
 
-    @keyframes pulse-glow { 0%, 100% { box-shadow: 0 0 20px rgba(59,130,246,0.3); } 50% { box-shadow: 0 0 40px rgba(59,130,246,0.6); } }
-    .pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+    /* ── Paint Underline ── */
+    .paint-underline {
+      background-image: linear-gradient(120deg, rgba(0,0,0,0.07) 0%, rgba(0,0,0,0.04) 50%, rgba(0,0,0,0.07) 100%);
+      background-repeat: no-repeat; background-size: 100% 34%; background-position: 0 88%;
+      padding: 0 6px; margin: 0 -6px;
+    }
 
-    .card-hover { transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1); }
-    .card-hover:hover { transform: translateY(-8px); border-color: rgba(59,130,246,0.3); box-shadow: 0 20px 60px -15px rgba(59,130,246,0.15); }
+    /* ── Cards ── */
+    .paint-card {
+      border-radius: 20px 16px 18px 22px;
+      transition: all 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    .paint-card:hover {
+      box-shadow: 0 16px 56px -16px rgba(0,0,0,0.09);
+      transform: translateY(-3px);
+    }
+    .paint-card-dark {
+      border-radius: 20px 16px 18px 22px;
+      transition: all 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
 
-    .nav-link { position: relative; transition: color 0.3s; }
-    .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: #3b82f6; transition: width 0.3s; }
-    .nav-link:hover::after { width: 100%; }
-    .nav-link:hover { color: #3b82f6; }
+    /* ── Buttons ── */
+    .paint-btn {
+      position: relative; overflow: hidden; border-radius: 100px;
+      transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    .paint-btn::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 40%);
+      pointer-events: none;
+    }
+    .paint-btn::after {
+      content: ''; position: absolute; top: 50%; left: 50%;
+      width: 0; height: 0; background: rgba(255,255,255,0.15);
+      border-radius: 50%; transform: translate(-50%, -50%);
+      transition: width 0.5s ease, height 0.5s ease; pointer-events: none;
+    }
+    .paint-btn:hover::after { width: 240px; height: 240px; }
+    .paint-btn:active { transform: scale(0.97); }
 
-    .btn-river { background: linear-gradient(135deg, #1d4ed8, #3b82f6); transition: all 0.3s; position: relative; overflow: hidden; }
-    .btn-river::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent); transition: left 0.5s; }
-    .btn-river:hover::before { left: 100%; }
-    .btn-river:hover { box-shadow: 0 10px 40px -10px rgba(59,130,246,0.5); transform: translateY(-2px); }
+    /* ── Inputs ── */
+    .paint-input {
+      border-radius: 14px 12px 13px 15px;
+      background: rgba(255,255,255,0.5); outline: none;
+      transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    .paint-input:focus {
+      border-color: rgba(0,0,0,0.18);
+      box-shadow: 0 0 0 4px rgba(0,0,0,0.03), 0 4px 16px -4px rgba(0,0,0,0.06);
+      background: rgba(255,255,255,0.8);
+    }
+    .paint-input::placeholder { color: #c5c0b8; }
 
-    .pack-card { position: relative; overflow: hidden; }
-    .pack-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, #3b82f6, transparent); opacity: 0; transition: opacity 0.5s; }
-    .pack-card:hover::before { opacity: 1; }
+    /* ── Animations ── */
+    @keyframes softPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.75); }
+    }
+    .animate-soft-pulse { animation: softPulse 2.5s ease-in-out infinite; }
 
-    input:focus, textarea:focus, select:focus { outline: none; border-color: rgba(59,130,246,0.5) !important; box-shadow: 0 0 0 3px rgba(59,130,246,0.1); }
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    .popular-badge {
+      background: linear-gradient(90deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.06) 100%);
+      background-size: 200% 100%; animation: shimmer 3s ease-in-out infinite;
+    }
 
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #050505; }
-    ::-webkit-scrollbar-thumb { background: #262626; border-radius: 3px; }
+    @keyframes slideIn {
+      from { transform: translateY(-100%); }
+      to { transform: translateY(0); }
+    }
+    .announce-banner { animation: slideIn 0.6s cubic-bezier(0.25, 0.1, 0.25, 1) 0.3s both; }
 
-    .toast { position: fixed; bottom: 2rem; right: 2rem; padding: 1rem 1.5rem; border-radius: 12px; background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.3); backdrop-filter: blur(20px); color: #93c5fd; font-size: 0.875rem; transform: translateY(100px); opacity: 0; transition: all 0.4s ease; z-index: 100; }
-    .toast.show { transform: translateY(0); opacity: 1; }
+    @keyframes whatsappPulse {
+      0%, 100% { box-shadow: 0 4px 20px -4px rgba(0,0,0,0.2); }
+      50% { box-shadow: 0 4px 32px -2px rgba(0,0,0,0.35); }
+    }
+    .whatsapp-float {
+      width: 56px; height: 56px;
+      animation: whatsappPulse 3s ease-in-out infinite;
+    }
+    .whatsapp-float:hover { transform: scale(1.12); }
 
-    .mobile-menu { transform: translateX(100%); transition: transform 0.3s ease; }
-    .mobile-menu.open { transform: translateX(0); }
+    /* ── Section Paper ── */
+    .section-paper {
+      background-image:
+        radial-gradient(ellipse at 15% 45%, rgba(0,0,0,0.006) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 55%, rgba(0,0,0,0.004) 0%, transparent 55%);
+    }
 
-    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; }
-    .faq-item.open .faq-answer { max-height: 250px; padding-top: 12px; }
+    /* ── Scroll Reveal ── */
+    .reveal {
+      opacity: 0; transform: translateY(36px);
+      transition: opacity 1s cubic-bezier(0.25, 0.1, 0.25, 1), transform 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── FAQ ── */
+    .faq-content { max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.6s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.5s ease; }
+    .faq-item.open .faq-content { opacity: 1; }
+    .faq-chevron { transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1); }
     .faq-item.open .faq-chevron { transform: rotate(180deg); }
-    .faq-chevron { transition: transform 0.3s ease; }
 
-    .checkout-btn { display: flex; align-items: center; justify-content: center; width: 100%; padding: 0.75rem 0; border-radius: 9999px; font-size: 0.875rem; font-weight: 500; transition: all 0.3s; text-decoration: none; cursor: pointer; }
-    .checkout-btn-primary { background: linear-gradient(135deg, #1d4ed8, #3b82f6); color: white; position: relative; overflow: hidden; }
-    .checkout-btn-primary::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent); transition: left 0.5s; }
-    .checkout-btn-primary:hover::before { left: 100%; }
-    .checkout-btn-primary:hover { box-shadow: 0 10px 40px -10px rgba(59,130,246,0.5); transform: translateY(-2px); }
-    .checkout-btn-outline { border: 1px solid rgba(255,255,255,0.1); color: #d4d4d4; }
-    .checkout-btn-outline:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.2); }
-    .checkout-btn-elite { border: 1px solid rgba(59,130,246,0.3); color: #60a5fa; }
-    .checkout-btn-elite:hover { background: rgba(59,130,246,0.1); }
-    .checkout-btn-maint { border: 1px solid rgba(255,255,255,0.1); color: #d4d4d4; }
-    .checkout-btn-maint:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.2); }
+    /* ── Toast ── */
+    .toast { transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1); }
+    .toast.show { transform: translateY(0); opacity: 1; pointer-events: auto; }
+    .toast.hide { transform: translateY(28px); opacity: 0; pointer-events: none; }
 
-    .ad-slot { max-width: 728px; margin: 0 auto; padding: 1.5rem 1rem; min-height: 90px; display: flex; align-items: center; justify-content: center; }
+    /* ── Mobile Menu ── */
+    .menu-overlay { transition: opacity 0.3s ease; }
+    .menu-overlay.show { opacity: 1; pointer-events: auto; }
+    .mobile-sidebar { transition: transform 0.35s cubic-bezier(0.25, 0.1, 0.25, 1); }
+    .mobile-sidebar.show { transform: translateX(0); }
+
+    /* ── Process Step ── */
+    .step-number { transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1); }
+    .process-step:hover .step-number {
+      background: #000; border-color: #000; color: #fff;
+      box-shadow: 0 8px 28px -4px rgba(0,0,0,0.15);
+    }
+
+    /* ── Pack Card ── */
+    .pack-card { transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1); }
+    .pack-card:hover { transform: translateY(-5px); box-shadow: 0 24px 64px -16px rgba(0,0,0,0.1); }
+
+    /* ── Stat Card ── */
+    .stat-card { transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1); }
+    .stat-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px -12px rgba(0,0,0,0.07); }
+
+    /* ── Social Proof Marquee ── */
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-track { animation: marquee 30s linear infinite; }
+    .marquee-track:hover { animation-play-state: paused; }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #f0ede8; }
+    ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.18); }
   </style>
 </head>
-<body class="text-white font-inter antialiased">
+<body>
 
   <!-- Toast -->
-  <div id="toast" class="toast"></div>
+  <div id="toast" class="toast hide fixed bottom-8 right-8 px-6 py-4 rounded-2xl text-sm font-medium z-[100] bg-black text-white shadow-2xl max-w-sm"></div>
 
-  <!-- Mobile overlay -->
-  <div id="mobileOverlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 hidden" onclick="closeMobileMenu()"></div>
-  <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 bottom-0 w-72 bg-[#0a0a0a] border-l border-white/5 z-50 p-8 flex flex-col">
-    <button onclick="closeMobileMenu()" class="self-end mb-8 text-neutral-400 hover:text-white transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
-    <nav class="flex flex-col gap-6">
-      <a href="#packs" onclick="closeMobileMenu()" class="text-lg font-medium text-neutral-300 hover:text-blue-400 transition-colors">Packs</a>
-      <a href="#process" onclick="closeMobileMenu()" class="text-lg font-medium text-neutral-300 hover:text-blue-400 transition-colors">Process</a>
-      <a href="#faq" onclick="closeMobileMenu()" class="text-lg font-medium text-neutral-300 hover:text-blue-400 transition-colors">FAQ</a>
-      <a href="#contact" onclick="closeMobileMenu()" class="text-lg font-medium text-neutral-300 hover:text-blue-400 transition-colors">Contact</a>
+  <!-- Mobile Menu Overlay -->
+  <div id="menuOverlay" class="menu-overlay fixed inset-0 bg-black/20 backdrop-blur-sm z-40 opacity-0 pointer-events-none" onclick="closeMobileMenu()"></div>
+
+  <!-- Mobile Sidebar -->
+  <div id="mobileSidebar" class="mobile-sidebar fixed top-0 right-0 bottom-0 w-72 bg-[#f0ede8]/95 backdrop-blur-xl border-l border-black/[0.05] z-50 p-8 flex flex-col translate-x-full">
+    <button onclick="closeMobileMenu()" class="self-end mb-10 text-neutral-400 hover:text-black transition-colors">
+      <i data-lucide="x" class="w-5 h-5"></i>
+    </button>
+    <nav class="flex flex-col gap-7">
+      <a href="#packs" onclick="closeMobileMenu()" class="text-base font-medium text-neutral-600 hover:text-black transition-colors">Packs</a>
+      <a href="#process" onclick="closeMobileMenu()" class="text-base font-medium text-neutral-600 hover:text-black transition-colors">Process</a>
+      <a href="#faq" onclick="closeMobileMenu()" class="text-base font-medium text-neutral-600 hover:text-black transition-colors">Faq</a>
+      <a href="#contact" onclick="closeMobileMenu()" class="text-base font-medium text-neutral-600 hover:text-black transition-colors">Contact</a>
     </nav>
-    <div class="mt-auto"><a href="https://buy.stripe.com/7sYcN4cIe71me6rf9q6Zy06" target="_blank" class="btn-river w-full py-3 rounded-full text-sm font-medium text-white flex items-center justify-center gap-2">Créer mon site</a></div>
+    <div class="mt-auto">
+      <a href="https://wa.me/33602546266?text=Bonjour%20je%20souhaite%20commander%20un%20site" target="_blank" rel="noopener" class="paint-btn w-full py-3 rounded-full text-sm font-medium text-white bg-black hover:bg-neutral-800 flex items-center justify-center gap-2 transition-all">
+        <i data-lucide="message-circle" class="w-4 h-4"></i> Commander via WhatsApp
+      </a>
+    </div>
   </div>
 
-  <!-- NAV -->
-  <nav class="fixed top-0 left-0 right-0 z-30 h-16 bg-[#050505]/80 backdrop-blur-xl border-b border-white/5">
-    <div class="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
-      <a href="#" class="flex items-center gap-2.5 group">
-        <svg viewBox="0 0 40 40" class="w-8 h-8 shrink-0" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="40" height="40" rx="8" fill="url(#lg)"/>
-          <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="white" transform="translate(8, 8) scale(0.95)"/>
-          <defs><linearGradient id="lg" x1="0" y1="0" x2="40" y2="40"><stop offset="0%" stop-color="#1d4ed8"/><stop offset="100%" stop-color="#3b82f6"/></linearGradient></defs>
-        </svg>
-        <div class="flex flex-col leading-none"><span class="text-sm font-semibold tracking-tight text-white">RENDR</span><span class="text-[9px] font-medium tracking-[0.2em] text-neutral-500 uppercase">Studio</span></div>
+  <!-- ═══════════════════════════════════════════
+       ANNOUNCEMENT BANNER
+  ═══════════════════════════════════════════ -->
+  <div class="announce-banner fixed top-0 left-0 right-0 z-40 bg-black text-white" id="announceBanner">
+    <div class="max-w-7xl mx-auto px-6 py-2.5 flex items-center justify-center gap-3">
+      <i data-lucide="info" class="w-3.5 h-3.5 text-white/60 shrink-0"></i>
+      <p class="text-[11px] font-light text-white/70 text-center">Paiement en ligne en maintenance — Commande via <a href="https://wa.me/33602546266?text=Bonjour%20je%20souhaite%20commander%20un%20site" target="_blank" rel="noopener" class="font-medium text-white underline underline-offset-2 hover:text-white/80 transition-colors">WhatsApp</a></p>
+      <button onclick="closeBanner()" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/40 hover:text-white transition-colors">
+        <i data-lucide="x" class="w-3.5 h-3.5"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       NAVIGATION — h-16 inchangé, logo géant
+  ═══════════════════════════════════════════ -->
+  <nav class="fixed left-0 right-0 z-30 h-16 bg-[#f0ede8]/60 backdrop-blur-2xl border-b border-black/[0.03] transition-all duration-300" id="mainNav">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 h-full flex items-center justify-between">
+      <a href="#" class="relative z-10 shrink-0">
+        <img
+          src="https://z-cdn-media.chatglm.cn/files/601a6ae2-fbc5-44e9-9599-a6a82ddfd73d.png?auth_key=1878932592-e50e7b4ee6a946a6a770f56ed7e4ba12-0-df37081e8717080df68ae463c5a303bd"
+          alt="RENDR WEB STUDIO"
+          class="logo-img"
+          width="260"
+          height="56"
+          loading="eager"
+          fetchpriority="high"
+        />
       </a>
-      <div class="hidden md:flex items-center gap-8">
-        <a href="#packs" class="nav-link text-xs font-medium text-neutral-400 uppercase tracking-widest">Packs</a>
-        <a href="#process" class="nav-link text-xs font-medium text-neutral-400 uppercase tracking-widest">Process</a>
-        <a href="#faq" class="nav-link text-xs font-medium text-neutral-400 uppercase tracking-widest">FAQ</a>
-        <a href="#contact" class="nav-link text-xs font-medium text-neutral-400 uppercase tracking-widest">Contact</a>
+      <div class="hidden md:flex items-center gap-10">
+        <a href="#packs" class="text-[11px] font-medium uppercase tracking-[0.18em] transition-all duration-300 text-neutral-400 hover:text-black">Packs</a>
+        <a href="#process" class="text-[11px] font-medium uppercase tracking-[0.18em] transition-all duration-300 text-neutral-400 hover:text-black">Process</a>
+        <a href="#faq" class="text-[11px] font-medium uppercase tracking-[0.18em] transition-all duration-300 text-neutral-400 hover:text-black">Faq</a>
+        <a href="#contact" class="text-[11px] font-medium uppercase tracking-[0.18em] transition-all duration-300 text-neutral-400 hover:text-black">Contact</a>
       </div>
       <div class="flex items-center gap-4">
-        <a href="https://buy.stripe.com/7sYcN4cIe71me6rf9q6Zy06" target="_blank" class="hidden md:inline-flex btn-river text-xs font-medium px-5 py-2 rounded-full text-white">Créer mon site</a>
-        <button onclick="openMobileMenu()" class="md:hidden text-neutral-400 hover:text-white transition-colors"><i data-lucide="menu" class="w-6 h-6"></i></button>
+        <a href="https://wa.me/33602546266?text=Bonjour%20je%20souhaite%20commander%20un%20site" target="_blank" rel="noopener" class="hidden md:inline-flex paint-btn bg-black hover:bg-neutral-800 text-[11px] font-medium px-6 py-2.5 rounded-full text-white transition-all items-center gap-2">
+          <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> Commander
+        </a>
+        <button onclick="openMobileMenu()" class="md:hidden text-neutral-400 hover:text-black transition-colors">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
       </div>
     </div>
   </nav>
 
-  <!-- HERO -->
-  <section class="min-h-screen pt-20 relative overflow-hidden flex items-center">
-    <div class="absolute inset-0"><div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px]"></div><div class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-blue-400/5 rounded-full blur-[100px]"></div></div>
-    <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 60px 60px;"></div>
+  <!-- ═══════════════════════════════════════════
+       HERO SECTION
+  ═══════════════════════════════════════════ -->
+  <section class="min-h-screen pt-28 relative flex items-center bg-[#f0ede8]">
     <div class="max-w-7xl mx-auto px-6 w-full relative z-10">
-      <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="grid md:grid-cols-2 gap-16 lg:gap-24 items-center">
         <div>
-          <div class="fade-up fade-up-d1 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-500/20 bg-blue-500/5 mb-8"><span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span><span class="text-[10px] font-medium uppercase tracking-widest text-blue-400">Création de sites web</span></div>
-          <h1 class="fade-up fade-up-d2 text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight leading-[0.9] mb-6">Ton site pro<br><span class="text-blue-400">en quelques jours.</span></h1>
-          <p class="fade-up fade-up-d3 text-neutral-400 text-sm md:text-base font-light leading-relaxed max-w-lg mb-10">Site vitrine, landing page ou boutique — on te le crée clé en main. Tu commandes, on livre. Aucune compétence technique requise de ton côté.</p>
-          <div class="fade-up fade-up-d4 flex flex-wrap gap-4">
-            <a href="#packs" class="btn-river px-8 py-3 rounded-full text-sm font-medium text-white inline-flex items-center gap-2">Voir les packs <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
-            <a href="#process" class="px-8 py-3 rounded-full text-sm font-medium text-neutral-300 border border-white/10 hover:border-white/20 hover:bg-white/5 transition-all inline-flex items-center gap-2"><i data-lucide="play-circle" class="w-4 h-4"></i> Comment ça marche</a>
+          <div class="reveal" style="transition-delay:0.05s">
+            <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-black/[0.06] bg-white/40 backdrop-blur-sm mb-8">
+              <div class="flex -space-x-2">
+                <div class="w-5 h-5 rounded-full bg-neutral-300 border-2 border-[#f0ede8]"></div>
+                <div class="w-5 h-5 rounded-full bg-neutral-400 border-2 border-[#f0ede8]"></div>
+                <div class="w-5 h-5 rounded-full bg-neutral-500 border-2 border-[#f0ede8]"></div>
+              </div>
+              <span class="text-[10px] font-medium text-neutral-500">+50 sites livrés ce mois-ci</span>
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-soft-pulse"></span>
+            </div>
+          </div>
+
+          <div class="reveal" style="transition-delay:0.15s">
+            <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-black/[0.06] bg-white/40 backdrop-blur-sm mb-10">
+              <span class="w-1.5 h-1.5 rounded-full bg-black animate-soft-pulse"></span>
+              <span class="text-[10px] font-medium uppercase tracking-[0.22em] text-neutral-500">Création de sites web</span>
+            </div>
+          </div>
+
+          <div class="reveal" style="transition-delay:0.25s">
+            <h1 class="text-5xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tight leading-[0.88] mb-8">
+              <span class="paint-underline">Ton site pro</span><br/>
+              <span class="text-neutral-400 font-light italic">en 24h, clé en main.</span>
+            </h1>
+          </div>
+
+          <div class="reveal" style="transition-delay:0.35s">
+            <p class="text-neutral-500 text-sm md:text-base font-light leading-relaxed max-w-md mb-10">Site vitrine, landing page ou boutique — on te le crée de A à Z. Tu commandes, on livre. Zéro compétence technique requise.</p>
+          </div>
+
+          <div class="reveal" style="transition-delay:0.45s">
+            <div class="flex flex-wrap gap-4 mb-8">
+              <a href="#packs" class="paint-btn bg-black hover:bg-neutral-800 px-8 py-4 rounded-full text-sm font-semibold text-white inline-flex items-center gap-2.5 transition-all shadow-lg shadow-black/10">
+                Voir les packs <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </a>
+              <a href="#process" class="px-8 py-4 rounded-full text-sm font-medium text-neutral-600 border border-black/[0.07] hover:border-black/[0.12] hover:bg-white/40 backdrop-blur-sm transition-all inline-flex items-center gap-2.5">
+                <i data-lucide="circle-play" class="w-4 h-4"></i> Comment ça marche
+              </a>
+            </div>
+            <div class="flex items-center gap-5 text-neutral-400">
+              <div class="flex items-center gap-1.5">
+                <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+                <span class="text-[10px] font-light">Paiement sécurisé</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <i data-lucide="zap" class="w-3.5 h-3.5"></i>
+                <span class="text-[10px] font-light">Livraison 24-72h</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <i data-lucide="headphones" class="w-3.5 h-3.5"></i>
+                <span class="text-[10px] font-light">Support inclus</span>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="relative">
-          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"><div class="w-64 h-64 rounded-full border border-blue-500/10 ripple-ring"></div><div class="absolute inset-0 w-64 h-64 rounded-full border border-blue-500/10 ripple-ring ripple-ring-d1"></div><div class="absolute inset-0 w-64 h-64 rounded-full border border-blue-500/10 ripple-ring ripple-ring-d2"></div></div>
-          <div class="grid grid-cols-2 gap-4 relative z-10">
-            <div class="fade-up fade-up-d3 card-hover bg-neutral-900/50 border border-white/5 rounded-2xl p-6 backdrop-blur-sm"><div class="text-blue-400 text-4xl md:text-5xl font-semibold mb-2">24h</div><div class="text-neutral-500 text-xs font-medium uppercase tracking-wider">Délai de livraison moyen</div></div>
-            <div class="fade-up fade-up-d4 card-hover bg-neutral-900/50 border border-white/5 rounded-2xl p-6 backdrop-blur-sm mt-8"><div class="text-blue-400 text-4xl md:text-5xl font-semibold mb-2">100%</div><div class="text-neutral-500 text-xs font-medium uppercase tracking-wider">Responsive mobile</div></div>
-            <div class="fade-up fade-up-d5 card-hover bg-neutral-900/50 border border-white/5 rounded-2xl p-6 backdrop-blur-sm"><div class="text-blue-400 text-4xl md:text-5xl font-semibold mb-2">3</div><div class="text-neutral-500 text-xs font-medium uppercase tracking-wider">Formules disponibles</div></div>
-            <div class="fade-up fade-up-d6 card-hover bg-neutral-900/50 border border-white/5 rounded-2xl p-6 backdrop-blur-sm mt-8"><div class="text-blue-400 text-4xl md:text-5xl font-semibold mb-2">∞</div><div class="text-neutral-500 text-xs font-medium uppercase tracking-wider">Sites livrés</div></div>
+
+        <div>
+          <div class="grid grid-cols-2 gap-5">
+            <div class="reveal" style="transition-delay:0.3s">
+              <div class="stat-card paint-card bg-white/60 backdrop-blur-sm border border-black/[0.04] p-7 shadow-sm">
+                <div class="text-black text-4xl md:text-5xl font-bold mb-2 tracking-tight">24h</div>
+                <div class="text-neutral-400 text-[10px] font-medium uppercase tracking-[0.15em]">Délai de livraison moyen</div>
+              </div>
+            </div>
+            <div class="reveal" style="transition-delay:0.4s">
+              <div class="stat-card paint-card bg-white/60 backdrop-blur-sm border border-black/[0.04] p-7 shadow-sm mt-10">
+                <div class="text-black text-4xl md:text-5xl font-bold mb-2 tracking-tight">100%</div>
+                <div class="text-neutral-400 text-[10px] font-medium uppercase tracking-[0.15em]">Responsive mobile</div>
+              </div>
+            </div>
+            <div class="reveal" style="transition-delay:0.5s">
+              <div class="stat-card paint-card bg-white/60 backdrop-blur-sm border border-black/[0.04] p-7 shadow-sm">
+                <div class="text-black text-4xl md:text-5xl font-bold mb-2 tracking-tight">3</div>
+                <div class="text-neutral-400 text-[10px] font-medium uppercase tracking-[0.15em]">Formules disponibles</div>
+              </div>
+            </div>
+            <div class="reveal" style="transition-delay:0.6s">
+              <div class="stat-card paint-card bg-white/60 backdrop-blur-sm border border-black/[0.04] p-7 shadow-sm mt-10">
+                <div class="text-black text-4xl md:text-5xl font-bold mb-2 tracking-tight">∞</div>
+                <div class="text-neutral-400 text-[10px] font-medium uppercase tracking-[0.15em]">Sites livrés</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- AD DISPLAY #1 -->
-  <div class="ad-slot">
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-3275155805994434"
-         data-ad-slot="AD_SLOT_1"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-  </div>
-
-  <!-- CE QUE TU OBTIENS -->
-  <section class="py-32 relative">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-20"><span class="text-[10px] font-medium uppercase tracking-widest text-blue-400 mb-4 block">Ce que tu obtiens</span><h2 class="text-3xl md:text-4xl font-medium tracking-tight mb-4">Un site pro,<br><span class="text-blue-400">clé en main</span></h2><p class="text-neutral-500 text-sm max-w-md mx-auto">De la conception à la mise en ligne, on s'occupe de tout.</p></div>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="card-hover bg-neutral-900/30 border border-white/5 rounded-2xl p-8 group"><div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-colors"><i data-lucide="layout" class="w-5 h-5 text-blue-400"></i></div><h3 class="text-lg font-medium mb-3">Design sur-mesure</h3><p class="text-neutral-500 text-sm font-light leading-relaxed">Un design moderne et professionnel adapté à ton activité. Pas de template générique, du sur-mesure.</p></div>
-        <div class="card-hover bg-neutral-900/30 border border-white/5 rounded-2xl p-8 group"><div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-colors"><i data-lucide="smartphone" class="w-5 h-5 text-blue-400"></i></div><h3 class="text-lg font-medium mb-3">100% responsive</h3><p class="text-neutral-500 text-sm font-light leading-relaxed">Ton site s'adapte parfaitement à tous les écrans : mobile, tablette et desktop.</p></div>
-        <div class="card-hover bg-neutral-900/30 border border-white/5 rounded-2xl p-8 group"><div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-colors"><i data-lucide="credit-card" class="w-5 h-5 text-blue-400"></i></div><h3 class="text-lg font-medium mb-3">Paiement intégré</h3><p class="text-neutral-500 text-sm font-light leading-relaxed">Stripe checkout sécurisé pour recevoir tes paiements directement en ligne.</p></div>
-        <div class="card-hover bg-neutral-900/30 border border-white/5 rounded-2xl p-8 group"><div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-colors"><i data-lucide="rocket" class="w-5 h-5 text-blue-400"></i></div><h3 class="text-lg font-medium mb-3">Mise en ligne rapide</h3><p class="text-neutral-500 text-sm font-light leading-relaxed">Ton site est en ligne en 24 à 72h. Tu n'attends pas des semaines pour lancer ton activité.</p></div>
-        <div class="card-hover bg-neutral-900/30 border border-white/5 rounded-2xl p-8 group"><div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-colors"><i data-lucide="search" class="w-5 h-5 text-blue-400"></i></div><h3 class="text-lg font-medium mb-3">Optimisé SEO</h3><p class="text-neutral-500 text-sm font-light leading-relaxed">Structure et balises pensées pour que Google trouve et référence ton site.</p></div>
-        <div class="card-hover bg-neutral-900/30 border border-white/5 rounded-2xl p-8 group"><div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-colors"><i data-lucide="headphones" class="w-5 h-5 text-blue-400"></i></div><h3 class="text-lg font-medium mb-3">Support après livraison</h3><p class="text-neutral-500 text-sm font-light leading-relaxed">Un problème après la mise en ligne ? On reste disponible pour t'aider.</p></div>
+  <!-- ═══════════════════════════════════════════
+       SOCIAL PROOF MARQUEE
+  ═══════════════════════════════════════════ -->
+  <section class="py-10 border-y border-black/[0.03] bg-[#f0ede8] overflow-hidden relative z-10">
+    <div class="flex whitespace-nowrap">
+      <div class="marquee-track flex items-center gap-12 px-6">
+        <span class="text-[11px] font-medium uppercase tracking-[0.2em] text-neutral-300">Site vitrine</span><span class="text-neutral-200">✦</span>
+        <span class="text-[11px] font-medium uppercase tracking-[0.2em] text-neutral-300">Landing Page</span><span class="text-neutral-200">✦</span>
+        <span class="text-[11px] font-medium uppercase tracking-[0.2em] text-neutral-300">Boutique en ligne</span><span class="text-neutral-200">✦</span>
+        <span class="text-[11px] font-medium uppercase tracking-[0.2em] text-neutral-300">Portfolio</span><span class="text-neutral-200">✦</span>
+        <span class="text-[11px] font-medium uppercase tracking-[0.2em] text-neutral-300">Site one-page</span><span class="text-neutral-200">✦</span>
+        <span class="text-[11px] font-medium uppercase tracking-[0.2em] text-neutral-300">Application web</span><span class="text-neutral-200">✦</span>
+        <span class="text-[11px] font-medium uppercase tracking-[0.2em] text-neutral-300">Checkout Stripe</span><span class="text-neutral-200">✦</span>
+        <span class="text-[11px] font-medium uppercase tracking-[0.2em] text-neutral-300">SEO optimisé</span><span class="text-neutral-200">✦</span>
+        <span class="text-[11px] font-medium uppercase tracking-[0.2em] text-neutral-300">Site vitrine</span><span class="text-neutral-200">✦</span>
+        <span class="text-[11px] font-medium uppercase tracking-[0.2em] text-neutral-300">Landing Page</span><span class="text-neutral-200">✦</span>
+        <span class="text-[11px] font-medium uppercase tracking-[0.2em] text-neutral-300">Boutique en ligne</span><span class="text-neutral-200">✦</span>
+        <span class="text-[11px] font-medium uppercase tracking-[0.2em] text-neutral-300">Portfolio</span><span class="text-neutral-200">✦</span>
+        <span class="text-[11px] font-medium uppercase tracking-[0.2em] text-neutral-300">Site one-page</span><span class="text-neutral-200">✦</span>
+        <span class="text-[11px] font-medium uppercase tracking-[0.2em] text-neutral-300">Application web</span><span class="text-neutral-200">✦</span>
+        <span class="text-[11px] font-medium uppercase tracking-[0.2em] text-neutral-300">Checkout Stripe</span><span class="text-neutral-200">✦</span>
+        <span class="text-[11px] font-medium uppercase tracking-[0.2em] text-neutral-300">SEO optimisé</span><span class="text-neutral-200">✦</span>
       </div>
     </div>
   </section>
 
-  <!-- AD DISPLAY #2 -->
-  <div class="ad-slot">
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-3275155805994434"
-         data-ad-slot="AD_SLOT_2"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-  </div>
-
-  <!-- PACKS -->
-  <section id="packs" class="py-32 relative">
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-blue-600/5 rounded-full blur-[150px]"></div>
+  <!-- ═══════════════════════════════════════════
+       FEATURES SECTION
+  ═══════════════════════════════════════════ -->
+  <section class="py-28 md:py-36 relative section-paper">
     <div class="max-w-7xl mx-auto px-6 relative z-10">
-      <div class="text-center mb-20"><span class="text-[10px] font-medium uppercase tracking-widest text-blue-400 mb-4 block">Choisis ton pack</span><h2 class="text-3xl md:text-4xl font-medium tracking-tight mb-4">Un site pour<br><span class="text-blue-400">chaque besoin</span></h2><p class="text-neutral-500 text-sm max-w-md mx-auto">Paiement unique. Checkout Stripe sécurisé. Livraison rapide.</p></div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="reveal">
+        <div class="text-center mb-20 md:mb-28">
+          <span class="text-[10px] font-medium uppercase tracking-[0.28em] text-neutral-400 mb-6 block">Ce que tu obtiens</span>
+          <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-6"><span class="paint-underline">Un site pro</span>,<br/><span class="text-neutral-400 font-light italic">clé en main</span></h2>
+          <p class="text-neutral-400 text-sm max-w-md mx-auto font-light leading-relaxed">De la conception à la mise en ligne, on s'occupe de tout.</p>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+        <div class="reveal" style="transition-delay:0s"><div class="paint-card bg-white/50 backdrop-blur-sm border border-black/[0.04] p-8 group hover:border-black/[0.08] h-full"><div class="w-12 h-12 rounded-2xl bg-black/[0.04] flex items-center justify-center mb-7 group-hover:bg-black group-hover:text-white transition-all duration-500"><i data-lucide="panels-top-left" class="w-5 h-5"></i></div><h3 class="text-base font-semibold mb-3 tracking-tight">Design sur-mesure</h3><p class="text-neutral-400 text-sm font-light leading-relaxed">Un design moderne et professionnel adapté à ton activité. Pas de template générique, du sur-mesure.</p></div></div>
+        <div class="reveal" style="transition-delay:0.07s"><div class="paint-card bg-white/50 backdrop-blur-sm border border-black/[0.04] p-8 group hover:border-black/[0.08] h-full"><div class="w-12 h-12 rounded-2xl bg-black/[0.04] flex items-center justify-center mb-7 group-hover:bg-black group-hover:text-white transition-all duration-500"><i data-lucide="smartphone" class="w-5 h-5"></i></div><h3 class="text-base font-semibold mb-3 tracking-tight">100% responsive</h3><p class="text-neutral-400 text-sm font-light leading-relaxed">Ton site s'adapte parfaitement à tous les écrans : mobile, tablette et desktop.</p></div></div>
+        <div class="reveal" style="transition-delay:0.14s"><div class="paint-card bg-white/50 backdrop-blur-sm border border-black/[0.04] p-8 group hover:border-black/[0.08] h-full"><div class="w-12 h-12 rounded-2xl bg-black/[0.04] flex items-center justify-center mb-7 group-hover:bg-black group-hover:text-white transition-all duration-500"><i data-lucide="credit-card" class="w-5 h-5"></i></div><h3 class="text-base font-semibold mb-3 tracking-tight">Paiement intégré</h3><p class="text-neutral-400 text-sm font-light leading-relaxed">Stripe checkout sécurisé pour recevoir tes paiements directement en ligne.</p></div></div>
+        <div class="reveal" style="transition-delay:0.21s"><div class="paint-card bg-white/50 backdrop-blur-sm border border-black/[0.04] p-8 group hover:border-black/[0.08] h-full"><div class="w-12 h-12 rounded-2xl bg-black/[0.04] flex items-center justify-center mb-7 group-hover:bg-black group-hover:text-white transition-all duration-500"><i data-lucide="rocket" class="w-5 h-5"></i></div><h3 class="text-base font-semibold mb-3 tracking-tight">Mise en ligne rapide</h3><p class="text-neutral-400 text-sm font-light leading-relaxed">Ton site est en ligne en 24 à 72h. Tu n'attends pas des semaines pour lancer ton activité.</p></div></div>
+        <div class="reveal" style="transition-delay:0.28s"><div class="paint-card bg-white/50 backdrop-blur-sm border border-black/[0.04] p-8 group hover:border-black/[0.08] h-full"><div class="w-12 h-12 rounded-2xl bg-black/[0.04] flex items-center justify-center mb-7 group-hover:bg-black group-hover:text-white transition-all duration-500"><i data-lucide="search" class="w-5 h-5"></i></div><h3 class="text-base font-semibold mb-3 tracking-tight">Optimisé SEO</h3><p class="text-neutral-400 text-sm font-light leading-relaxed">Structure et balises pensées pour que Google trouve et référence ton site.</p></div></div>
+        <div class="reveal" style="transition-delay:0.35s"><div class="paint-card bg-white/50 backdrop-blur-sm border border-black/[0.04] p-8 group hover:border-black/[0.08] h-full"><div class="w-12 h-12 rounded-2xl bg-black/[0.04] flex items-center justify-center mb-7 group-hover:bg-black group-hover:text-white transition-all duration-500"><i data-lucide="headphones" class="w-5 h-5"></i></div><h3 class="text-base font-semibold mb-3 tracking-tight">Support après livraison</h3><p class="text-neutral-400 text-sm font-light leading-relaxed">Un problème après la mise en ligne ? On reste disponible pour t'aider.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       PACKS SECTION
+  ═══════════════════════════════════════════ -->
+  <section id="packs" class="py-28 md:py-36 relative bg-[#f0ede8]">
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="reveal">
+        <div class="text-center mb-20 md:mb-28">
+          <span class="text-[10px] font-medium uppercase tracking-[0.28em] text-neutral-400 mb-6 block">Choisis ton pack</span>
+          <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-6"><span class="paint-underline">Un site</span> pour<br/><span class="text-neutral-400 font-light italic">chaque besoin</span></h2>
+          <p class="text-neutral-400 text-sm max-w-md mx-auto font-light leading-relaxed">Commande via WhatsApp. Livraison rapide.</p>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
 
         <!-- STARTER -->
-        <div class="pack-card card-hover bg-neutral-900/50 border border-white/5 rounded-2xl p-8 flex flex-col">
-          <div class="mb-6"><span class="text-[10px] font-medium uppercase tracking-widest text-neutral-500">Starter</span><div class="mt-3 flex items-baseline gap-1"><span class="text-4xl font-semibold text-white">49.99€</span><span class="text-xs text-neutral-500">paiement unique</span></div></div>
-          <p class="text-neutral-500 text-xs font-light leading-relaxed mb-6">Landing page ou site one-page pour lancer ton activité rapidement.</p>
-          <ul class="space-y-3 mb-8 flex-1">
-            <li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-blue-400 mt-0.5 shrink-0"></i>1 page sur-mesure</li>
-            <li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-blue-400 mt-0.5 shrink-0"></i>Design responsive</li>
-            <li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-blue-400 mt-0.5 shrink-0"></i>Mise en ligne incluse</li>
-            <li class="flex items-start gap-3 text-sm text-neutral-500"><i data-lucide="clock" class="w-4 h-4 mt-0.5 shrink-0"></i>Livraison : 72H</li>
-          </ul>
-          <a href="https://buy.stripe.com/14AeVc37E85q6DZ2mE6Zy04" target="_blank" rel="noopener" class="checkout-btn checkout-btn-outline"><span class="flex items-center gap-2"><i data-lucide="lock" class="w-3.5 h-3.5"></i> Choisir Starter</span></a>
+        <div class="reveal" style="transition-delay:0.1s">
+          <div class="pack-card paint-card bg-white/60 backdrop-blur-sm border border-black/[0.05] p-7 flex flex-col hover:border-black/[0.10] h-full">
+            <div class="mb-6"><span class="text-[10px] font-medium uppercase tracking-[0.22em] text-neutral-400">Starter</span><div class="mt-3 flex items-baseline gap-1.5"><span class="text-3xl lg:text-4xl font-bold text-black tracking-tight">49.99€</span><span class="text-[11px] text-neutral-400">paiement unique</span></div></div>
+            <p class="text-neutral-400 text-xs font-light leading-relaxed mb-6">Landing page ou site one-page pour lancer ton activité rapidement.</p>
+            <ul class="space-y-3 mb-8 flex-1">
+              <li class="flex items-start gap-3 text-sm text-neutral-600"><i data-lucide="check" class="w-4 h-4 text-black mt-0.5 shrink-0"></i>1 page sur-mesure</li>
+              <li class="flex items-start gap-3 text-sm text-neutral-600"><i data-lucide="check" class="w-4 h-4 text-black mt-0.5 shrink-0"></i>Design responsive</li>
+              <li class="flex items-start gap-3 text-sm text-neutral-600"><i data-lucide="check" class="w-4 h-4 text-black mt-0.5 shrink-0"></i>Mise en ligne incluse</li>
+              <li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="clock" class="w-4 h-4 mt-0.5 shrink-0"></i>Livraison : 72H</li>
+            </ul>
+            <a href="https://wa.me/33602546266?text=Bonjour%20je%20souhaite%20commander%20le%20pack%20Starter" target="_blank" rel="noopener" class="paint-btn w-full py-3 rounded-full text-sm font-medium border border-black/[0.08] text-neutral-600 hover:bg-black hover:text-white hover:border-black flex items-center justify-center gap-2 transition-all"><i data-lucide="message-circle" class="w-3.5 h-3.5"></i> Commander Starter</a>
+          </div>
         </div>
 
         <!-- PRO -->
-        <div class="pack-card card-hover bg-neutral-900/50 border border-blue-500/20 rounded-2xl p-8 flex flex-col relative">
-          <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20"><span class="text-[10px] font-medium uppercase tracking-widest text-blue-400">Populaire</span></div>
-          <div class="mb-6"><span class="text-[10px] font-medium uppercase tracking-widest text-blue-400">Pro</span><div class="mt-3 flex items-baseline gap-1"><span class="text-4xl font-semibold text-white">99.99€</span><span class="text-xs text-neutral-500">paiement unique</span></div></div>
-          <p class="text-neutral-500 text-xs font-light leading-relaxed mb-6">Site vitrine multi-pages avec checkout et formulaires intégrés.</p>
-          <ul class="space-y-3 mb-8 flex-1">
-            <li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-blue-400 mt-0.5 shrink-0"></i>Jusqu'à 5 pages</li>
-            <li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-blue-400 mt-0.5 shrink-0"></i>Checkout Stripe intégré</li>
-            <li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-blue-400 mt-0.5 shrink-0"></i>Formulaires de capture</li>
-            <li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-blue-400 mt-0.5 shrink-0"></i>Support 7 jours</li>
-            <li class="flex items-start gap-3 text-sm text-neutral-500"><i data-lucide="clock" class="w-4 h-4 mt-0.5 shrink-0"></i>Livraison : 48H</li>
-          </ul>
-          <a href="https://buy.stripe.com/7sYcN4cIe71me6rf9q6Zy06" target="_blank" rel="noopener" class="checkout-btn checkout-btn-primary"><span class="flex items-center gap-2"><i data-lucide="lock" class="w-3.5 h-3.5"></i> Choisir Pro</span></a>
+        <div class="reveal" style="transition-delay:0.2s">
+          <div class="pack-card paint-card-dark bg-black text-white p-7 flex flex-col shadow-2xl shadow-black/15 relative overflow-hidden lg:-mt-4 lg:mb-4 h-full">
+            <div class="popular-badge absolute -top-3 left-1/2 -translate-x-1/2 px-5 py-1.5 rounded-full border border-white/15 backdrop-blur-sm"><span class="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/90">⭐ Populaire</span></div>
+            <div class="mb-6 relative z-10"><span class="text-[10px] font-medium uppercase tracking-[0.22em] text-white/40">Pro</span><div class="mt-3 flex items-baseline gap-1.5"><span class="text-3xl lg:text-4xl font-bold tracking-tight">99.99€</span><span class="text-[11px] text-white/25">paiement unique</span></div></div>
+            <p class="text-white/30 text-xs font-light leading-relaxed mb-6 relative z-10">Site vitrine multi-pages avec checkout et formulaires intégrés.</p>
+            <ul class="space-y-3 mb-8 flex-1 relative z-10">
+              <li class="flex items-start gap-3 text-sm text-white/70"><i data-lucide="check" class="w-4 h-4 text-white/80 mt-0.5 shrink-0"></i>Jusqu'à 5 pages</li>
+              <li class="flex items-start gap-3 text-sm text-white/70"><i data-lucide="check" class="w-4 h-4 text-white/80 mt-0.5 shrink-0"></i>Checkout Stripe intégré</li>
+              <li class="flex items-start gap-3 text-sm text-white/70"><i data-lucide="check" class="w-4 h-4 text-white/80 mt-0.5 shrink-0"></i>Formulaires de capture</li>
+              <li class="flex items-start gap-3 text-sm text-white/70"><i data-lucide="check" class="w-4 h-4 text-white/80 mt-0.5 shrink-0"></i>Support 7 jours</li>
+              <li class="flex items-start gap-3 text-sm text-white/25"><i data-lucide="clock" class="w-4 h-4 mt-0.5 shrink-0"></i>Livraison : 48H</li>
+            </ul>
+            <a href="https://wa.me/33602546266?text=Bonjour%20je%20souhaite%20commander%20le%20pack%20Pro" target="_blank" rel="noopener" class="paint-btn w-full py-3.5 rounded-full text-sm font-semibold bg-white text-black hover:bg-neutral-100 flex items-center justify-center gap-2 transition-all relative z-10 shadow-lg"><i data-lucide="message-circle" class="w-3.5 h-3.5"></i> Commander Pro</a>
+          </div>
         </div>
 
         <!-- ELITE -->
-        <div class="pack-card card-hover bg-neutral-900/50 border border-white/5 rounded-2xl p-8 flex flex-col relative overflow-hidden">
-          <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/50 to-transparent"></div><div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-[60px]"></div>
-          <div class="mb-6 relative z-10"><span class="text-[10px] font-medium uppercase tracking-widest text-neutral-500">Elite</span><div class="mt-3 flex items-baseline gap-1"><span class="text-4xl font-semibold text-white">149.99€</span><span class="text-xs text-neutral-500">paiement unique</span></div></div>
-          <p class="text-neutral-500 text-xs font-light leading-relaxed mb-6 relative z-10">Système complet avec automatisations, onboarding et documentation.</p>
-          <ul class="space-y-3 mb-8 flex-1 relative z-10">
-            <li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-blue-400 mt-0.5 shrink-0"></i>Pages illimitées</li>
-            <li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-blue-400 mt-0.5 shrink-0"></i>Automatisations IA</li>
-            <li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-blue-400 mt-0.5 shrink-0"></i>Onboarding automatique</li>
-            <li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-blue-400 mt-0.5 shrink-0"></i>Documentation custom</li>
-            <li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-blue-400 mt-0.5 shrink-0"></i>Support 30 jours</li>
-            <li class="flex items-start gap-3 text-sm text-neutral-500"><i data-lucide="clock" class="w-4 h-4 mt-0.5 shrink-0"></i>Livraison : 24-48H</li>
-          </ul>
-          <a href="https://buy.stripe.com/8x2cN4aA6clG8M70ew6Zy07" target="_blank" rel="noopener" class="checkout-btn checkout-btn-elite relative z-10"><span class="flex items-center gap-2"><i data-lucide="lock" class="w-3.5 h-3.5"></i> Passer Elite</span></a>
+        <div class="reveal" style="transition-delay:0.3s">
+          <div class="pack-card paint-card bg-white/60 backdrop-blur-sm border border-black/[0.05] p-7 flex flex-col hover:border-black/[0.10] relative overflow-hidden h-full">
+            <div class="mb-6 relative z-10"><span class="text-[10px] font-medium uppercase tracking-[0.22em] text-neutral-400">Elite</span><div class="mt-3 flex items-baseline gap-1.5"><span class="text-3xl lg:text-4xl font-bold text-black tracking-tight">149.99€</span><span class="text-[11px] text-neutral-400">paiement unique</span></div></div>
+            <p class="text-neutral-400 text-xs font-light leading-relaxed mb-6 relative z-10">Système complet avec automatisations, onboarding et documentation.</p>
+            <ul class="space-y-3 mb-8 flex-1 relative z-10">
+              <li class="flex items-start gap-3 text-sm text-neutral-600"><i data-lucide="check" class="w-4 h-4 text-black mt-0.5 shrink-0"></i>Pages illimitées</li>
+              <li class="flex items-start gap-3 text-sm text-neutral-600"><i data-lucide="check" class="w-4 h-4 text-black mt-0.5 shrink-0"></i>Automatisations IA</li>
+              <li class="flex items-start gap-3 text-sm text-neutral-600"><i data-lucide="check" class="w-4 h-4 text-black mt-0.5 shrink-0"></i>Onboarding automatique</li>
+              <li class="flex items-start gap-3 text-sm text-neutral-600"><i data-lucide="check" class="w-4 h-4 text-black mt-0.5 shrink-0"></i>Documentation custom</li>
+              <li class="flex items-start gap-3 text-sm text-neutral-600"><i data-lucide="check" class="w-4 h-4 text-black mt-0.5 shrink-0"></i>Support 30 jours</li>
+              <li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="clock" class="w-4 h-4 mt-0.5 shrink-0"></i>Livraison : 24-48H</li>
+            </ul>
+            <a href="https://wa.me/33602546266?text=Bonjour%20je%20souhaite%20commander%20le%20pack%20Elite" target="_blank" rel="noopener" class="paint-btn w-full py-3 rounded-full text-sm font-medium border-2 border-black text-black hover:bg-black hover:text-white flex items-center justify-center gap-2 transition-all"><i data-lucide="message-circle" class="w-3.5 h-3.5"></i> Commander Elite</a>
+          </div>
         </div>
 
         <!-- MAINTENANCE -->
-        <div class="pack-card card-hover bg-neutral-900/50 border border-white/5 rounded-2xl p-8 flex flex-col">
-          <div class="mb-6"><span class="text-[10px] font-medium uppercase tracking-widest text-neutral-500">Maintenance</span><div class="mt-3 flex items-baseline gap-1"><span class="text-4xl font-semibold text-white">11.99€</span><span class="text-xs text-neutral-500">/ mois</span></div><div class="mt-2 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-green-500/10 border border-green-500/20"><span class="text-[10px] font-medium text-green-400">15 jours gratuit</span></div></div>
-          <p class="text-neutral-500 text-xs font-light leading-relaxed mb-6">Garde ton site à jour, sécurisé et optimisé en permanence.</p>
-          <ul class="space-y-3 mb-8 flex-1">
-            <li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-green-400 mt-0.5 shrink-0"></i>Mises à jour mensuelles</li>
-            <li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-green-400 mt-0.5 shrink-0"></i>Corrections prioritaires</li>
-            <li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="check" class="w-4 h-4 text-green-400 mt-0.5 shrink-0"></i>Support continu</li>
-            <li class="flex items-start gap-3 text-sm text-neutral-500"><i data-lucide="repeat" class="w-4 h-4 mt-0.5 shrink-0"></i>Abonnement mensuel</li>
-          </ul>
-          <a href="https://buy.stripe.com/8x24gyfUqfxS2nJ6CU6Zy05" target="_blank" rel="noopener" class="checkout-btn checkout-btn-maint"><span class="flex items-center gap-2"><i data-lucide="lock" class="w-3.5 h-3.5"></i> Activer maintenance</span></a>
-        </div>
-
-      </div>
-      <div class="mt-10 flex items-center justify-center gap-6 text-neutral-600"><div class="flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4"></i><span class="text-xs">Paiement sécurisé Stripe</span></div><div class="flex items-center gap-2"><i data-lucide="lock" class="w-4 h-4"></i><span class="text-xs">Données chiffrées</span></div><div class="flex items-center gap-2"><i data-lucide="credit-card" class="w-4 h-4"></i><span class="text-xs">CB / Apple Pay / Google Pay</span></div></div>
-    </div>
-  </section>
-
-  <!-- PROCESS -->
-  <section id="process" class="py-32 relative overflow-hidden">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-20"><span class="text-[10px] font-medium uppercase tracking-widest text-blue-400 mb-4 block">Le process</span><h2 class="text-3xl md:text-4xl font-medium tracking-tight mb-4">Comment ça marche<br><span class="text-blue-400">en 4 étapes</span></h2></div>
-      <div class="max-w-3xl mx-auto relative">
-        <div class="absolute left-6 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-blue-500/50 via-blue-500/20 to-transparent"></div>
-        <div class="relative flex gap-6 md:gap-8 mb-16 group"><div class="shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center z-10 group-hover:bg-blue-500/20 transition-colors pulse-glow"><span class="text-blue-400 font-semibold text-lg">01</span></div><div class="pt-2 md:pt-4"><h3 class="text-xl font-medium mb-2">Tu commandes ton pack</h3><p class="text-neutral-500 text-sm font-light leading-relaxed">Choisis la formule qui te convient et paie en toute sécurité via Stripe.</p></div></div>
-        <div class="relative flex gap-6 md:gap-8 mb-16 group"><div class="shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center z-10 group-hover:bg-blue-500/20 transition-colors"><span class="text-blue-400 font-semibold text-lg">02</span></div><div class="pt-2 md:pt-4"><h3 class="text-xl font-medium mb-2">Tu remplis le brief</h3><p class="text-neutral-500 text-sm font-light leading-relaxed">On t'envoie un formulaire pour comprendre ton activité, tes couleurs, ton contenu. Simple et rapide.</p></div></div>
-        <div class="relative flex gap-6 md:gap-8 mb-16 group"><div class="shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center z-10 group-hover:bg-blue-500/20 transition-colors"><span class="text-blue-400 font-semibold text-lg">03</span></div><div class="pt-2 md:pt-4"><h3 class="text-xl font-medium mb-2">On crée ton site</h3><p class="text-neutral-500 text-sm font-light leading-relaxed">Notre équipe conçoit ton site professionnel : design, développement, intégrations. Tu n'as rien à faire.</p></div></div>
-        <div class="relative flex gap-6 md:gap-8 group"><div class="shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center z-10 group-hover:bg-blue-500/20 transition-colors"><span class="text-blue-400 font-semibold text-lg">04</span></div><div class="pt-2 md:pt-4"><h3 class="text-xl font-medium mb-2">Ton site est en ligne</h3><p class="text-neutral-500 text-sm font-light leading-relaxed">Tu reçois ton site livré clé en main par email. Il est prêt à recevoir tes premiers visiteurs et clients.</p></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq" class="py-32 relative">
-    <div class="max-w-3xl mx-auto px-6">
-      <div class="text-center mb-16"><span class="text-[10px] font-medium uppercase tracking-widest text-blue-400 mb-4 block">FAQ</span><h2 class="text-3xl md:text-4xl font-medium tracking-tight mb-4">Questions <span class="text-blue-400">fréquentes</span></h2></div>
-      <div class="space-y-3">
-        <div class="faq-item bg-neutral-900/30 border border-white/5 rounded-xl cursor-pointer" onclick="toggleFaq(this)"><div class="flex items-center justify-between p-5"><span class="text-sm font-medium text-white">Est-ce que je dois avoir des compétences techniques ?</span><i data-lucide="chevron-down" class="w-4 h-4 text-neutral-500 faq-chevron shrink-0"></i></div><div class="faq-answer px-5 pb-5"><p class="text-sm text-neutral-400 font-light leading-relaxed">Non, absolument pas. Tu commandes, tu remplis le brief, et on s'occupe de tout. De la conception à la mise en ligne, aucune compétence technique n'est requise de ton côté.</p></div></div>
-        <div class="faq-item bg-neutral-900/30 border border-white/5 rounded-xl cursor-pointer" onclick="toggleFaq(this)"><div class="flex items-center justify-between p-5"><span class="text-sm font-medium text-white">Quel pack choisir ?</span><i data-lucide="chevron-down" class="w-4 h-4 text-neutral-500 faq-chevron shrink-0"></i></div><div class="faq-answer px-5 pb-5"><p class="text-sm text-neutral-400 font-light leading-relaxed">Le Starter à 49.99€ est parfait pour une landing page simple. Le Pro à 99.99€ est idéal pour un site vitrine complet avec paiement. L'Elite à 149.99€ est le système complet avec automatisations et onboarding client.</p></div></div>
-        <div class="faq-item bg-neutral-900/30 border border-white/5 rounded-xl cursor-pointer" onclick="toggleFaq(this)"><div class="flex items-center justify-between p-5"><span class="text-sm font-medium text-white">Comment fonctionne le paiement ?</span><i data-lucide="chevron-down" class="w-4 h-4 text-neutral-500 faq-chevron shrink-0"></i></div><div class="faq-answer px-5 pb-5"><p class="text-sm text-neutral-400 font-light leading-relaxed">Paiement sécurisé via Stripe par carte bancaire, Apple Pay ou Google Pay. Starter, Pro et Elite sont en paiement unique. La Maintenance est un abonnement mensuel avec 15 jours gratuit.</p></div></div>
-        <div class="faq-item bg-neutral-900/30 border border-white/5 rounded-xl cursor-pointer" onclick="toggleFaq(this)"><div class="flex items-center justify-between p-5"><span class="text-sm font-medium text-white">Combien de temps prend la création ?</span><i data-lucide="chevron-down" class="w-4 h-4 text-neutral-500 faq-chevron shrink-0"></i></div><div class="faq-answer px-5 pb-5"><p class="text-sm text-neutral-400 font-light leading-relaxed">Starter : 72H. Pro : 48H. Elite : 24-48H. Tu reçois ton site clé en main par email dans ces délais.</p></div></div>
-        <div class="faq-item bg-neutral-900/30 border border-white/5 rounded-xl cursor-pointer" onclick="toggleFaq(this)"><div class="flex items-center justify-between p-5"><span class="text-sm font-medium text-white">La maintenance est-elle obligatoire ?</span><i data-lucide="chevron-down" class="w-4 h-4 text-neutral-500 faq-chevron shrink-0"></i></div><div class="faq-answer px-5 pb-5"><p class="text-sm text-neutral-400 font-light leading-relaxed">Non, elle est optionnelle. À 11.99€/mois avec 15 jours gratuit, elle te permet de garder ton site à jour, sécurisé et optimisé sans t'en occuper.</p></div></div>
-        <div class="faq-item bg-neutral-900/30 border border-white/5 rounded-xl cursor-pointer" onclick="toggleFaq(this)"><div class="flex items-center justify-between p-5"><span class="text-sm font-medium text-white">Est-ce que je peux modifier mon site après la livraison ?</span><i data-lucide="chevron-down" class="w-4 h-4 text-neutral-500 faq-chevron shrink-0"></i></div><div class="faq-answer px-5 pb-5"><p class="text-sm text-neutral-400 font-light leading-relaxed">Oui ! Avec le pack Maintenance, on s'en occupe pour toi. Sinon, tu peux nous contacter pour des modifications ponctuelles.</p></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- AD DISPLAY #3 -->
-  <div class="ad-slot">
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-3275155805994434"
-         data-ad-slot="AD_SLOT_3"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-  </div>
-
-  <!-- CONTACT -->
-  <section id="contact" class="py-32 relative">
-    <div class="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-[150px]"></div>
-    <div class="max-w-7xl mx-auto px-6 relative z-10">
-      <div class="grid md:grid-cols-2 gap-16">
-        <div>
-          <span class="text-[10px] font-medium uppercase tracking-widest text-blue-400 mb-4 block">Contact</span>
-          <h2 class="text-3xl md:text-4xl font-medium tracking-tight mb-4">Un projet en tête ?<br><span class="text-blue-400">On en discute.</span></h2>
-          <p class="text-neutral-500 text-sm font-light leading-relaxed mb-10">Tu veux un site personnalisé ou une offre sur-mesure ? Remplis le formulaire ci-dessous. Réponse sous 24h ouvrées.</p>
-          <div class="space-y-6">
-            <div class="flex items-center gap-4"><div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center shrink-0"><i data-lucide="mail" class="w-5 h-5 text-blue-400"></i></div><div><div class="text-xs text-neutral-500 mb-1">Email direct</div><a href="mailto:webstudioriver@gmail.com" class="text-sm text-white hover:text-blue-400 transition-colors">webstudioriver@gmail.com</a></div></div>
-            <div class="flex items-center gap-4"><div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center shrink-0"><i data-lucide="message-circle" class="w-5 h-5 text-green-400"></i></div><div><div class="text-xs text-neutral-500 mb-1">WhatsApp</div><a href="https://wa.me/33602546266" target="_blank" class="text-sm text-white hover:text-green-400 transition-colors">+33 6 02 54 62 66</a></div></div>
-            <div class="flex items-center gap-4"><div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center shrink-0"><i data-lucide="clock" class="w-5 h-5 text-blue-400"></i></div><div><div class="text-xs text-neutral-500 mb-1">Réponse garantie</div><span class="text-sm text-white">Sous 24h ouvrées</span></div></div>
+        <div class="reveal" style="transition-delay:0.4s">
+          <div class="pack-card paint-card bg-white/60 backdrop-blur-sm border border-black/[0.05] p-7 flex flex-col hover:border-black/[0.10] h-full">
+            <div class="mb-6"><span class="text-[10px] font-medium uppercase tracking-[0.22em] text-neutral-400">Maintenance</span><div class="mt-3 flex items-baseline gap-1.5"><span class="text-3xl lg:text-4xl font-bold text-black tracking-tight">11.99€</span><span class="text-[11px] text-neutral-400">/ mois</span></div><div class="mt-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200/50"><span class="text-[10px] font-semibold text-emerald-700">15 jours gratuit</span></div></div>
+            <p class="text-neutral-400 text-xs font-light leading-relaxed mb-6">Garde ton site à jour, sécurisé et optimisé en permanence.</p>
+            <ul class="space-y-3 mb-8 flex-1">
+              <li class="flex items-start gap-3 text-sm text-neutral-600"><i data-lucide="check" class="w-4 h-4 text-black mt-0.5 shrink-0"></i>Mises à jour mensuelles</li>
+              <li class="flex items-start gap-3 text-sm text-neutral-600"><i data-lucide="check" class="w-4 h-4 text-black mt-0.5 shrink-0"></i>Corrections prioritaires</li>
+              <li class="flex items-start gap-3 text-sm text-neutral-600"><i data-lucide="check" class="w-4 h-4 text-black mt-0.5 shrink-0"></i>Support continu</li>
+              <li class="flex items-start gap-3 text-sm text-neutral-300"><i data-lucide="repeat" class="w-4 h-4 mt-0.5 shrink-0"></i>Abonnement mensuel</li>
+            </ul>
+            <a href="https://wa.me/33602546266?text=Bonjour%20je%20souhaite%20activer%20la%20maintenance" target="_blank" rel="noopener" class="paint-btn w-full py-3 rounded-full text-sm font-medium border border-black/[0.08] text-neutral-600 hover:bg-black hover:text-white hover:border-black flex items-center justify-center gap-2 transition-all"><i data-lucide="message-circle" class="w-3.5 h-3.5"></i> Commander Maintenance</a>
           </div>
         </div>
-        <div class="bg-neutral-900/50 border border-white/5 rounded-2xl p-8 backdrop-blur-sm">
-          <form id="contactForm" class="space-y-5" onsubmit="handleSubmit(event)">
-            <div><label class="text-xs text-neutral-500 mb-2 block">Nom</label><input type="text" name="name" required placeholder="Ton nom ou celui de ta structure" class="w-full bg-neutral-800/50 border border-white/5 rounded-xl px-4 py-3 text-sm text-white placeholder:text-neutral-600 transition-all"></div>
-            <div><label class="text-xs text-neutral-500 mb-2 block">Email</label><input type="email" name="email" required placeholder="ton@email.com" class="w-full bg-neutral-800/50 border border-white/5 rounded-xl px-4 py-3 text-sm text-white placeholder:text-neutral-600 transition-all"></div>
-            <div><label class="text-xs text-neutral-500 mb-2 block">Pack qui t'intéresse</label><select name="pack" id="packSelect" class="w-full bg-neutral-800/50 border border-white/5 rounded-xl px-4 py-3 text-sm text-white transition-all appearance-none cursor-pointer"><option value="" class="bg-neutral-900">Sélectionne un pack</option><option value="STARTER - 49.99€" class="bg-neutral-900">Starter — 49.99€</option><option value="PRO - 99.99€" class="bg-neutral-900">Pro — 99.99€</option><option value="ELITE - 149.99€" class="bg-neutral-900">Elite — 149.99€</option><option value="MAINTENANCE - 11.99€/mois" class="bg-neutral-900">Maintenance — 11.99€/mois</option></select></div>
-            <div><label class="text-xs text-neutral-500 mb-2 block">Type de site souhaité</label><input type="text" name="objectif" placeholder="Ex: Site vitrine, landing page, boutique..." class="w-full bg-neutral-800/50 border border-white/5 rounded-xl px-4 py-3 text-sm text-white placeholder:text-neutral-600 transition-all"></div>
-            <div><label class="text-xs text-neutral-500 mb-2 block">Message</label><textarea name="message" rows="4" placeholder="Décris ton projet..." class="w-full bg-neutral-800/50 border border-white/5 rounded-xl px-4 py-3 text-sm text-white placeholder:text-neutral-600 transition-all resize-none"></textarea></div>
-            <button type="submit" class="btn-river w-full py-3.5 rounded-full text-sm font-medium text-white inline-flex items-center justify-center gap-2"><i data-lucide="send" class="w-4 h-4"></i> Envoyer</button>
-            <p class="text-[10px] text-neutral-600 text-center">Tes données restent confidentielles. Ne renseigne jamais de mots de passe.</p>
-          </form>
+      </div>
+
+      <div class="reveal" style="transition-delay:0.5s">
+        <div class="mt-16 flex items-center justify-center gap-10 text-neutral-400 flex-wrap">
+          <div class="flex items-center gap-2"><i data-lucide="message-circle" class="w-4 h-4"></i><span class="text-xs font-light">Commande via WhatsApp</span></div>
+          <div class="flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4"></i><span class="text-xs font-light">Paiement sécurisé</span></div>
+          <div class="flex items-center gap-2"><i data-lucide="zap" class="w-4 h-4"></i><span class="text-xs font-light">Livraison rapide</span></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="py-12 border-t border-white/5">
+  <!-- ═══════════════════════════════════════════
+       PROCESS / FAQ / CONTACT / CTA / FOOTER
+       (Identique, condensé pour la lisibilité)
+  ═══════════════════════════════════════════ -->
+  <section id="process" class="py-28 md:py-36 relative section-paper">
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="reveal"><div class="text-center mb-20 md:mb-28"><span class="text-[10px] font-medium uppercase tracking-[0.28em] text-neutral-400 mb-6 block">Le process</span><h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-6">Comment <span class="paint-underline">ça marche</span><br/><span class="text-neutral-400 font-light italic">en 4 étapes</span></h2></div></div>
+      <div class="max-w-3xl mx-auto relative">
+        <div class="absolute left-6 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-black/[0.06] via-black/[0.04] to-transparent"></div>
+        <div class="reveal" style="transition-delay:0s"><div class="process-step relative flex gap-6 md:gap-8 mb-16 cursor-default"><div class="step-number shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white/70 border border-black/[0.05] flex items-center justify-center z-10 shadow-sm"><span class="font-bold text-base md:text-lg">01</span></div><div class="pt-1.5 md:pt-2.5"><h3 class="text-lg md:text-xl font-semibold mb-2 tracking-tight">Tu commandes ton pack</h3><p class="text-neutral-400 text-sm font-light leading-relaxed">Choisis la formule qui te convient et contacte-nous via WhatsApp.</p></div></div></div>
+        <div class="reveal" style="transition-delay:0.12s"><div class="process-step relative flex gap-6 md:gap-8 mb-16 cursor-default"><div class="step-number shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white/70 border border-black/[0.05] flex items-center justify-center z-10 shadow-sm"><span class="font-bold text-base md:text-lg">02</span></div><div class="pt-1.5 md:pt-2.5"><h3 class="text-lg md:text-xl font-semibold mb-2 tracking-tight">Tu remplis le brief</h3><p class="text-neutral-400 text-sm font-light leading-relaxed">On t'envoie un formulaire pour comprendre ton activité. 5 minutes chrono.</p></div></div></div>
+        <div class="reveal" style="transition-delay:0.24s"><div class="process-step relative flex gap-6 md:gap-8 mb-16 cursor-default"><div class="step-number shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white/70 border border-black/[0.05] flex items-center justify-center z-10 shadow-sm"><span class="font-bold text-base md:text-lg">03</span></div><div class="pt-1.5 md:pt-2.5"><h3 class="text-lg md:text-xl font-semibold mb-2 tracking-tight">On crée ton site</h3><p class="text-neutral-400 text-sm font-light leading-relaxed">Notre équipe conçoit ton site professionnel. Tu n'as rien à faire.</p></div></div></div>
+        <div class="reveal" style="transition-delay:0.36s"><div class="process-step relative flex gap-6 md:gap-8 mb-0 cursor-default"><div class="step-number shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white/70 border border-black/[0.05] flex items-center justify-center z-10 shadow-sm"><span class="font-bold text-base md:text-lg">04</span></div><div class="pt-1.5 md:pt-2.5"><h3 class="text-lg md:text-xl font-semibold mb-2 tracking-tight">Ton site est en ligne 🚀</h3><p class="text-neutral-400 text-sm font-light leading-relaxed">Tu reçois ton site livré clé en main. Prêt pour tes premiers clients.</p></div></div></div>
+      </div>
+      <div class="reveal text-center mt-20" style="transition-delay:0.4s"><a href="https://wa.me/33602546266?text=Bonjour%20je%20souhaite%20commander%20un%20site" target="_blank" rel="noopener" class="paint-btn bg-black hover:bg-neutral-800 px-10 py-4 rounded-full text-sm font-semibold text-white inline-flex items-center gap-2.5 transition-all shadow-lg shadow-black/10"><i data-lucide="message-circle" class="w-4 h-4"></i> Commander mon site maintenant</a></div>
+    </div>
+  </section>
+
+  <section id="faq" class="py-28 md:py-36 relative bg-[#f0ede8]">
+    <div class="max-w-3xl mx-auto px-6 relative z-10">
+      <div class="reveal"><div class="text-center mb-14 md:mb-20"><span class="text-[10px] font-medium uppercase tracking-[0.28em] text-neutral-400 mb-6 block">FAQ</span><h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-6">Questions <span class="text-neutral-400 font-light italic">fréquentes</span></h2></div></div>
+      <div class="space-y-3">
+        <div class="reveal faq-item" style="transition-delay:0.08s"><div class="paint-card bg-white/70 backdrop-blur-sm border border-black/[0.05] cursor-pointer transition-all duration-500 shadow-sm hover:shadow-md" onclick="toggleFaq(this)"><div class="flex items-center justify-between p-6"><span class="text-sm font-medium text-black pr-4">Est-ce que je dois avoir des compétences techniques ?</span><i data-lucide="chevron-down" class="faq-chevron w-4 h-4 text-neutral-300 shrink-0"></i></div><div class="faq-content"><p class="px-6 pb-6 text-sm text-neutral-500 font-light leading-relaxed">Non, absolument pas. Tu commandes, tu remplis le brief, et on s'occupe de tout.</p></div></div></div>
+        <div class="reveal faq-item" style="transition-delay:0.12s"><div class="paint-card bg-white/70 backdrop-blur-sm border border-black/[0.05] cursor-pointer transition-all duration-500 shadow-sm hover:shadow-md" onclick="toggleFaq(this)"><div class="flex items-center justify-between p-6"><span class="text-sm font-medium text-black pr-4">Quel pack choisir ?</span><i data-lucide="chevron-down" class="faq-chevron w-4 h-4 text-neutral-300 shrink-0"></i></div><div class="faq-content"><p class="px-6 pb-6 text-sm text-neutral-500 font-light leading-relaxed">Le Starter à 49.99€ pour une landing page simple. Le Pro à 99.99€ pour un site vitrine complet. L'Elite à 149.99€ pour un système complet avec automatisations.</p></div></div></div>
+        <div class="reveal faq-item" style="transition-delay:0.16s"><div class="paint-card bg-white/70 backdrop-blur-sm border border-black/[0.05] cursor-pointer transition-all duration-500 shadow-sm hover:shadow-md" onclick="toggleFaq(this)"><div class="flex items-center justify-between p-6"><span class="text-sm font-medium text-black pr-4">Comment fonctionne le paiement ?</span><i data-lucide="chevron-down" class="faq-chevron w-4 h-4 text-neutral-300 shrink-0"></i></div><div class="faq-content"><p class="px-6 pb-6 text-sm text-neutral-500 font-light leading-relaxed">Le paiement en ligne est en maintenance. Contacte-nous via WhatsApp pour commander ensemble.</p></div></div></div>
+        <div class="reveal faq-item" style="transition-delay:0.2s"><div class="paint-card bg-white/70 backdrop-blur-sm border border-black/[0.05] cursor-pointer transition-all duration-500 shadow-sm hover:shadow-md" onclick="toggleFaq(this)"><div class="flex items-center justify-between p-6"><span class="text-sm font-medium text-black pr-4">Combien de temps prend la création ?</span><i data-lucide="chevron-down" class="faq-chevron w-4 h-4 text-neutral-300 shrink-0"></i></div><div class="faq-content"><p class="px-6 pb-6 text-sm text-neutral-500 font-light leading-relaxed">Starter : 72H. Pro : 48H. Elite : 24-48H.</p></div></div></div>
+        <div class="reveal faq-item" style="transition-delay:0.24s"><div class="paint-card bg-white/70 backdrop-blur-sm border border-black/[0.05] cursor-pointer transition-all duration-500 shadow-sm hover:shadow-md" onclick="toggleFaq(this)"><div class="flex items-center justify-between p-6"><span class="text-sm font-medium text-black pr-4">La maintenance est-elle obligatoire ?</span><i data-lucide="chevron-down" class="faq-chevron w-4 h-4 text-neutral-300 shrink-0"></i></div><div class="faq-content"><p class="px-6 pb-6 text-sm text-neutral-500 font-light leading-relaxed">Non, optionnelle. 11.99€/mois avec 15 jours gratuit.</p></div></div></div>
+        <div class="reveal faq-item" style="transition-delay:0.28s"><div class="paint-card bg-white/70 backdrop-blur-sm border border-black/[0.05] cursor-pointer transition-all duration-500 shadow-sm hover:shadow-md" onclick="toggleFaq(this)"><div class="flex items-center justify-between p-6"><span class="text-sm font-medium text-black pr-4">Puis-je modifier mon site après la livraison ?</span><i data-lucide="chevron-down" class="faq-chevron w-4 h-4 text-neutral-300 shrink-0"></i></div><div class="faq-content"><p class="px-6 pb-6 text-sm text-neutral-500 font-light leading-relaxed">Oui ! Avec le pack Maintenance, on s'en occupe. Sinon, contacte-nous pour des modifications ponctuelles.</p></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-28 md:py-36 relative section-paper">
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="grid md:grid-cols-2 gap-16 lg:gap-20">
+        <div class="reveal" style="transition-delay:0s"><div><span class="text-[10px] font-medium uppercase tracking-[0.28em] text-neutral-400 mb-6 block">Contact</span><h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-6"><span class="paint-underline">Un projet</span> en tête ?<br/><span class="text-neutral-400 font-light italic">On en discute.</span></h2><p class="text-neutral-400 text-sm font-light leading-relaxed mb-14">Tu veux un site personnalisé ? Remplis le formulaire. Réponse sous 24h.</p><div class="space-y-7"><div class="flex items-center gap-4"><div class="w-12 h-12 rounded-2xl bg-black/[0.04] flex items-center justify-center shrink-0"><i data-lucide="mail" class="w-5 h-5 text-black"></i></div><div><div class="text-[10px] text-neutral-400 mb-1 uppercase tracking-wider">Email direct</div><a href="mailto:webstudioriver@gmail.com" class="text-sm text-black hover:text-neutral-500 transition-colors font-medium">webstudioriver@gmail.com</a></div></div><div class="flex items-center gap-4"><div class="w-12 h-12 rounded-2xl bg-black/[0.04] flex items-center justify-center shrink-0"><i data-lucide="message-circle" class="w-5 h-5 text-black"></i></div><div><div class="text-[10px] text-neutral-400 mb-1 uppercase tracking-wider">WhatsApp</div><a href="https://wa.me/33602546266" target="_blank" rel="noopener" class="text-sm text-black hover:text-neutral-500 transition-colors font-medium">+33 6 02 54 62 66</a></div></div><div class="flex items-center gap-4"><div class="w-12 h-12 rounded-2xl bg-black/[0.04] flex items-center justify-center shrink-0"><i data-lucide="zap" class="w-5 h-5 text-black"></i></div><div><div class="text-[10px] text-neutral-400 mb-1 uppercase tracking-wider">Réponse garantie</div><span class="text-sm text-black font-medium">Sous 24h ouvrées</span></div></div></div></div></div>
+        <div class="reveal" style="transition-delay:0.15s"><div class="paint-card bg-white/50 backdrop-blur-sm border border-black/[0.04] p-8 md:p-10"><form id="contactForm" class="space-y-5" onsubmit="handleSubmit(event)"><div><label class="text-[10px] text-neutral-400 mb-2 block uppercase tracking-wider font-medium">Nom</label><input type="text" required placeholder="Ton nom ou celui de ta structure" class="paint-input w-full border border-black/[0.05] px-4 py-3.5 text-sm text-black" name="name"/></div><div><label class="text-[10px] text-neutral-400 mb-2 block uppercase tracking-wider font-medium">Email</label><input type="email" required placeholder="ton@email.com" class="paint-input w-full border border-black/[0.05] px-4 py-3.5 text-sm text-black" name="email"/></div><div><label class="text-[10px] text-neutral-400 mb-2 block uppercase tracking-wider font-medium">Pack qui t'intéresse</label><select name="pack" class="paint-input w-full border border-black/[0.05] px-4 py-3.5 text-sm text-black appearance-none cursor-pointer"><option value="">Sélectionne un pack</option><option value="STARTER - 49.99€">Starter — 49.99€</option><option value="PRO - 99.99€">Pro — 99.99€</option><option value="ELITE - 149.99€">Elite — 149.99€</option><option value="MAINTENANCE - 11.99€/mois">Maintenance — 11.99€/mois</option></select></div><div><label class="text-[10px] text-neutral-400 mb-2 block uppercase tracking-wider font-medium">Type de site souhaité</label><input type="text" placeholder="Ex: Site vitrine, landing page, boutique..." class="paint-input w-full border border-black/[0.05] px-4 py-3.5 text-sm text-black" name="objectif"/></div><div><label class="text-[10px] text-neutral-400 mb-2 block uppercase tracking-wider font-medium">Message</label><textarea name="message" rows="4" placeholder="Décris ton projet..." class="paint-input w-full border border-black/[0.05] px-4 py-3.5 text-sm text-black resize-none"></textarea></div><button type="submit" class="paint-btn w-full py-4 rounded-full text-sm font-semibold text-white bg-black hover:bg-neutral-800 inline-flex items-center justify-center gap-2.5 transition-all shadow-lg shadow-black/10"><i data-lucide="send" class="w-4 h-4"></i> Envoyer ma demande</button><p class="text-[10px] text-neutral-400 text-center font-light">Tes données restent confidentielles.</p></form></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 md:py-28 bg-black text-white relative overflow-hidden">
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 32px 32px;"></div>
+    <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+      <div class="reveal"><h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-6">Prêt à lancer<br/><span class="text-white/40 font-light italic">ton site ?</span></h2><p class="text-white/40 text-sm font-light max-w-md mx-auto mb-10">Commande maintenant et reçois ton site pro clé en main sous 24h.</p><div class="flex flex-wrap items-center justify-center gap-4"><a href="https://wa.me/33602546266?text=Bonjour%20je%20souhaite%20commander%20un%20site" target="_blank" rel="noopener" class="paint-btn bg-white text-black hover:bg-neutral-100 px-10 py-4 rounded-full text-sm font-semibold inline-flex items-center gap-2.5 transition-all shadow-lg"><i data-lucide="message-circle" class="w-4 h-4"></i> Commander via WhatsApp</a><a href="#packs" class="px-8 py-4 rounded-full text-sm font-medium text-white/60 border border-white/10 hover:border-white/20 hover:text-white transition-all">Voir les packs</a></div></div>
+    </div>
+  </section>
+
+  <footer class="py-14 border-t border-black/[0.03] bg-[#f0ede8]">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-        <a href="#" class="flex items-center gap-2.5"><svg viewBox="0 0 40 40" class="w-7 h-7 shrink-0" fill="none"><rect width="40" height="40" rx="8" fill="url(#lg2)"/><path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="white" transform="translate(8, 8) scale(0.95)"/><defs><linearGradient id="lg2" x1="0" y1="0" x2="40" y2="40"><stop offset="0%" stop-color="#1d4ed8"/><stop offset="100%" stop-color="#3b82f6"/></linearGradient></defs></svg><div class="flex flex-col leading-none"><span class="text-xs font-semibold tracking-tight text-white">RENDR</span><span class="text-[8px] font-medium tracking-[0.2em] text-neutral-500 uppercase">Studio</span></div></a>
-        <div class="flex flex-wrap items-center justify-center gap-6"><a href="#packs" class="text-xs text-neutral-500 hover:text-white transition-colors">Packs</a><a href="#process" class="text-xs text-neutral-500 hover:text-white transition-colors">Process</a><a href="#faq" class="text-xs text-neutral-500 hover:text-white transition-colors">FAQ</a><a href="#contact" class="text-xs text-neutral-500 hover:text-white transition-colors">Contact</a><a href="https://wa.me/33602546266" target="_blank" class="text-xs text-neutral-500 hover:text-green-400 transition-colors">WhatsApp</a></div>
-        <div class="flex items-center gap-2 text-neutral-600"><i data-lucide="code-2" class="w-3.5 h-3.5"></i><span class="text-xs">© 2026 Rendr Studio</span></div>
+      <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+        <a href="#" class="relative">
+          <img
+            src="https://z-cdn-media.chatglm.cn/files/601a6ae2-fbc5-44e9-9599-a6a82ddfd73d.png?auth_key=1878932592-e50e7b4ee6a946a6a770f56ed7e4ba12-0-df37081e8717080df68ae463c5a303bd"
+            alt="RENDR WEB STUDIO"
+            class="logo-img-footer"
+            width="170"
+            height="36"
+            loading="lazy"
+          />
+        </a>
+        <div class="flex flex-wrap items-center justify-center gap-7">
+          <a href="#packs" class="text-[11px] text-neutral-400 hover:text-black transition-colors uppercase tracking-wider">Packs</a>
+          <a href="#process" class="text-[11px] text-neutral-400 hover:text-black transition-colors uppercase tracking-wider">Process</a>
+          <a href="#faq" class="text-[11px] text-neutral-400 hover:text-black transition-colors uppercase tracking-wider">FAQ</a>
+          <a href="#contact" class="text-[11px] text-neutral-400 hover:text-black transition-colors uppercase tracking-wider">Contact</a>
+          <a href="https://wa.me/33602546266" target="_blank" rel="noopener" class="text-[11px] text-neutral-400 hover:text-black transition-colors uppercase tracking-wider">WhatsApp</a>
+        </div>
+        <div class="flex items-center gap-2 text-neutral-400">
+          <i data-lucide="code-xml" class="w-3 h-3"></i>
+          <span class="text-[11px] font-light">© 2026 RENDR WEB STUDIO</span>
+        </div>
       </div>
     </div>
   </footer>
 
-  <!-- WhatsApp -->
-  <a href="https://wa.me/33602546266" target="_blank" class="fixed bottom-6 left-6 z-50 w-14 h-14 bg-green-500 hover:bg-green-400 rounded-full flex items-center justify-center shadow-lg shadow-green-500/25 transition-all hover:scale-110" title="WhatsApp"><i data-lucide="message-circle" class="w-6 h-6 text-white"></i></a>
+  <a href="https://wa.me/33602546266?text=Bonjour%20je%20souhaite%20commander%20un%20site" target="_blank" rel="noopener" class="whatsapp-float fixed bottom-6 left-6 z-50 bg-black hover:bg-neutral-800 rounded-full flex items-center justify-center transition-all" title="WhatsApp"><i data-lucide="message-circle" class="w-5 h-5 text-white"></i></a>
 
   <script>
     lucide.createIcons();
-    function showToast(m,t='info'){const e=document.getElementById('toast');e.textContent=m;e.className='toast show';if(t==='success'){e.style.background='rgba(34,197,94,0.15)';e.style.borderColor='rgba(34,197,94,0.3)';e.style.color='#86efac'}else{e.style.background='rgba(59,130,246,0.15)';e.style.borderColor='rgba(59,130,246,0.3)';e.style.color='#93c5fd'}setTimeout(()=>{e.classList.remove('show')},4000)}
-    function openMobileMenu(){document.getElementById('mobileMenu').classList.add('open');document.getElementById('mobileOverlay').classList.remove('hidden');document.body.style.overflow='hidden'}
-    function closeMobileMenu(){document.getElementById('mobileMenu').classList.remove('open');document.getElementById('mobileOverlay').classList.add('hidden');document.body.style.overflow=''}
-    function handleSubmit(e){e.preventDefault();const f=e.target;const s=encodeURIComponent(`Projet site web ${f.pack.value||'personnalisé'} — ${f.name.value}`);const b=encodeURIComponent(`Nom: ${f.name.value}\nEmail: ${f.email.value}\nPack: ${f.pack.value||'Non défini'}\nType de site: ${f.objectif.value}\nMessage: ${f.message.value}`);window.open(`mailto:webstudioriver@gmail.com?subject=${s}&body=${b}`,'_self');showToast('Demande envoyée ! On te répond sous 24h.','success')}
-    function toggleFaq(el){const w=el.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!w)el.classList.add('open')}
-    const obs=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){en.target.style.animationPlayState='running';obs.unobserve(en.target)}})},{threshold:0.1});document.querySelectorAll('.fade-up').forEach(el=>{el.style.animationPlayState='paused';obs.observe(el)});
-    const secs=document.querySelectorAll('section[id]');const nls=document.querySelectorAll('.nav-link');window.addEventListener('scroll',()=>{let c='';secs.forEach(s=>{if(scrollY>=s.offsetTop-200)c=s.id});nls.forEach(l=>{l.classList.remove('text-blue-400');l.classList.add('text-neutral-400');if(l.getAttribute('href')===`#${c}`){l.classList.add('text-blue-400');l.classList.remove('text-neutral-400')}})});
+    const revealObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); } }); }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    function toggleFaq(card) { const item = card.closest('.faq-item'); const content = card.querySelector('.faq-content'); const isOpen = item.classList.contains('open'); document.querySelectorAll('.faq-item.open').forEach(openItem => { openItem.classList.remove('open'); const c = openItem.querySelector('.faq-content'); c.style.maxHeight = '0'; c.style.opacity = '0'; }); if (!isOpen) { item.classList.add('open'); content.style.maxHeight = content.scrollHeight + 'px'; content.style.opacity = '1'; } }
+    function openMobileMenu() { document.getElementById('menuOverlay').classList.add('show'); document.getElementById('mobileSidebar').classList.add('show'); document.body.style.overflow = 'hidden'; }
+    function closeMobileMenu() { document.getElementById('menuOverlay').classList.remove('show'); document.getElementById('mobileSidebar').classList.remove('show'); document.body.style.overflow = ''; }
+    function showToast(message, duration = 4500) { const toast = document.getElementById('toast'); toast.textContent = message; toast.classList.remove('hide'); toast.classList.add('show'); setTimeout(() => { toast.classList.remove('show'); toast.classList.add('hide'); }, duration); }
+    function handleSubmit(e) { e.preventDefault(); const form = e.target; const name = form.querySelector('[name="name"]').value; const email = form.querySelector('[name="email"]').value; const pack = form.querySelector('[name="pack"]').value; const objectif = form.querySelector('[name="objectif"]').value; const message = form.querySelector('[name="message"]').value; const subject = encodeURIComponent(`Nouvelle demande — ${pack || 'Pack non défini'}`); const body = encodeURIComponent(`Nom : ${name}\nEmail : ${email}\nPack : ${pack || 'Non sélectionné'}\nType de site : ${objectif || 'Non précisé'}\n\nMessage :\n${message}`); window.location.href = `mailto:webstudioriver@gmail.com?subject=${subject}&body=${body}`; showToast(`Merci ${name} ! Ton client mail s'ouvre. On te répond sous 24h. 🎨`); }
+    let bannerVisible = true; function closeBanner() { const banner = document.getElementById('announceBanner'); banner.style.transform = 'translateY(-100%)'; banner.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)'; bannerVisible = false; adjustNavPosition(); } function adjustNavPosition() { const nav = document.getElementById('mainNav'); const banner = document.getElementById('announceBanner'); nav.style.top = bannerVisible ? banner.offsetHeight + 'px' : '0'; }
+    window.addEventListener('load', () => { adjustNavPosition(); window.addEventListener('resize', adjustNavPosition); });
+    window.addEventListener('scroll', () => { const nav = document.getElementById('mainNav'); if (window.scrollY > 80) { nav.style.borderBottomColor = 'rgba(0,0,0,0.06)'; nav.style.background = 'rgba(240,237,232,0.88)'; } else { nav.style.borderBottomColor = 'rgba(0,0,0,0.03)'; nav.style.background = 'rgba(240,237,232,0.6)'; } });
+    const sections = document.querySelectorAll('section[id]'); const navLinks = document.querySelectorAll('nav a[href^="#"]'); const sectionObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { const id = entry.target.getAttribute('id'); navLinks.forEach(link => { if (link.getAttribute('href') === `#${id}`) { link.classList.remove('text-neutral-400'); link.classList.add('text-black'); } else { link.classList.remove('text-black'); link.classList.add('text-neutral-400'); } }); } }); }, { threshold: 0.3, rootMargin: '-80px 0px -50% 0px' }); sections.forEach(section => sectionObserver.observe(section));
   </script>
 </body>
 </html>
