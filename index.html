@@ -27,14 +27,12 @@
     body { font-family: 'Inter', sans-serif; background: #f0ede8; color: #000; overflow-x: hidden; }
     ::selection { background: rgba(0,0,0,0.12); color: #000; }
 
-    /* ── Grain Overlay ── */
     body::after {
       content: ''; position: fixed; inset: 0; z-index: 9999; pointer-events: none;
-      opacity: 0.025;
+      opacity: 0.022;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
     }
 
-    /* ── Logo ── */
     .logo-img {
       height: 42px; width: auto; max-width: 44vw;
       object-fit: contain; object-position: left center;
@@ -42,9 +40,7 @@
       transition: opacity 0.4s ease;
     }
     .logo-img:hover { opacity: 0.7; }
-    @media (min-width: 768px) {
-      .logo-img { height: 52px; max-width: none; }
-    }
+    @media (min-width: 768px) { .logo-img { height: 52px; max-width: none; } }
     .logo-img-footer {
       height: 28px; width: auto; object-fit: contain; object-position: left center;
       display: block; -webkit-user-drag: none; user-select: none;
@@ -53,32 +49,19 @@
     .logo-img-footer:hover { opacity: 0.6; }
     @media (min-width: 768px) { .logo-img-footer { height: 34px; } }
 
-    /* ── Paint Underline ── */
     .paint-underline {
       background-image: linear-gradient(120deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.04) 50%, rgba(0,0,0,0.08) 100%);
       background-repeat: no-repeat; background-size: 100% 32%; background-position: 0 90%;
       padding: 0 6px; margin: 0 -6px;
     }
 
-    /* ── Hero Blobs ── */
     .hero-blob {
       position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none;
-      transition: transform 8s ease-out;
     }
-    .hero-blob-1 {
-      width: 500px; height: 500px; top: -10%; right: -5%;
-      background: radial-gradient(circle, rgba(0,0,0,0.04) 0%, transparent 70%);
-    }
-    .hero-blob-2 {
-      width: 400px; height: 400px; bottom: 5%; left: -8%;
-      background: radial-gradient(circle, rgba(0,0,0,0.03) 0%, transparent 70%);
-    }
-    .hero-blob-3 {
-      width: 300px; height: 300px; top: 40%; right: 20%;
-      background: radial-gradient(circle, rgba(0,0,0,0.02) 0%, transparent 70%);
-    }
+    .hero-blob-1 { width: 500px; height: 500px; top: -10%; right: -5%; background: radial-gradient(circle, rgba(0,0,0,0.04) 0%, transparent 70%); }
+    .hero-blob-2 { width: 400px; height: 400px; bottom: 5%; left: -8%; background: radial-gradient(circle, rgba(0,0,0,0.03) 0%, transparent 70%); }
+    .hero-blob-3 { width: 300px; height: 300px; top: 40%; right: 20%; background: radial-gradient(circle, rgba(0,0,0,0.02) 0%, transparent 70%); }
 
-    /* ── Cards ── */
     .paint-card {
       border-radius: 24px 18px 20px 26px;
       transition: all 0.7s cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -92,7 +75,6 @@
       transition: all 0.7s cubic-bezier(0.25, 0.1, 0.25, 1);
     }
 
-    /* ── Glass Card ── */
     .glass-card {
       background: rgba(255,255,255,0.45);
       backdrop-filter: blur(20px) saturate(1.2);
@@ -100,7 +82,6 @@
       border: 1px solid rgba(255,255,255,0.6);
     }
 
-    /* ── Buttons ── */
     .paint-btn {
       position: relative; overflow: hidden; border-radius: 100px;
       transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -126,15 +107,13 @@
     }
     .btn-outline::after {
       content: ''; position: absolute; inset: 0; border-radius: 100px;
-      background: rgba(0,0,0,0); transition: background 0.5s ease;
-      pointer-events: none;
+      background: rgba(0,0,0,0); transition: background 0.5s ease; pointer-events: none;
     }
     .btn-outline:hover::after { background: rgba(0,0,0,1); }
     .btn-outline:hover { color: #fff; border-color: #000; }
     .btn-outline:active { transform: scale(0.96); }
     .btn-outline span { position: relative; z-index: 1; }
 
-    /* ── Inputs ── */
     .paint-input {
       border-radius: 16px 14px 15px 17px;
       background: rgba(255,255,255,0.55); outline: none;
@@ -147,7 +126,6 @@
     }
     .paint-input::placeholder { color: #c5c0b8; }
 
-    /* ── Animations ── */
     @keyframes softPulse {
       0%, 100% { opacity: 1; transform: scale(1); }
       50% { opacity: 0.35; transform: scale(0.7); }
@@ -181,23 +159,15 @@
       0%, 100% { box-shadow: 0 4px 20px -4px rgba(0,0,0,0.2); }
       50% { box-shadow: 0 4px 40px -2px rgba(0,0,0,0.4); }
     }
-    .whatsapp-float {
-      width: 58px; height: 58px;
-      animation: whatsappPulse 3s ease-in-out infinite;
-    }
+    .whatsapp-float { width: 58px; height: 58px; animation: whatsappPulse 3s ease-in-out infinite; }
     .whatsapp-float:hover { transform: scale(1.15); }
 
-    @keyframes countUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-    .count-animate { animation: countUp 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) forwards; }
-
-    /* ── Section Paper ── */
     .section-paper {
       background-image:
         radial-gradient(ellipse at 15% 45%, rgba(0,0,0,0.006) 0%, transparent 55%),
         radial-gradient(ellipse at 85% 55%, rgba(0,0,0,0.004) 0%, transparent 55%);
     }
 
-    /* ── Scroll Reveal ── */
     .reveal {
       opacity: 0; transform: translateY(40px);
       transition: opacity 1.2s cubic-bezier(0.25, 0.1, 0.25, 1), transform 1.2s cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -210,7 +180,6 @@
     }
     .reveal-scale.visible { opacity: 1; transform: scale(1); }
 
-    /* ── FAQ ── */
     .faq-content { max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.7s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.5s ease 0.1s; }
     .faq-item.open .faq-content { opacity: 1; }
     .faq-chevron { transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1); }
@@ -218,44 +187,35 @@
     .faq-card { transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1); }
     .faq-item.open .faq-card { background: rgba(255,255,255,0.85); box-shadow: 0 8px 32px -8px rgba(0,0,0,0.06); }
 
-    /* ── Toast ── */
     .toast { transition: all 0.6s cubic-bezier(0.25, 0.1, 0.25, 1); }
     .toast.show { transform: translateY(0); opacity: 1; pointer-events: auto; }
     .toast.hide { transform: translateY(28px); opacity: 0; pointer-events: none; }
 
-    /* ── Mobile Menu ── */
     .menu-overlay { transition: opacity 0.4s ease; }
     .menu-overlay.show { opacity: 1; pointer-events: auto; }
     .mobile-sidebar { transition: transform 0.45s cubic-bezier(0.25, 0.1, 0.25, 1); }
     .mobile-sidebar.show { transform: translateX(0); }
 
-    /* ── Process Step ── */
     .step-number { transition: all 0.6s cubic-bezier(0.25, 0.1, 0.25, 1); }
     .process-step:hover .step-number {
       background: #000; border-color: #000; color: #fff;
-      box-shadow: 0 12px 36px -8px rgba(0,0,0,0.2);
-      transform: scale(1.08);
+      box-shadow: 0 12px 36px -8px rgba(0,0,0,0.2); transform: scale(1.08);
     }
 
-    /* ── Pack Card ── */
     .pack-card { transition: all 0.7s cubic-bezier(0.25, 0.1, 0.25, 1); }
     .pack-card:hover { transform: translateY(-6px); box-shadow: 0 28px 72px -20px rgba(0,0,0,0.12); }
 
-    /* ── Stat Card ── */
     .stat-card { transition: all 0.7s cubic-bezier(0.25, 0.1, 0.25, 1); }
     .stat-card:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 20px 56px -16px rgba(0,0,0,0.08); }
 
-    /* ── Feature icon hover ── */
     .feature-icon { transition: all 0.6s cubic-bezier(0.25, 0.1, 0.25, 1); }
     .feature-card:hover .feature-icon {
       background: #000; color: #fff;
-      box-shadow: 0 8px 24px -4px rgba(0,0,0,0.15);
-      transform: scale(1.1) rotate(-3deg);
+      box-shadow: 0 8px 24px -4px rgba(0,0,0,0.15); transform: scale(1.1) rotate(-3deg);
     }
     .feature-card { transition: all 0.7s cubic-bezier(0.25, 0.1, 0.25, 1); }
     .feature-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px -16px rgba(0,0,0,0.08); }
 
-    /* ── Social Proof Marquee ── */
     @keyframes marquee {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
@@ -263,13 +223,6 @@
     .marquee-track { animation: marquee 35s linear infinite; }
     .marquee-track:hover { animation-play-state: paused; }
 
-    /* ── Decorative Line ── */
-    .deco-line {
-      height: 1px;
-      background: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.06) 20%, rgba(0,0,0,0.06) 80%, transparent 100%);
-    }
-
-    /* ── Nav link underline ── */
     .nav-link { position: relative; }
     .nav-link::after {
       content: ''; position: absolute; bottom: -4px; left: 0;
@@ -278,22 +231,50 @@
     }
     .nav-link:hover::after, .nav-link.active::after { width: 100%; }
 
-    /* ── Dark section glow ── */
     .dark-glow {
       position: absolute; width: 600px; height: 600px; border-radius: 50%;
       filter: blur(120px); pointer-events: none;
     }
 
-    /* ── Scrollbar ── */
+    /* ── Portfolio ── */
+    .portfolio-card { transition: all 0.7s cubic-bezier(0.25, 0.1, 0.25, 1); overflow: hidden; }
+    .portfolio-card:hover { transform: translateY(-6px); box-shadow: 0 24px 64px -16px rgba(0,0,0,0.12); }
+    .portfolio-card img { transition: transform 1.2s cubic-bezier(0.25, 0.1, 0.25, 1); }
+    .portfolio-card:hover img { transform: scale(1.06); }
+    .portfolio-overlay {
+      background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.7) 100%);
+      opacity: 0; transition: opacity 0.5s ease;
+    }
+    .portfolio-card:hover .portfolio-overlay { opacity: 1; }
+
+    /* ── Testimonials ── */
+    .testimonial-card { transition: all 0.7s cubic-bezier(0.25, 0.1, 0.25, 1); }
+    .testimonial-card:hover { transform: translateY(-4px); box-shadow: 0 20px 56px -16px rgba(0,0,0,0.08); }
+
+    @keyframes testimonialSlide {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .testimonial-track { animation: testimonialSlide 60s linear infinite; }
+    .testimonial-track:hover { animation-play-state: paused; }
+
+    /* ── Service tabs ── */
+    .service-tab { transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1); }
+    .service-tab.active { background: #000; color: #fff; }
+    .service-content { display: none; }
+    .service-content.active { display: block; }
+
+    /* ── Contact sticky bar ── */
+    .contact-bar {
+      transform: translateY(100%);
+      transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    .contact-bar.show { transform: translateY(0); }
+
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: #f0ede8; }
     ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.08); border-radius: 3px; }
     ::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.15); }
-
-    /* ── Smooth section padding ── */
-    @media (max-width: 767px) {
-      .hero-stats-grid { gap: 12px; }
-    }
   </style>
 </head>
 <body>
@@ -310,6 +291,9 @@
       <i data-lucide="x" class="w-5 h-5"></i>
     </button>
     <nav class="flex flex-col gap-8">
+      <a href="#services" onclick="closeMobileMenu()" class="text-lg font-medium text-neutral-500 hover:text-black transition-colors duration-300">Services</a>
+      <a href="#portfolio" onclick="closeMobileMenu()" class="text-lg font-medium text-neutral-500 hover:text-black transition-colors duration-300">Portfolio</a>
+      <a href="#temoignages" onclick="closeMobileMenu()" class="text-lg font-medium text-neutral-500 hover:text-black transition-colors duration-300">Témoignages</a>
       <a href="#packs" onclick="closeMobileMenu()" class="text-lg font-medium text-neutral-500 hover:text-black transition-colors duration-300">Packs</a>
       <a href="#process" onclick="closeMobileMenu()" class="text-lg font-medium text-neutral-500 hover:text-black transition-colors duration-300">Process</a>
       <a href="#faq" onclick="closeMobileMenu()" class="text-lg font-medium text-neutral-500 hover:text-black transition-colors duration-300">Faq</a>
@@ -345,23 +329,22 @@
           src="https://z-cdn-media.chatglm.cn/files/601a6ae2-fbc5-44e9-9599-a6a82ddfd73d.png?auth_key=1878932592-e50e7b4ee6a946a6a770f56ed7e4ba12-0-df37081e8717080df68ae463c5a303bd"
           alt="RENDR WEB STUDIO"
           class="logo-img"
-          width="260"
-          height="56"
-          loading="eager"
-          fetchpriority="high"
+          width="260" height="56" loading="eager" fetchpriority="high"
         />
       </a>
-      <div class="hidden md:flex items-center gap-10">
+      <div class="hidden lg:flex items-center gap-9">
+        <a href="#services" class="nav-link text-[11px] font-medium uppercase tracking-[0.2em] transition-all duration-500 text-neutral-400 hover:text-black">Services</a>
+        <a href="#portfolio" class="nav-link text-[11px] font-medium uppercase tracking-[0.2em] transition-all duration-500 text-neutral-400 hover:text-black">Portfolio</a>
+        <a href="#temoignages" class="nav-link text-[11px] font-medium uppercase tracking-[0.2em] transition-all duration-500 text-neutral-400 hover:text-black">Témoignages</a>
         <a href="#packs" class="nav-link text-[11px] font-medium uppercase tracking-[0.2em] transition-all duration-500 text-neutral-400 hover:text-black">Packs</a>
         <a href="#process" class="nav-link text-[11px] font-medium uppercase tracking-[0.2em] transition-all duration-500 text-neutral-400 hover:text-black">Process</a>
         <a href="#faq" class="nav-link text-[11px] font-medium uppercase tracking-[0.2em] transition-all duration-500 text-neutral-400 hover:text-black">Faq</a>
-        <a href="#contact" class="nav-link text-[11px] font-medium uppercase tracking-[0.2em] transition-all duration-500 text-neutral-400 hover:text-black">Contact</a>
       </div>
       <div class="flex items-center gap-4">
-        <a href="https://wa.me/33602546266?text=Bonjour%20je%20souhaite%20commander%20un%20site" target="_blank" rel="noopener" class="hidden md:inline-flex paint-btn bg-black hover:bg-neutral-800 text-[11px] font-semibold px-7 py-2.5 rounded-full text-white transition-all items-center gap-2">
-          <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> Commander
+        <a href="#contact" class="hidden md:inline-flex paint-btn bg-black hover:bg-neutral-800 text-[11px] font-semibold px-7 py-2.5 rounded-full text-white transition-all items-center gap-2">
+          <i data-lucide="mail" class="w-3.5 h-3.5"></i> Nous contacter
         </a>
-        <button onclick="openMobileMenu()" class="md:hidden text-neutral-400 hover:text-black transition-colors duration-300">
+        <button onclick="openMobileMenu()" class="lg:hidden text-neutral-400 hover:text-black transition-colors duration-300">
           <i data-lucide="menu" class="w-5 h-5"></i>
         </button>
       </div>
@@ -372,7 +355,6 @@
        HERO SECTION
   ═══════════════════════════════════════════ -->
   <section class="min-h-screen pt-28 pb-8 relative flex items-center bg-[#f0ede8] overflow-hidden">
-    <!-- Decorative blobs -->
     <div class="hero-blob hero-blob-1"></div>
     <div class="hero-blob hero-blob-2"></div>
     <div class="hero-blob hero-blob-3"></div>
@@ -386,80 +368,63 @@
               <span class="text-[10px] font-semibold uppercase tracking-[0.24em] text-neutral-500">Création de sites web</span>
             </div>
           </div>
-
           <div class="reveal" style="transition-delay:0.2s">
             <h1 class="text-[clamp(2.8rem,8vw,6rem)] font-extrabold tracking-tighter leading-[0.88] mb-8">
               <span class="paint-underline">Ton site pro</span><br/>
               <span class="text-neutral-300 font-extralight italic">en 24h, clé en main.</span>
             </h1>
           </div>
-
           <div class="reveal" style="transition-delay:0.3s">
             <p class="text-neutral-400 text-base md:text-lg font-light leading-relaxed max-w-lg mb-12">Site vitrine, landing page ou boutique — on te le crée de A à Z. Tu commandes, on livre. Zéro compétence technique requise.</p>
           </div>
-
           <div class="reveal" style="transition-delay:0.4s">
             <div class="flex flex-wrap gap-4 mb-10">
               <a href="#packs" class="paint-btn bg-black hover:bg-neutral-800 px-9 py-4 rounded-full text-sm font-bold text-white inline-flex items-center gap-2.5 transition-all shadow-xl shadow-black/10">
                 Voir les packs <i data-lucide="arrow-right" class="w-4 h-4"></i>
               </a>
-              <a href="#process" class="btn-outline px-9 py-4 rounded-full text-sm font-medium text-neutral-500 border border-black/[0.08] hover:border-black inline-flex items-center gap-2.5 transition-all">
-                <span class="flex items-center gap-2.5"><i data-lucide="circle-play" class="w-4 h-4"></i> Comment ça marche</span>
+              <a href="#portfolio" class="btn-outline px-9 py-4 rounded-full text-sm font-medium text-neutral-500 border border-black/[0.08] hover:border-black inline-flex items-center gap-2.5 transition-all">
+                <span class="flex items-center gap-2.5"><i data-lucide="eye" class="w-4 h-4"></i> Voir nos réalisations</span>
               </a>
             </div>
             <div class="flex items-center gap-6 text-neutral-300">
-              <div class="flex items-center gap-2">
-                <i data-lucide="shield-check" class="w-4 h-4"></i>
-                <span class="text-[11px] font-light">Paiement sécurisé</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <i data-lucide="zap" class="w-4 h-4"></i>
-                <span class="text-[11px] font-light">Livraison 24-72h</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <i data-lucide="headphones" class="w-4 h-4"></i>
-                <span class="text-[11px] font-light">Support inclus</span>
-              </div>
+              <div class="flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4"></i><span class="text-[11px] font-light">Paiement sécurisé</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="zap" class="w-4 h-4"></i><span class="text-[11px] font-light">Livraison 24-72h</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="headphones" class="w-4 h-4"></i><span class="text-[11px] font-light">Support inclus</span></div>
             </div>
           </div>
         </div>
-
         <div class="relative">
-          <!-- Decorative floating shapes -->
           <div class="absolute -top-8 -right-8 w-24 h-24 rounded-full border border-black/[0.03] animate-float hidden md:block"></div>
           <div class="absolute -bottom-6 -left-6 w-16 h-16 rounded-full bg-black/[0.02] animate-float-delay hidden md:block"></div>
-
-          <div class="grid grid-cols-2 gap-4 hero-stats-grid">
+          <div class="grid grid-cols-2 gap-4">
             <div class="reveal" style="transition-delay:0.25s">
               <div class="stat-card paint-card glass-card p-7">
                 <div class="text-black text-4xl md:text-5xl font-extrabold mb-2 tracking-tighter" data-count="24" data-suffix="h">0h</div>
-                <div class="text-neutral-400 text-[10px] font-semibold uppercase tracking-[0.16em]">Délai de livraison moyen</div>
+                <div class="text-neutral-400 text-[10px] font-semibold uppercase tracking-[0.16em]">Délai moyen</div>
               </div>
             </div>
             <div class="reveal" style="transition-delay:0.35s">
               <div class="stat-card paint-card glass-card p-7 mt-8 md:mt-12 animate-float-delay">
                 <div class="text-black text-4xl md:text-5xl font-extrabold mb-2 tracking-tighter" data-count="100" data-suffix="%">0%</div>
-                <div class="text-neutral-400 text-[10px] font-semibold uppercase tracking-[0.16em]">Responsive mobile</div>
+                <div class="text-neutral-400 text-[10px] font-semibold uppercase tracking-[0.16em]">Responsive</div>
               </div>
             </div>
             <div class="reveal" style="transition-delay:0.45s">
               <div class="stat-card paint-card glass-card p-7 animate-float-delay-2">
-                <div class="text-black text-4xl md:text-5xl font-extrabold mb-2 tracking-tighter" data-count="3" data-suffix="">0</div>
-                <div class="text-neutral-400 text-[10px] font-semibold uppercase tracking-[0.16em]">Formules disponibles</div>
+                <div class="text-black text-4xl md:text-5xl font-extrabold mb-2 tracking-tighter" data-count="50" data-suffix="+">0+</div>
+                <div class="text-neutral-400 text-[10px] font-semibold uppercase tracking-[0.16em]">Projets livrés</div>
               </div>
             </div>
             <div class="reveal" style="transition-delay:0.55s">
               <div class="stat-card paint-card glass-card p-7 mt-8 md:mt-12 animate-float">
-                <div class="text-black text-4xl md:text-5xl font-extrabold mb-2 tracking-tighter">∞</div>
-                <div class="text-neutral-400 text-[10px] font-semibold uppercase tracking-[0.16em]">Sites livrés</div>
+                <div class="text-black text-4xl md:text-5xl font-extrabold mb-2 tracking-tighter">5/5</div>
+                <div class="text-neutral-400 text-[10px] font-semibold uppercase tracking-[0.16em]">Satisfaction</div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- Scroll indicator -->
     <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 reveal" style="transition-delay:0.8s">
       <span class="text-[9px] font-medium uppercase tracking-[0.3em] text-neutral-300">Scroll</span>
       <div class="w-px h-8 bg-gradient-to-b from-neutral-300 to-transparent"></div>
@@ -467,7 +432,7 @@
   </section>
 
   <!-- ═══════════════════════════════════════════
-       SOCIAL PROOF MARQUEE
+       MARQUEE
   ═══════════════════════════════════════════ -->
   <section class="py-8 border-y border-black/[0.03] bg-[#f0ede8] overflow-hidden relative z-10">
     <div class="flex whitespace-nowrap">
@@ -493,24 +458,410 @@
   </section>
 
   <!-- ═══════════════════════════════════════════
-       FEATURES SECTION
+       SERVICES — Présentation claire
   ═══════════════════════════════════════════ -->
-  <section class="py-32 md:py-40 relative section-paper">
+  <section id="services" class="py-32 md:py-40 relative section-paper">
     <div class="max-w-7xl mx-auto px-6 relative z-10">
       <div class="reveal">
-        <div class="text-center mb-24 md:mb-32">
-          <span class="text-[10px] font-semibold uppercase tracking-[0.32em] text-neutral-300 mb-6 block">Ce que tu obtiens</span>
-          <h2 class="text-4xl md:text-6xl font-extrabold tracking-tighter mb-6"><span class="paint-underline">Un site pro</span>,<br/><span class="text-neutral-300 font-extralight italic">clé en main</span></h2>
-          <p class="text-neutral-400 text-base max-w-lg mx-auto font-light leading-relaxed">De la conception à la mise en ligne, on s'occupe de tout.</p>
+        <div class="text-center mb-20 md:mb-28">
+          <span class="text-[10px] font-semibold uppercase tracking-[0.32em] text-neutral-300 mb-6 block">Nos services</span>
+          <h2 class="text-4xl md:text-6xl font-extrabold tracking-tighter mb-6">Ce qu'on <span class="paint-underline">crée</span><br/><span class="text-neutral-300 font-extralight italic">pour toi</span></h2>
+          <p class="text-neutral-400 text-base max-w-lg mx-auto font-light leading-relaxed">Chaque projet est conçu sur-mesure. Choisis ton format, on s'occupe du reste.</p>
         </div>
       </div>
-      <div class="grid md:grid-cols-3 gap-5 lg:gap-6">
-        <div class="reveal" style="transition-delay:0s"><div class="feature-card paint-card glass-card p-9 h-full cursor-default"><div class="feature-icon w-14 h-14 rounded-2xl bg-black/[0.03] flex items-center justify-center mb-8"><i data-lucide="panels-top-left" class="w-5 h-5"></i></div><h3 class="text-lg font-bold mb-3 tracking-tight">Design sur-mesure</h3><p class="text-neutral-400 text-sm font-light leading-relaxed">Un design moderne et professionnel adapté à ton activité. Pas de template générique, du sur-mesure.</p></div></div>
-        <div class="reveal" style="transition-delay:0.08s"><div class="feature-card paint-card glass-card p-9 h-full cursor-default"><div class="feature-icon w-14 h-14 rounded-2xl bg-black/[0.03] flex items-center justify-center mb-8"><i data-lucide="smartphone" class="w-5 h-5"></i></div><h3 class="text-lg font-bold mb-3 tracking-tight">100% responsive</h3><p class="text-neutral-400 text-sm font-light leading-relaxed">Ton site s'adapte parfaitement à tous les écrans : mobile, tablette et desktop.</p></div></div>
-        <div class="reveal" style="transition-delay:0.16s"><div class="feature-card paint-card glass-card p-9 h-full cursor-default"><div class="feature-icon w-14 h-14 rounded-2xl bg-black/[0.03] flex items-center justify-center mb-8"><i data-lucide="credit-card" class="w-5 h-5"></i></div><h3 class="text-lg font-bold mb-3 tracking-tight">Paiement intégré</h3><p class="text-neutral-400 text-sm font-light leading-relaxed">Stripe checkout sécurisé pour recevoir tes paiements directement en ligne.</p></div></div>
-        <div class="reveal" style="transition-delay:0.24s"><div class="feature-card paint-card glass-card p-9 h-full cursor-default"><div class="feature-icon w-14 h-14 rounded-2xl bg-black/[0.03] flex items-center justify-center mb-8"><i data-lucide="rocket" class="w-5 h-5"></i></div><h3 class="text-lg font-bold mb-3 tracking-tight">Mise en ligne rapide</h3><p class="text-neutral-400 text-sm font-light leading-relaxed">Ton site est en ligne en 24 à 72h. Tu n'attends pas des semaines pour lancer ton activité.</p></div></div>
-        <div class="reveal" style="transition-delay:0.32s"><div class="feature-card paint-card glass-card p-9 h-full cursor-default"><div class="feature-icon w-14 h-14 rounded-2xl bg-black/[0.03] flex items-center justify-center mb-8"><i data-lucide="search" class="w-5 h-5"></i></div><h3 class="text-lg font-bold mb-3 tracking-tight">Optimisé SEO</h3><p class="text-neutral-400 text-sm font-light leading-relaxed">Structure et balises pensées pour que Google trouve et référence ton site.</p></div></div>
-        <div class="reveal" style="transition-delay:0.40s"><div class="feature-card paint-card glass-card p-9 h-full cursor-default"><div class="feature-icon w-14 h-14 rounded-2xl bg-black/[0.03] flex items-center justify-center mb-8"><i data-lucide="headphones" class="w-5 h-5"></i></div><h3 class="text-lg font-bold mb-3 tracking-tight">Support après livraison</h3><p class="text-neutral-400 text-sm font-light leading-relaxed">Un problème après la mise en ligne ? On reste disponible pour t'aider.</p></div></div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+        <!-- Service 1 -->
+        <div class="reveal" style="transition-delay:0s">
+          <div class="feature-card paint-card glass-card p-9 h-full cursor-default">
+            <div class="feature-icon w-14 h-14 rounded-2xl bg-black/[0.03] flex items-center justify-center mb-8">
+              <i data-lucide="layout-template" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 tracking-tight">Site vitrine</h3>
+            <p class="text-neutral-400 text-sm font-light leading-relaxed mb-6">Présente ton activité avec élégance. Multi-pages, design raffiné, contenu structuré pour convertir.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-[10px] px-3 py-1 rounded-full bg-black/[0.03] text-neutral-400 font-medium">Multi-pages</span>
+              <span class="text-[10px] px-3 py-1 rounded-full bg-black/[0.03] text-neutral-400 font-medium">SEO</span>
+              <span class="text-[10px] px-3 py-1 rounded-full bg-black/[0.03] text-neutral-400 font-medium">Responsive</span>
+            </div>
+          </div>
+        </div>
+        <!-- Service 2 -->
+        <div class="reveal" style="transition-delay:0.08s">
+          <div class="feature-card paint-card glass-card p-9 h-full cursor-default">
+            <div class="feature-icon w-14 h-14 rounded-2xl bg-black/[0.03] flex items-center justify-center mb-8">
+              <i data-lucide="rocket" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 tracking-tight">Landing page</h3>
+            <p class="text-neutral-400 text-sm font-light leading-relaxed mb-6">Une page qui convertit. Parfaite pour lancer un produit, capturer des leads ou promouvoir un événement.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-[10px] px-3 py-1 rounded-full bg-black/[0.03] text-neutral-400 font-medium">Conversion</span>
+              <span class="text-[10px] px-3 py-1 rounded-full bg-black/[0.03] text-neutral-400 font-medium">CTA</span>
+              <span class="text-[10px] px-3 py-1 rounded-full bg-black/[0.03] text-neutral-400 font-medium">Rapide</span>
+            </div>
+          </div>
+        </div>
+        <!-- Service 3 -->
+        <div class="reveal" style="transition-delay:0.16s">
+          <div class="feature-card paint-card glass-card p-9 h-full cursor-default">
+            <div class="feature-icon w-14 h-14 rounded-2xl bg-black/[0.03] flex items-center justify-center mb-8">
+              <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 tracking-tight">Boutique en ligne</h3>
+            <p class="text-neutral-400 text-sm font-light leading-relaxed mb-6">Vends tes produits ou services en ligne. Checkout Stripe intégré, catalogue, gestion de commandes.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-[10px] px-3 py-1 rounded-full bg-black/[0.03] text-neutral-400 font-medium">Stripe</span>
+              <span class="text-[10px] px-3 py-1 rounded-full bg-black/[0.03] text-neutral-400 font-medium">Catalogue</span>
+              <span class="text-[10px] px-3 py-1 rounded-full bg-black/[0.03] text-neutral-400 font-medium">Paiement</span>
+            </div>
+          </div>
+        </div>
+        <!-- Service 4 -->
+        <div class="reveal" style="transition-delay:0.24s">
+          <div class="feature-card paint-card glass-card p-9 h-full cursor-default">
+            <div class="feature-icon w-14 h-14 rounded-2xl bg-black/[0.03] flex items-center justify-center mb-8">
+              <i data-lucide="image" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 tracking-tight">Portfolio</h3>
+            <p class="text-neutral-400 text-sm font-light leading-relaxed mb-6">Expose tes réalisations avec impact. Galeries, animations, mise en valeur de ton travail créatif.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-[10px] px-3 py-1 rounded-full bg-black/[0.03] text-neutral-400 font-medium">Galerie</span>
+              <span class="text-[10px] px-3 py-1 rounded-full bg-black/[0.03] text-neutral-400 font-medium">Animations</span>
+              <span class="text-[10px] px-3 py-1 rounded-full bg-black/[0.03] text-neutral-400 font-medium">Créatif</span>
+            </div>
+          </div>
+        </div>
+        <!-- Service 5 -->
+        <div class="reveal" style="transition-delay:0.32s">
+          <div class="feature-card paint-card glass-card p-9 h-full cursor-default">
+            <div class="feature-icon w-14 h-14 rounded-2xl bg-black/[0.03] flex items-center justify-center mb-8">
+              <i data-lucide="bot" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 tracking-tight">Automatisations IA</h3>
+            <p class="text-neutral-400 text-sm font-light leading-relaxed mb-6">Chatbots, onboarding automatisé, emails intelligents. Ton site travaille pour toi 24h/24.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-[10px] px-3 py-1 rounded-full bg-black/[0.03] text-neutral-400 font-medium">Chatbot</span>
+              <span class="text-[10px] px-3 py-1 rounded-full bg-black/[0.03] text-neutral-400 font-medium">Auto</span>
+              <span class="text-[10px] px-3 py-1 rounded-full bg-black/[0.03] text-neutral-400 font-medium">IA</span>
+            </div>
+          </div>
+        </div>
+        <!-- Service 6 -->
+        <div class="reveal" style="transition-delay:0.40s">
+          <div class="feature-card paint-card glass-card p-9 h-full cursor-default">
+            <div class="feature-icon w-14 h-14 rounded-2xl bg-black/[0.03] flex items-center justify-center mb-8">
+              <i data-lucide="wrench" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 tracking-tight">Maintenance & Support</h3>
+            <p class="text-neutral-400 text-sm font-light leading-relaxed mb-6">Mises à jour, corrections, optimisations continues. Ton site reste parfait, on s'en occupe.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-[10px] px-3 py-1 rounded-full bg-black/[0.03] text-neutral-400 font-medium">Updates</span>
+              <span class="text-[10px] px-3 py-1 rounded-full bg-black/[0.03] text-neutral-400 font-medium">Sécurité</span>
+              <span class="text-[10px] px-3 py-1 rounded-full bg-black/[0.03] text-neutral-400 font-medium">Support</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       PORTFOLIO — Projets réussis
+  ═══════════════════════════════════════════ -->
+  <section id="portfolio" class="py-32 md:py-40 relative bg-[#f0ede8] overflow-hidden">
+    <div class="absolute top-1/3 right-0 w-[500px] h-[500px] rounded-full bg-black/[0.008] filter blur-[100px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="reveal">
+        <div class="text-center mb-20 md:mb-28">
+          <span class="text-[10px] font-semibold uppercase tracking-[0.32em] text-neutral-300 mb-6 block">Portfolio</span>
+          <h2 class="text-4xl md:text-6xl font-extrabold tracking-tighter mb-6">Nos <span class="paint-underline">réalisations</span></h2>
+          <p class="text-neutral-400 text-base max-w-lg mx-auto font-light leading-relaxed">Chaque site est unique. Voici ce qu'on a créé pour nos clients.</p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Project 1 -->
+        <div class="reveal" style="transition-delay:0s">
+          <div class="portfolio-card paint-card overflow-hidden cursor-pointer group">
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img src="https://picsum.photos/seed/rendr-coaching/800/600.jpg" alt="Site coaching" class="w-full h-full object-cover"/>
+              <div class="portfolio-overlay absolute inset-0 flex items-end p-7">
+                <div>
+                  <span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/60 mb-2 block">Site vitrine</span>
+                  <h3 class="text-white text-lg font-bold">CoachZen</h3>
+                  <p class="text-white/60 text-xs font-light mt-1">Site vitrine pour coach en développement personnel</p>
+                </div>
+              </div>
+            </div>
+            <div class="p-6 bg-white/50">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-full bg-black/[0.04] flex items-center justify-center"><i data-lucide="external-link" class="w-3.5 h-3.5 text-neutral-400"></i></div>
+                  <span class="text-sm font-medium">CoachZen</span>
+                </div>
+                <span class="text-[10px] px-3 py-1 rounded-full bg-black/[0.03] text-neutral-400 font-medium">Pack Pro</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="reveal" style="transition-delay:0.1s">
+          <div class="portfolio-card paint-card overflow-hidden cursor-pointer group">
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img src="https://picsum.photos/seed/rendr-shop/800/600.jpg" alt="Boutique en ligne" class="w-full h-full object-cover"/>
+              <div class="portfolio-overlay absolute inset-0 flex items-end p-7">
+                <div>
+                  <span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/60 mb-2 block">E-commerce</span>
+                  <h3 class="text-white text-lg font-bold">MaisonTerra</h3>
+                  <p class="text-white/60 text-xs font-light mt-1">Boutique en ligne de produits éco-responsables</p>
+                </div>
+              </div>
+            </div>
+            <div class="p-6 bg-white/50">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-full bg-black/[0.04] flex items-center justify-center"><i data-lucide="external-link" class="w-3.5 h-3.5 text-neutral-400"></i></div>
+                  <span class="text-sm font-medium">MaisonTerra</span>
+                </div>
+                <span class="text-[10px] px-3 py-1 rounded-full bg-black/[0.03] text-neutral-400 font-medium">Pack Elite</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="reveal" style="transition-delay:0.2s">
+          <div class="portfolio-card paint-card overflow-hidden cursor-pointer group">
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img src="https://picsum.photos/seed/rendr-saas/800/600.jpg" alt="Landing SaaS" class="w-full h-full object-cover"/>
+              <div class="portfolio-overlay absolute inset-0 flex items-end p-7">
+                <div>
+                  <span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/60 mb-2 block">Landing page</span>
+                  <h3 class="text-white text-lg font-bold">FlowSync</h3>
+                  <p class="text-white/60 text-xs font-light mt-1">Landing page pour outil SaaS de productivité</p>
+                </div>
+              </div>
+            </div>
+            <div class="p-6 bg-white/50">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-full bg-black/[0.04] flex items-center justify-center"><i data-lucide="external-link" class="w-3.5 h-3.5 text-neutral-400"></i></div>
+                  <span class="text-sm font-medium">FlowSync</span>
+                </div>
+                <span class="text-[10px] px-3 py-1 rounded-full bg-black/[0.03] text-neutral-400 font-medium">Pack Starter</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="reveal" style="transition-delay:0.3s">
+          <div class="portfolio-card paint-card overflow-hidden cursor-pointer group">
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img src="https://picsum.photos/seed/rendr-fitness/800/600.jpg" alt="Site fitness" class="w-full h-full object-cover"/>
+              <div class="portfolio-overlay absolute inset-0 flex items-end p-7">
+                <div>
+                  <span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/60 mb-2 block">Site vitrine</span>
+                  <h3 class="text-white text-lg font-bold">IronPulse</h3>
+                  <p class="text-white/60 text-xs font-light mt-1">Site pour salle de sport avec réservation en ligne</p>
+                </div>
+              </div>
+            </div>
+            <div class="p-6 bg-white/50">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-full bg-black/[0.04] flex items-center justify-center"><i data-lucide="external-link" class="w-3.5 h-3.5 text-neutral-400"></i></div>
+                  <span class="text-sm font-medium">IronPulse</span>
+                </div>
+                <span class="text-[10px] px-3 py-1 rounded-full bg-black/[0.03] text-neutral-400 font-medium">Pack Pro</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="reveal" style="transition-delay:0.4s">
+          <div class="portfolio-card paint-card overflow-hidden cursor-pointer group">
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img src="https://picsum.photos/seed/rendr-photo/800/600.jpg" alt="Portfolio photo" class="w-full h-full object-cover"/>
+              <div class="portfolio-overlay absolute inset-0 flex items-end p-7">
+                <div>
+                  <span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/60 mb-2 block">Portfolio</span>
+                  <h3 class="text-white text-lg font-bold">LumièreStudio</h3>
+                  <p class="text-white/60 text-xs font-light mt-1">Portfolio pour photographe professionnel</p>
+                </div>
+              </div>
+            </div>
+            <div class="p-6 bg-white/50">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-full bg-black/[0.04] flex items-center justify-center"><i data-lucide="external-link" class="w-3.5 h-3.5 text-neutral-400"></i></div>
+                  <span class="text-sm font-medium">LumièreStudio</span>
+                </div>
+                <span class="text-[10px] px-3 py-1 rounded-full bg-black/[0.03] text-neutral-400 font-medium">Pack Starter</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 6 -->
+        <div class="reveal" style="transition-delay:0.5s">
+          <div class="portfolio-card paint-card overflow-hidden cursor-pointer group">
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img src="https://picsum.photos/seed/rendr-agency/800/600.jpg" alt="Site agence" class="w-full h-full object-cover"/>
+              <div class="portfolio-overlay absolute inset-0 flex items-end p-7">
+                <div>
+                  <span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/60 mb-2 block">Site complet</span>
+                  <h3 class="text-white text-lg font-bold">NovaTech</h3>
+                  <p class="text-white/60 text-xs font-light mt-1">Site complet avec onboarding et automatisations</p>
+                </div>
+              </div>
+            </div>
+            <div class="p-6 bg-white/50">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-full bg-black/[0.04] flex items-center justify-center"><i data-lucide="external-link" class="w-3.5 h-3.5 text-neutral-400"></i></div>
+                  <span class="text-sm font-medium">NovaTech</span>
+                </div>
+                <span class="text-[10px] px-3 py-1 rounded-full bg-black/[0.03] text-neutral-400 font-medium">Pack Elite</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal text-center mt-16" style="transition-delay:0.3s">
+        <p class="text-neutral-400 text-sm font-light mb-6">Et plein d'autres projets en cours…</p>
+        <a href="#contact" class="btn-outline px-8 py-3.5 rounded-full text-sm font-medium text-neutral-500 border border-black/[0.08] hover:border-black inline-flex items-center gap-2.5 transition-all">
+          <span class="flex items-center gap-2.5"><i data-lucide="message-circle" class="w-4 h-4"></i> Démarrer mon projet</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       TÉMOIGNAGES CLIENTS
+  ═══════════════════════════════════════════ -->
+  <section id="temoignages" class="py-32 md:py-40 relative section-paper overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="reveal">
+        <div class="text-center mb-20 md:mb-28">
+          <span class="text-[10px] font-semibold uppercase tracking-[0.32em] text-neutral-300 mb-6 block">Témoignages</span>
+          <h2 class="text-4xl md:text-6xl font-extrabold tracking-tighter mb-6">Ce qu'ils <span class="paint-underline">disent</span><br/><span class="text-neutral-300 font-extralight italic">de nous</span></h2>
+          <p class="text-neutral-400 text-base max-w-lg mx-auto font-light leading-relaxed">La satisfaction de nos clients, c'est notre meilleure publicité.</p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Testimonial 1 -->
+        <div class="reveal" style="transition-delay:0s">
+          <div class="testimonial-card paint-card glass-card p-8 h-full flex flex-col">
+            <div class="flex items-center gap-1 mb-6">
+              <i data-lucide="star" class="w-4 h-4 text-black fill-black"></i>
+              <i data-lucide="star" class="w-4 h-4 text-black fill-black"></i>
+              <i data-lucide="star" class="w-4 h-4 text-black fill-black"></i>
+              <i data-lucide="star" class="w-4 h-4 text-black fill-black"></i>
+              <i data-lucide="star" class="w-4 h-4 text-black fill-black"></i>
+            </div>
+            <p class="text-neutral-600 text-sm font-light leading-relaxed mb-8 flex-1">"Incroyable. J'ai commandé un lundi, mon site était en ligne le mercredi. Le design est exactement ce que je voulais, même mieux. Je recommande à 200%."</p>
+            <div class="flex items-center gap-4">
+              <div class="w-11 h-11 rounded-full bg-gradient-to-br from-neutral-200 to-neutral-300 flex items-center justify-center text-sm font-bold text-white">SL</div>
+              <div>
+                <div class="text-sm font-semibold">Sophie Laurent</div>
+                <div class="text-[11px] text-neutral-400 font-light">Coach en développement personnel</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="reveal" style="transition-delay:0.1s">
+          <div class="testimonial-card paint-card bg-black text-white p-8 h-full flex flex-col shadow-2xl shadow-black/15">
+            <div class="flex items-center gap-1 mb-6">
+              <i data-lucide="star" class="w-4 h-4 text-white fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 text-white fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 text-white fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 text-white fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 text-white fill-white"></i>
+            </div>
+            <p class="text-white/70 text-sm font-light leading-relaxed mb-8 flex-1">"Ma boutique en ligne marche parfaitement. Les paiements Stripe fonctionnent sans accroc. L'équipe est réactive et professionnelle. Un vrai gain de temps."</p>
+            <div class="flex items-center gap-4">
+              <div class="w-11 h-11 rounded-full bg-gradient-to-br from-white/20 to-white/10 flex items-center justify-center text-sm font-bold text-white">MB</div>
+              <div>
+                <div class="text-sm font-semibold">Marc Bertrand</div>
+                <div class="text-[11px] text-white/30 font-light">Fondateur MaisonTerra</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="reveal" style="transition-delay:0.2s">
+          <div class="testimonial-card paint-card glass-card p-8 h-full flex flex-col">
+            <div class="flex items-center gap-1 mb-6">
+              <i data-lucide="star" class="w-4 h-4 text-black fill-black"></i>
+              <i data-lucide="star" class="w-4 h-4 text-black fill-black"></i>
+              <i data-lucide="star" class="w-4 h-4 text-black fill-black"></i>
+              <i data-lucide="star" class="w-4 h-4 text-black fill-black"></i>
+              <i data-lucide="star" class="w-4 h-4 text-black fill-black"></i>
+            </div>
+            <p class="text-neutral-600 text-sm font-light leading-relaxed mb-8 flex-1">"Je n'y connaissais rien en technique. Ils m'ont tout expliqué, tout géré. Mon portfolio est magnifique et mes clients adorent. Merci RENDR !"</p>
+            <div class="flex items-center gap-4">
+              <div class="w-11 h-11 rounded-full bg-gradient-to-br from-neutral-200 to-neutral-300 flex items-center justify-center text-sm font-bold text-white">CD</div>
+              <div>
+                <div class="text-sm font-semibold">Clara Dubois</div>
+                <div class="text-[11px] text-neutral-400 font-light">Photographe professionnelle</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Extra row -->
+      <div class="grid md:grid-cols-2 gap-6 mt-6 max-w-4xl mx-auto">
+        <!-- Testimonial 4 -->
+        <div class="reveal" style="transition-delay:0.3s">
+          <div class="testimonial-card paint-card glass-card p-8 h-full flex flex-col">
+            <div class="flex items-center gap-1 mb-6">
+              <i data-lucide="star" class="w-4 h-4 text-black fill-black"></i>
+              <i data-lucide="star" class="w-4 h-4 text-black fill-black"></i>
+              <i data-lucide="star" class="w-4 h-4 text-black fill-black"></i>
+              <i data-lucide="star" class="w-4 h-4 text-black fill-black"></i>
+              <i data-lucide="star" class="w-4 h-4 text-black fill-black"></i>
+            </div>
+            <p class="text-neutral-600 text-sm font-light leading-relaxed mb-8 flex-1">"Le pack Elite vaut chaque centime. L'onboarding automatique m'a fait gagner des heures. Mon site travaille pour moi pendant que je dors."</p>
+            <div class="flex items-center gap-4">
+              <div class="w-11 h-11 rounded-full bg-gradient-to-br from-neutral-200 to-neutral-300 flex items-center justify-center text-sm font-bold text-white">TN</div>
+              <div>
+                <div class="text-sm font-semibold">Thomas Nguyen</div>
+                <div class="text-[11px] text-neutral-400 font-light">CEO NovaTech</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 5 -->
+        <div class="reveal" style="transition-delay:0.4s">
+          <div class="testimonial-card paint-card glass-card p-8 h-full flex flex-col">
+            <div class="flex items-center gap-1 mb-6">
+              <i data-lucide="star" class="w-4 h-4 text-black fill-black"></i>
+              <i data-lucide="star" class="w-4 h-4 text-black fill-black"></i>
+              <i data-lucide="star" class="w-4 h-4 text-black fill-black"></i>
+              <i data-lucide="star" class="w-4 h-4 text-black fill-black"></i>
+              <i data-lucide="star" class="w-4 h-4 text-black fill-black"></i>
+            </div>
+            <p class="text-neutral-600 text-sm font-light leading-relaxed mb-8 flex-1">"Réactivité exemplaire. J'avais besoin d'un site urgent pour un lancement, ils m'ont livré en 24h. Le résultat est ultra pro. Je reviendrai."</p>
+            <div class="flex items-center gap-4">
+              <div class="w-11 h-11 rounded-full bg-gradient-to-br from-neutral-200 to-neutral-300 flex items-center justify-center text-sm font-bold text-white">AL</div>
+              <div>
+                <div class="text-sm font-semibold">Amélie Leroy</div>
+                <div class="text-[11px] text-neutral-400 font-light">Fondatrice IronPulse</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -519,7 +870,6 @@
        PACKS SECTION
   ═══════════════════════════════════════════ -->
   <section id="packs" class="py-32 md:py-40 relative bg-[#f0ede8]">
-    <!-- Decorative -->
     <div class="absolute top-1/4 left-0 w-96 h-96 rounded-full bg-black/[0.01] filter blur-[100px] pointer-events-none"></div>
     <div class="absolute bottom-1/4 right-0 w-96 h-96 rounded-full bg-black/[0.01] filter blur-[100px] pointer-events-none"></div>
 
@@ -532,15 +882,12 @@
         </div>
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
-
         <!-- STARTER -->
         <div class="reveal" style="transition-delay:0.1s">
           <div class="pack-card paint-card glass-card p-8 flex flex-col h-full">
             <div class="mb-7">
               <span class="text-[10px] font-semibold uppercase tracking-[0.24em] text-neutral-400">Starter</span>
-              <div class="mt-4 flex items-baseline gap-2">
-                <span class="text-4xl lg:text-[2.8rem] font-extrabold text-black tracking-tighter">49.99€</span>
-              </div>
+              <div class="mt-4 flex items-baseline gap-2"><span class="text-4xl lg:text-[2.8rem] font-extrabold text-black tracking-tighter">49.99€</span></div>
               <span class="text-[11px] text-neutral-400 font-light">paiement unique</span>
             </div>
             <p class="text-neutral-400 text-xs font-light leading-relaxed mb-7">Landing page ou site one-page pour lancer ton activité rapidement.</p>
@@ -553,18 +900,14 @@
             <a href="https://wa.me/33602546266?text=Bonjour%20je%20souhaite%20commander%20le%20pack%20Starter" target="_blank" rel="noopener" class="btn-outline w-full py-3.5 rounded-full text-sm font-medium border border-black/[0.08] text-neutral-500 flex items-center justify-center gap-2.5 transition-all"><span class="flex items-center gap-2.5"><i data-lucide="message-circle" class="w-3.5 h-3.5"></i> Commander Starter</span></a>
           </div>
         </div>
-
         <!-- PRO -->
         <div class="reveal" style="transition-delay:0.2s">
           <div class="pack-card paint-card-dark bg-black text-white p-8 flex flex-col shadow-2xl shadow-black/20 relative overflow-hidden lg:-mt-4 lg:mb-4 h-full">
             <div class="popular-badge absolute -top-3 left-1/2 -translate-x-1/2 px-6 py-1.5 rounded-full border border-white/10 backdrop-blur-sm"><span class="text-[10px] font-bold uppercase tracking-[0.24em] text-white/90">⭐ Populaire</span></div>
-            <!-- Inner glow -->
             <div class="absolute top-0 right-0 w-40 h-40 bg-white/[0.03] rounded-full filter blur-[40px] pointer-events-none"></div>
             <div class="mb-7 relative z-10">
               <span class="text-[10px] font-semibold uppercase tracking-[0.24em] text-white/30">Pro</span>
-              <div class="mt-4 flex items-baseline gap-2">
-                <span class="text-4xl lg:text-[2.8rem] font-extrabold tracking-tighter">99.99€</span>
-              </div>
+              <div class="mt-4 flex items-baseline gap-2"><span class="text-4xl lg:text-[2.8rem] font-extrabold tracking-tighter">99.99€</span></div>
               <span class="text-[11px] text-white/20 font-light">paiement unique</span>
             </div>
             <p class="text-white/25 text-xs font-light leading-relaxed mb-7 relative z-10">Site vitrine multi-pages avec checkout et formulaires intégrés.</p>
@@ -578,15 +921,12 @@
             <a href="https://wa.me/33602546266?text=Bonjour%20je%20souhaite%20commander%20le%20pack%20Pro" target="_blank" rel="noopener" class="paint-btn w-full py-4 rounded-full text-sm font-bold bg-white text-black hover:bg-neutral-100 flex items-center justify-center gap-2.5 transition-all relative z-10 shadow-lg shadow-white/10"><i data-lucide="message-circle" class="w-4 h-4"></i> Commander Pro</a>
           </div>
         </div>
-
         <!-- ELITE -->
         <div class="reveal" style="transition-delay:0.3s">
           <div class="pack-card paint-card glass-card p-8 flex flex-col relative overflow-hidden h-full">
             <div class="mb-7 relative z-10">
               <span class="text-[10px] font-semibold uppercase tracking-[0.24em] text-neutral-400">Elite</span>
-              <div class="mt-4 flex items-baseline gap-2">
-                <span class="text-4xl lg:text-[2.8rem] font-extrabold text-black tracking-tighter">149.99€</span>
-              </div>
+              <div class="mt-4 flex items-baseline gap-2"><span class="text-4xl lg:text-[2.8rem] font-extrabold text-black tracking-tighter">149.99€</span></div>
               <span class="text-[11px] text-neutral-400 font-light">paiement unique</span>
             </div>
             <p class="text-neutral-400 text-xs font-light leading-relaxed mb-7 relative z-10">Système complet avec automatisations, onboarding et documentation.</p>
@@ -601,15 +941,12 @@
             <a href="https://wa.me/33602546266?text=Bonjour%20je%20souhaite%20commander%20le%20pack%20Elite" target="_blank" rel="noopener" class="btn-outline w-full py-3.5 rounded-full text-sm font-semibold border-2 border-black text-black flex items-center justify-center gap-2.5 transition-all"><span class="flex items-center gap-2.5"><i data-lucide="message-circle" class="w-3.5 h-3.5"></i> Commander Elite</span></a>
           </div>
         </div>
-
         <!-- MAINTENANCE -->
         <div class="reveal" style="transition-delay:0.4s">
           <div class="pack-card paint-card glass-card p-8 flex flex-col h-full">
             <div class="mb-7">
               <span class="text-[10px] font-semibold uppercase tracking-[0.24em] text-neutral-400">Maintenance</span>
-              <div class="mt-4 flex items-baseline gap-2">
-                <span class="text-4xl lg:text-[2.8rem] font-extrabold text-black tracking-tighter">11.99€</span>
-              </div>
+              <div class="mt-4 flex items-baseline gap-2"><span class="text-4xl lg:text-[2.8rem] font-extrabold text-black tracking-tighter">11.99€</span></div>
               <span class="text-[11px] text-neutral-400 font-light">/ mois</span>
               <div class="mt-4 inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-emerald-50/80 border border-emerald-200/40">
                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-soft-pulse"></span>
@@ -650,18 +987,12 @@
         </div>
       </div>
       <div class="max-w-3xl mx-auto relative">
-        <!-- Timeline line -->
         <div class="absolute left-6 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-black/[0.08] via-black/[0.05] to-transparent"></div>
-
         <div class="reveal" style="transition-delay:0s"><div class="process-step relative flex gap-7 md:gap-9 mb-20 cursor-default group"><div class="step-number shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white/80 border border-black/[0.05] flex items-center justify-center z-10 shadow-sm"><span class="font-extrabold text-base md:text-lg tracking-tight">01</span></div><div class="pt-1 md:pt-3"><h3 class="text-xl md:text-2xl font-bold mb-3 tracking-tight">Tu commandes ton pack</h3><p class="text-neutral-400 text-sm font-light leading-relaxed max-w-md">Choisis la formule qui te convient et contacte-nous via WhatsApp.</p></div></div></div>
-
         <div class="reveal" style="transition-delay:0.12s"><div class="process-step relative flex gap-7 md:gap-9 mb-20 cursor-default group"><div class="step-number shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white/80 border border-black/[0.05] flex items-center justify-center z-10 shadow-sm"><span class="font-extrabold text-base md:text-lg tracking-tight">02</span></div><div class="pt-1 md:pt-3"><h3 class="text-xl md:text-2xl font-bold mb-3 tracking-tight">Tu remplis le brief</h3><p class="text-neutral-400 text-sm font-light leading-relaxed max-w-md">On t'envoie un formulaire pour comprendre ton activité. 5 minutes chrono.</p></div></div></div>
-
         <div class="reveal" style="transition-delay:0.24s"><div class="process-step relative flex gap-7 md:gap-9 mb-20 cursor-default group"><div class="step-number shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white/80 border border-black/[0.05] flex items-center justify-center z-10 shadow-sm"><span class="font-extrabold text-base md:text-lg tracking-tight">03</span></div><div class="pt-1 md:pt-3"><h3 class="text-xl md:text-2xl font-bold mb-3 tracking-tight">On crée ton site</h3><p class="text-neutral-400 text-sm font-light leading-relaxed max-w-md">Notre équipe conçoit ton site professionnel. Tu n'as rien à faire.</p></div></div></div>
-
         <div class="reveal" style="transition-delay:0.36s"><div class="process-step relative flex gap-7 md:gap-9 mb-0 cursor-default group"><div class="step-number shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white/80 border border-black/[0.05] flex items-center justify-center z-10 shadow-sm"><span class="font-extrabold text-base md:text-lg tracking-tight">04</span></div><div class="pt-1 md:pt-3"><h3 class="text-xl md:text-2xl font-bold mb-3 tracking-tight">Ton site est en ligne 🚀</h3><p class="text-neutral-400 text-sm font-light leading-relaxed max-w-md">Tu reçois ton site livré clé en main. Prêt pour tes premiers clients.</p></div></div></div>
       </div>
-
       <div class="reveal text-center mt-24" style="transition-delay:0.4s">
         <a href="https://wa.me/33602546266?text=Bonjour%20je%20souhaite%20commander%20un%20site" target="_blank" rel="noopener" class="paint-btn bg-black hover:bg-neutral-800 px-12 py-4.5 rounded-full text-sm font-bold text-white inline-flex items-center gap-3 transition-all shadow-xl shadow-black/10">
           <i data-lucide="message-circle" class="w-4 h-4"></i> Commander mon site maintenant
@@ -693,69 +1024,86 @@
   </section>
 
   <!-- ═══════════════════════════════════════════
-       CONTACT SECTION
+       CONTACT — Facile et accessible
   ═══════════════════════════════════════════ -->
   <section id="contact" class="py-32 md:py-40 relative section-paper">
     <div class="max-w-7xl mx-auto px-6 relative z-10">
-      <div class="grid md:grid-cols-2 gap-16 lg:gap-24">
-        <div class="reveal" style="transition-delay:0s">
-          <div>
-            <span class="text-[10px] font-semibold uppercase tracking-[0.32em] text-neutral-300 mb-6 block">Contact</span>
-            <h2 class="text-4xl md:text-6xl font-extrabold tracking-tighter mb-6"><span class="paint-underline">Un projet</span> en tête ?<br/><span class="text-neutral-300 font-extralight italic">On en discute.</span></h2>
-            <p class="text-neutral-400 text-base font-light leading-relaxed mb-16 max-w-md">Tu veux un site personnalisé ? Remplis le formulaire. Réponse sous 24h.</p>
-            <div class="space-y-8">
-              <div class="flex items-center gap-5 group">
-                <div class="w-14 h-14 rounded-2xl bg-black/[0.03] flex items-center justify-center shrink-0 group-hover:bg-black group-hover:text-white transition-all duration-500"><i data-lucide="mail" class="w-5 h-5"></i></div>
-                <div>
-                  <div class="text-[10px] text-neutral-400 mb-1.5 uppercase tracking-wider font-semibold">Email direct</div>
-                  <a href="mailto:rendrwebstudio@gmail.com" class="text-sm text-black hover:text-neutral-400 transition-colors font-medium">rendrwebstudio@gmail.com</a>
-                </div>
-              </div>
-              <div class="flex items-center gap-5 group">
-                <div class="w-14 h-14 rounded-2xl bg-black/[0.03] flex items-center justify-center shrink-0 group-hover:bg-black group-hover:text-white transition-all duration-500"><i data-lucide="message-circle" class="w-5 h-5"></i></div>
-                <div>
-                  <div class="text-[10px] text-neutral-400 mb-1.5 uppercase tracking-wider font-semibold">WhatsApp</div>
-                  <a href="https://wa.me/33602546266" target="_blank" rel="noopener" class="text-sm text-black hover:text-neutral-400 transition-colors font-medium">+33 6 02 54 62 66</a>
-                </div>
-              </div>
-              <div class="flex items-center gap-5 group">
-                <div class="w-14 h-14 rounded-2xl bg-black/[0.03] flex items-center justify-center shrink-0 group-hover:bg-black group-hover:text-white transition-all duration-500"><i data-lucide="zap" class="w-5 h-5"></i></div>
-                <div>
-                  <div class="text-[10px] text-neutral-400 mb-1.5 uppercase tracking-wider font-semibold">Réponse garantie</div>
-                  <span class="text-sm text-black font-medium">Sous 24h ouvrées</span>
-                </div>
-              </div>
+      <div class="reveal">
+        <div class="text-center mb-20 md:mb-28">
+          <span class="text-[10px] font-semibold uppercase tracking-[0.32em] text-neutral-300 mb-6 block">Contact</span>
+          <h2 class="text-4xl md:text-6xl font-extrabold tracking-tighter mb-6"><span class="paint-underline">Un projet</span> en tête ?<br/><span class="text-neutral-300 font-extralight italic">On en discute.</span></h2>
+          <p class="text-neutral-400 text-base max-w-lg mx-auto font-light leading-relaxed">Réponse sous 24h. Choisis le canal qui te convient.</p>
+        </div>
+      </div>
+
+      <!-- Quick contact options -->
+      <div class="reveal mb-16" style="transition-delay:0.1s">
+        <div class="grid md:grid-cols-3 gap-5 max-w-4xl mx-auto">
+          <a href="https://wa.me/33602546266?text=Bonjour%20je%20souhaite%20commander%20un%20site" target="_blank" rel="noopener" class="paint-card glass-card p-7 text-center group cursor-pointer block">
+            <div class="w-14 h-14 rounded-2xl bg-black/[0.03] flex items-center justify-center mx-auto mb-5 group-hover:bg-black group-hover:text-white transition-all duration-500">
+              <i data-lucide="message-circle" class="w-6 h-6"></i>
             </div>
+            <h3 class="text-base font-bold mb-2">WhatsApp</h3>
+            <p class="text-neutral-400 text-xs font-light mb-3">Réponse immédiate</p>
+            <span class="text-sm font-medium text-black group-hover:text-neutral-600 transition-colors">+33 6 02 54 62 66</span>
+          </a>
+          <a href="mailto:webstudioriver@gmail.com" class="paint-card glass-card p-7 text-center group cursor-pointer block">
+            <div class="w-14 h-14 rounded-2xl bg-black/[0.03] flex items-center justify-center mx-auto mb-5 group-hover:bg-black group-hover:text-white transition-all duration-500">
+              <i data-lucide="mail" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-base font-bold mb-2">Email</h3>
+            <p class="text-neutral-400 text-xs font-light mb-3">Réponse sous 24h</p>
+            <span class="text-sm font-medium text-black group-hover:text-neutral-600 transition-colors">webstudioriver@gmail.com</span>
+          </a>
+          <div class="paint-card glass-card p-7 text-center group cursor-default">
+            <div class="w-14 h-14 rounded-2xl bg-black/[0.03] flex items-center justify-center mx-auto mb-5 group-hover:bg-black group-hover:text-white transition-all duration-500">
+              <i data-lucide="clock" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-base font-bold mb-2">Horaires</h3>
+            <p class="text-neutral-400 text-xs font-light mb-3">Lun — Sam</p>
+            <span class="text-sm font-medium text-black">9h — 20h</span>
           </div>
         </div>
-        <div class="reveal" style="transition-delay:0.15s">
+      </div>
+
+      <!-- Contact form -->
+      <div class="max-w-3xl mx-auto">
+        <div class="reveal" style="transition-delay:0.2s">
           <div class="paint-card glass-card p-9 md:p-11">
+            <div class="text-center mb-10">
+              <h3 class="text-xl font-bold tracking-tight mb-2">Envoie-nous un message</h3>
+              <p class="text-neutral-400 text-sm font-light">On te répond sous 24h, garanti.</p>
+            </div>
             <form id="contactForm" class="space-y-6" onsubmit="handleSubmit(event)">
-              <div>
-                <label class="text-[10px] text-neutral-400 mb-2.5 block uppercase tracking-wider font-semibold">Nom</label>
-                <input type="text" required placeholder="Ton nom ou celui de ta structure" class="paint-input w-full border border-black/[0.04] px-5 py-4 text-sm text-black" name="name"/>
+              <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label class="text-[10px] text-neutral-400 mb-2.5 block uppercase tracking-wider font-semibold">Nom</label>
+                  <input type="text" required placeholder="Ton nom" class="paint-input w-full border border-black/[0.04] px-5 py-4 text-sm text-black" name="name"/>
+                </div>
+                <div>
+                  <label class="text-[10px] text-neutral-400 mb-2.5 block uppercase tracking-wider font-semibold">Email</label>
+                  <input type="email" required placeholder="ton@email.com" class="paint-input w-full border border-black/[0.04] px-5 py-4 text-sm text-black" name="email"/>
+                </div>
               </div>
-              <div>
-                <label class="text-[10px] text-neutral-400 mb-2.5 block uppercase tracking-wider font-semibold">Email</label>
-                <input type="email" required placeholder="ton@email.com" class="paint-input w-full border border-black/[0.04] px-5 py-4 text-sm text-black" name="email"/>
-              </div>
-              <div>
-                <label class="text-[10px] text-neutral-400 mb-2.5 block uppercase tracking-wider font-semibold">Pack qui t'intéresse</label>
-                <select name="pack" class="paint-input w-full border border-black/[0.04] px-5 py-4 text-sm text-black appearance-none cursor-pointer">
-                  <option value="">Sélectionne un pack</option>
-                  <option value="STARTER - 49.99€">Starter — 49.99€</option>
-                  <option value="PRO - 99.99€">Pro — 99.99€</option>
-                  <option value="ELITE - 149.99€">Elite — 149.99€</option>
-                  <option value="MAINTENANCE - 11.99€/mois">Maintenance — 11.99€/mois</option>
-                </select>
-              </div>
-              <div>
-                <label class="text-[10px] text-neutral-400 mb-2.5 block uppercase tracking-wider font-semibold">Type de site souhaité</label>
-                <input type="text" placeholder="Ex: Site vitrine, landing page, boutique..." class="paint-input w-full border border-black/[0.04] px-5 py-4 text-sm text-black" name="objectif"/>
+              <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label class="text-[10px] text-neutral-400 mb-2.5 block uppercase tracking-wider font-semibold">Pack qui t'intéresse</label>
+                  <select name="pack" class="paint-input w-full border border-black/[0.04] px-5 py-4 text-sm text-black appearance-none cursor-pointer">
+                    <option value="">Sélectionne un pack</option>
+                    <option value="STARTER - 49.99€">Starter — 49.99€</option>
+                    <option value="PRO - 99.99€">Pro — 99.99€</option>
+                    <option value="ELITE - 149.99€">Elite — 149.99€</option>
+                    <option value="MAINTENANCE - 11.99€/mois">Maintenance — 11.99€/mois</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="text-[10px] text-neutral-400 mb-2.5 block uppercase tracking-wider font-semibold">Type de site</label>
+                  <input type="text" placeholder="Ex: Site vitrine, boutique…" class="paint-input w-full border border-black/[0.04] px-5 py-4 text-sm text-black" name="objectif"/>
+                </div>
               </div>
               <div>
                 <label class="text-[10px] text-neutral-400 mb-2.5 block uppercase tracking-wider font-semibold">Message</label>
-                <textarea name="message" rows="4" placeholder="Décris ton projet..." class="paint-input w-full border border-black/[0.04] px-5 py-4 text-sm text-black resize-none"></textarea>
+                <textarea name="message" rows="4" placeholder="Décris ton projet…" class="paint-input w-full border border-black/[0.04] px-5 py-4 text-sm text-black resize-none"></textarea>
               </div>
               <button type="submit" class="paint-btn w-full py-4.5 rounded-full text-sm font-bold text-white bg-black hover:bg-neutral-800 inline-flex items-center justify-center gap-3 transition-all shadow-xl shadow-black/10">
                 <i data-lucide="send" class="w-4 h-4"></i> Envoyer ma demande
@@ -772,19 +1120,16 @@
        CTA SECTION
   ═══════════════════════════════════════════ -->
   <section class="py-24 md:py-32 bg-black text-white relative overflow-hidden">
-    <!-- Glow effects -->
     <div class="dark-glow top-0 left-1/4 bg-white/[0.02]"></div>
     <div class="dark-glow bottom-0 right-1/4 bg-white/[0.015]"></div>
-    <!-- Dot pattern -->
     <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
-
     <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
       <div class="reveal">
         <h2 class="text-4xl md:text-6xl font-extrabold tracking-tighter mb-6">Prêt à lancer<br/><span class="text-white/30 font-extralight italic">ton site ?</span></h2>
         <p class="text-white/30 text-base font-light max-w-lg mx-auto mb-12">Commande maintenant et reçois ton site pro clé en main sous 24h.</p>
         <div class="flex flex-wrap items-center justify-center gap-5">
           <a href="https://wa.me/33602546266?text=Bonjour%20je%20souhaite%20commander%20un%20site" target="_blank" rel="noopener" class="paint-btn bg-white text-black hover:bg-neutral-100 px-12 py-5 rounded-full text-sm font-bold inline-flex items-center gap-3 transition-all shadow-xl shadow-white/5"><i data-lucide="message-circle" class="w-4 h-4"></i> Commander via WhatsApp</a>
-          <a href="#packs" class="px-10 py-5 rounded-full text-sm font-medium text-white/40 border border-white/10 hover:border-white/20 hover:text-white/70 transition-all duration-500">Voir les packs</a>
+          <a href="#contact" class="px-10 py-5 rounded-full text-sm font-medium text-white/40 border border-white/10 hover:border-white/20 hover:text-white/70 transition-all duration-500">Nous contacter</a>
         </div>
       </div>
     </div>
@@ -795,27 +1140,34 @@
   ═══════════════════════════════════════════ -->
   <footer class="py-16 border-t border-black/[0.03] bg-[#f0ede8]">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+      <div class="flex flex-col items-center gap-10">
         <a href="#" class="relative">
           <img
             src="https://z-cdn-media.chatglm.cn/files/601a6ae2-fbc5-44e9-9599-a6a82ddfd73d.png?auth_key=1878932592-e50e7b4ee6a946a6a770f56ed7e4ba12-0-df37081e8717080df68ae463c5a303bd"
             alt="RENDR WEB STUDIO"
             class="logo-img-footer"
-            width="170"
-            height="36"
-            loading="lazy"
+            width="170" height="36" loading="lazy"
           />
         </a>
         <div class="flex flex-wrap items-center justify-center gap-8">
+          <a href="#services" class="text-[11px] text-neutral-400 hover:text-black transition-colors duration-300 uppercase tracking-wider font-medium">Services</a>
+          <a href="#portfolio" class="text-[11px] text-neutral-400 hover:text-black transition-colors duration-300 uppercase tracking-wider font-medium">Portfolio</a>
+          <a href="#temoignages" class="text-[11px] text-neutral-400 hover:text-black transition-colors duration-300 uppercase tracking-wider font-medium">Témoignages</a>
           <a href="#packs" class="text-[11px] text-neutral-400 hover:text-black transition-colors duration-300 uppercase tracking-wider font-medium">Packs</a>
           <a href="#process" class="text-[11px] text-neutral-400 hover:text-black transition-colors duration-300 uppercase tracking-wider font-medium">Process</a>
           <a href="#faq" class="text-[11px] text-neutral-400 hover:text-black transition-colors duration-300 uppercase tracking-wider font-medium">FAQ</a>
           <a href="#contact" class="text-[11px] text-neutral-400 hover:text-black transition-colors duration-300 uppercase tracking-wider font-medium">Contact</a>
-          <a href="https://wa.me/33602546266" target="_blank" rel="noopener" class="text-[11px] text-neutral-400 hover:text-black transition-colors duration-300 uppercase tracking-wider font-medium">WhatsApp</a>
         </div>
-        <div class="flex items-center gap-2 text-neutral-300">
-          <i data-lucide="code-xml" class="w-3 h-3"></i>
-          <span class="text-[11px] font-light">© 2026 RENDR WEB STUDIO</span>
+        <div class="h-px w-full max-w-xs bg-gradient-to-r from-transparent via-black/[0.06] to-transparent"></div>
+        <div class="flex flex-col sm:flex-row items-center justify-between w-full gap-4">
+          <div class="flex items-center gap-2 text-neutral-300">
+            <i data-lucide="code-xml" class="w-3 h-3"></i>
+            <span class="text-[11px] font-light">© 2026 RENDR WEB STUDIO</span>
+          </div>
+          <div class="flex items-center gap-5">
+            <a href="mailto:webstudioriver@gmail.com" class="text-neutral-300 hover:text-black transition-colors duration-300"><i data-lucide="mail" class="w-4 h-4"></i></a>
+            <a href="https://wa.me/33602546266" target="_blank" rel="noopener" class="text-neutral-300 hover:text-black transition-colors duration-300"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
+          </div>
         </div>
       </div>
     </div>
@@ -826,8 +1178,19 @@
     <i data-lucide="message-circle" class="w-5 h-5 text-white"></i>
   </a>
 
+  <!-- ── Sticky Contact Bar (mobile) ── -->
+  <div id="contactBar" class="contact-bar fixed bottom-0 left-0 right-0 z-40 bg-[#f0ede8]/95 backdrop-blur-2xl border-t border-black/[0.05] py-3 px-6 md:hidden">
+    <div class="flex gap-3">
+      <a href="https://wa.me/33602546266?text=Bonjour%20je%20souhaite%20commander%20un%20site" target="_blank" rel="noopener" class="paint-btn flex-1 bg-black text-white py-3 rounded-full text-xs font-bold flex items-center justify-center gap-2">
+        <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> WhatsApp
+      </a>
+      <a href="mailto:webstudioriver@gmail.com" class="btn-outline flex-1 py-3 rounded-full text-xs font-medium border border-black/[0.08] text-neutral-500 flex items-center justify-center gap-2">
+        <span class="flex items-center gap-2"><i data-lucide="mail" class="w-3.5 h-3.5"></i> Email</span>
+      </a>
+    </div>
+  </div>
+
   <script>
-    // ── Lucide Icons ──
     lucide.createIcons();
 
     // ── Scroll Reveal ──
@@ -853,10 +1216,7 @@
           const step = Math.max(1, Math.floor(target / 40));
           const interval = setInterval(() => {
             current += step;
-            if (current >= target) {
-              current = target;
-              clearInterval(interval);
-            }
+            if (current >= target) { current = target; clearInterval(interval); }
             el.textContent = current + suffix;
           }, 30);
           counterObserver.unobserve(el);
@@ -873,8 +1233,7 @@
       document.querySelectorAll('.faq-item.open').forEach(openItem => {
         openItem.classList.remove('open');
         const c = openItem.querySelector('.faq-content');
-        c.style.maxHeight = '0';
-        c.style.opacity = '0';
+        c.style.maxHeight = '0'; c.style.opacity = '0';
       });
       if (!isOpen) {
         item.classList.add('open');
@@ -899,8 +1258,7 @@
     function showToast(message, duration = 5000) {
       const toast = document.getElementById('toast');
       toast.textContent = message;
-      toast.classList.remove('hide');
-      toast.classList.add('show');
+      toast.classList.remove('hide'); toast.classList.add('show');
       setTimeout(() => { toast.classList.remove('show'); toast.classList.add('hide'); }, duration);
     }
 
@@ -915,7 +1273,7 @@
       const message = form.querySelector('[name="message"]').value;
       const subject = encodeURIComponent(`Nouvelle demande — ${pack || 'Pack non défini'}`);
       const body = encodeURIComponent(`Nom : ${name}\nEmail : ${email}\nPack : ${pack || 'Non sélectionné'}\nType de site : ${objectif || 'Non précisé'}\n\nMessage :\n${message}`);
-      window.location.href = `mailto:rendrwebstudio@gmail.com?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:webstudioriver@gmail.com?subject=${subject}&body=${body}`;
       showToast(`Merci ${name} ! Ton client mail s'ouvre. On te répond sous 24h. 🎨`);
     }
 
@@ -925,20 +1283,16 @@
       const banner = document.getElementById('announceBanner');
       banner.style.transform = 'translateY(-100%)';
       banner.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)';
-      bannerVisible = false;
-      adjustNavPosition();
+      bannerVisible = false; adjustNavPosition();
     }
     function adjustNavPosition() {
       const nav = document.getElementById('mainNav');
       const banner = document.getElementById('announceBanner');
       nav.style.top = bannerVisible ? banner.offsetHeight + 'px' : '0';
     }
-    window.addEventListener('load', () => {
-      adjustNavPosition();
-      window.addEventListener('resize', adjustNavPosition);
-    });
+    window.addEventListener('load', () => { adjustNavPosition(); window.addEventListener('resize', adjustNavPosition); });
 
-    // ── Nav scroll effect ──
+    // ── Nav scroll ──
     let ticking = false;
     window.addEventListener('scroll', () => {
       if (!ticking) {
@@ -953,13 +1307,26 @@
             nav.style.background = 'rgba(240,237,232,0.5)';
             nav.style.backdropFilter = 'blur(40px)';
           }
+
+          // Sticky contact bar (mobile)
+          const bar = document.getElementById('contactBar');
+          if (window.scrollY > 600) { bar.classList.add('show'); }
+          else { bar.classList.remove('show'); }
+
+          // Parallax blobs
+          const scrollY = window.scrollY;
+          document.querySelectorAll('.hero-blob').forEach((blob, i) => {
+            const speed = 0.03 + i * 0.015;
+            blob.style.transform = `translateY(${scrollY * speed}px)`;
+          });
+
           ticking = false;
         });
         ticking = true;
       }
     });
 
-    // ── Active section highlight ──
+    // ── Active nav ──
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('nav a[href^="#"]');
     const sectionObserver = new IntersectionObserver((entries) => {
@@ -968,32 +1335,15 @@
           const id = entry.target.getAttribute('id');
           navLinks.forEach(link => {
             if (link.getAttribute('href') === `#${id}`) {
-              link.classList.remove('text-neutral-400');
-              link.classList.add('text-black', 'active');
+              link.classList.remove('text-neutral-400'); link.classList.add('text-black', 'active');
             } else {
-              link.classList.remove('text-black', 'active');
-              link.classList.add('text-neutral-400');
+              link.classList.remove('text-black', 'active'); link.classList.add('text-neutral-400');
             }
           });
         }
       });
     }, { threshold: 0.3, rootMargin: '-80px 0px -50% 0px' });
     sections.forEach(section => sectionObserver.observe(section));
-
-    // ── Parallax blobs on scroll ──
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          const scrollY = window.scrollY;
-          document.querySelectorAll('.hero-blob').forEach((blob, i) => {
-            const speed = 0.03 + i * 0.015;
-            blob.style.transform = `translateY(${scrollY * speed}px)`;
-          });
-          ticking = false;
-        });
-        ticking = true;
-      }
-    });
   </script>
 </body>
 </html>
