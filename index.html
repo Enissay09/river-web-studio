@@ -1047,13 +1047,13 @@
             <p class="text-neutral-400 text-xs font-light mb-3">Réponse immédiate</p>
             <span class="text-sm font-medium text-black group-hover:text-neutral-600 transition-colors">+33 6 02 54 62 66</span>
           </a>
-          <a href="mailto:webstudioriver@gmail.com" class="paint-card glass-card p-7 text-center group cursor-pointer block">
+          <a href="mailto:rendrwebstudio@gmail.com" class="paint-card glass-card p-7 text-center group cursor-pointer block">
             <div class="w-14 h-14 rounded-2xl bg-black/[0.03] flex items-center justify-center mx-auto mb-5 group-hover:bg-black group-hover:text-white transition-all duration-500">
               <i data-lucide="mail" class="w-6 h-6"></i>
             </div>
             <h3 class="text-base font-bold mb-2">Email</h3>
             <p class="text-neutral-400 text-xs font-light mb-3">Réponse sous 24h</p>
-            <span class="text-sm font-medium text-black group-hover:text-neutral-600 transition-colors">webstudioriver@gmail.com</span>
+            <span class="text-sm font-medium text-black group-hover:text-neutral-600 transition-colors">rendrwebstudio@gmail.com</span>
           </a>
           <div class="paint-card glass-card p-7 text-center group cursor-default">
             <div class="w-14 h-14 rounded-2xl bg-black/[0.03] flex items-center justify-center mx-auto mb-5 group-hover:bg-black group-hover:text-white transition-all duration-500">
@@ -1273,7 +1273,7 @@
       const message = form.querySelector('[name="message"]').value;
       const subject = encodeURIComponent(`Nouvelle demande — ${pack || 'Pack non défini'}`);
       const body = encodeURIComponent(`Nom : ${name}\nEmail : ${email}\nPack : ${pack || 'Non sélectionné'}\nType de site : ${objectif || 'Non précisé'}\n\nMessage :\n${message}`);
-      window.location.href = `mailto:webstudioriver@gmail.com?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:rendrwebstudio@gmail.com?subject=${subject}&body=${body}`;
       showToast(`Merci ${name} ! Ton client mail s'ouvre. On te répond sous 24h. 🎨`);
     }
 
